@@ -25,7 +25,7 @@ const Nav = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleOpenNavMenu = (event) => {
