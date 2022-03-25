@@ -3,8 +3,10 @@ import axios from "axios";
 
 const API_URL = "https://charging-stations-backend.azurewebsites.net/";
 
-const register = (username, email, password) => {
+const register = (firstName, lastName, username, email, password) => {
   return axios.post(API_URL + "register", {
+    firstName,
+    lastName,
     username,
     email,
     password,

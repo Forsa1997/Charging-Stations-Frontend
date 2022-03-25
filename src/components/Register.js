@@ -36,7 +36,7 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    dispatch(register(data.get('username'), data.get('email'), data.get('password')))
+    dispatch(register(data.get('firstName'), data.get('lastName'), data.get('username'), data.get('email'), data.get('password')))
     navigate("../login", { replace: true })
   };
 
