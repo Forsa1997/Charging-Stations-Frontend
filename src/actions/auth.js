@@ -6,10 +6,9 @@ import {
     LOGOUT,
     SET_MESSAGE,
     CLEAR_MESSAGE,
+    MODIFY_USER,
 } from "./types";
 import AuthService from "../services/auth.service";
-
-
 
 
 export const register = (firstName, lastName, username, email, password) => (dispatch) => {
@@ -75,10 +74,36 @@ export const login = (username, password) => (dispatch) => {
     );
 };
 
-
 export const logout = () => (dispatch) => {
     AuthService.logout();
     dispatch({
         type: LOGOUT,
     });
+};
+
+export const modifyUser = (user) => (dispatch) => {
+    return AuthService.modifyUser(user).then(
+        (data) => {
+            dispatch({
+                type: MODIFY_USER,
+                payload: { userData: data },
+            });
+        },
+        (error) => {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+            dispatch({
+                type: LOGIN_FAIL,
+            });
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+
+            });
+        }
+    );
 };
