@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import { Provider } from 'react-redux'
 import store from '../store';
+import { LOGIN_SUCCESS } from '../actions/types'
 
 it('renders', () => {
     const div = document.createElement('div')
@@ -22,9 +23,19 @@ it('renders a navbar in the App', () => {
     expect(wrapper.find("Nav")).toHaveLength(1);
 })
 
-it('has 4 elements in the Navbar', () => {
+it('has 3 elements in the Navbar when no one is logged in', () => {
     const wrapper = mount(<App />)
-    expect(wrapper.find(MenuItem)).toHaveLength(4);
+    expect(wrapper.find(MenuItem)).toHaveLength(3);
+})
+
+it('has 2 elements in the Navbar when a user is logged in', () => {
+    let data = {};
+    store.dispatch({
+        type: LOGIN_SUCCESS,
+        payload: { user: data },
+    });
+    const wrapper = mount(<App />)
+    expect(wrapper.find(MenuItem)).toHaveLength(2);
 })
 
 it('render map component when burger map button is clicked', () => {
