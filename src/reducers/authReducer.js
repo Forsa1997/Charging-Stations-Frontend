@@ -4,6 +4,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
+    MODIFY_USER,
 } from "../actions/types";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -11,7 +12,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 const initialState = user
     ? { isLoggedIn: true, user }
     : { isLoggedIn: false, user: null };
-    
+
 const authReducer = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
@@ -43,6 +44,17 @@ const authReducer = (state = initialState, action) => {
                 isLoggedIn: false,
                 user: null,
             };
+        case MODIFY_USER:
+            return {
+                ...state,
+                user: {
+                    ...user,
+                    firstName: payload.userData.firstName,
+                    lastName: payload.userData.lastName,
+                    username: payload.userData.username,
+                    email: payload.userData.email,
+                }
+            }
         default:
             return state;
     }
