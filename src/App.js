@@ -26,6 +26,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Login />} />
         </Routes>
+        <script src="/build/client.entry.js" />
       </BrowserRouter>
     </Provider>
   );
