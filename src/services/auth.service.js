@@ -31,9 +31,7 @@ const logout = () => {
 };
 
 const modifyUser = (user) => {
-  return axios.patch(API_URL + "patch", {
-    user,
-  });
+  return axios.patch(API_URL + "patch", user);
 }
 
 const exports = { register, login, logout, modifyUser }

@@ -82,6 +82,7 @@ export const logout = () => (dispatch) => {
 };
 
 export const modifyUser = (user) => (dispatch) => {
+    console.log("MODIFYUSER")
     return AuthService.modifyUser(user).then(
         (data) => {
             dispatch({
@@ -97,12 +98,8 @@ export const modifyUser = (user) => (dispatch) => {
                 error.message ||
                 error.toString();
             dispatch({
-                type: LOGIN_FAIL,
-            });
-            dispatch({
                 type: SET_MESSAGE,
                 payload: message,
-
             });
         }
     );
