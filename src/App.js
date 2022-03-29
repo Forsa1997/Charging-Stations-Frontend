@@ -18,13 +18,12 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/map" element={<Map />} />
+        <Route path= "/map" element={<Map />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/logout" element={<Login />} />
       </Routes>
-      <script src="/build/client.entry.js" />
     </Provider>
   );
 }
