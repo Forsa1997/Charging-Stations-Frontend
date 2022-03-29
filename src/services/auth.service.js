@@ -2,6 +2,7 @@ import axios from "axios";
 import authHeader from "./auth-header";
 
 
+
 const API_URL = "https://charging-stations-backend.azurewebsites.net/";
 
 const register = (firstName, lastName, username, email, password) => {
