@@ -82,12 +82,11 @@ export const logout = () => (dispatch) => {
 };
 
 export const modifyUser = (user) => (dispatch) => {
-    console.log("MODIFYUSER")
     return AuthService.modifyUser(user).then(
         (data) => {
             dispatch({
                 type: MODIFY_USER,
-                payload: { userData: data },
+                payload: data,
             });
         },
         (error) => {

@@ -18,13 +18,14 @@ import { logout } from '../actions/auth';
 const logoutText = "Logout";
 const loginText = "Login";
 const registerText = "Register"
+const profileText = "Profile";
 const pages = ['Map'];
 let settings = [];
 let user;
 
 const Nav = () => {
     user = useSelector(state => state.authReducer.user)
-    settings = user === null ? [loginText, registerText] : [logoutText]
+    settings = user === null ? [loginText, registerText] : [profileText, logoutText]
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 

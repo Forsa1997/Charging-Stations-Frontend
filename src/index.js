@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
 
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
 
-
-
-ReactDOM.render(
-      <App />,
+renderMethod(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  ,
   document.getElementById('root')
 );
 

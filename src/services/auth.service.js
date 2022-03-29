@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from "../store";
+import authHeader from "./auth-header";
 
 
 const API_URL = "https://charging-stations-backend.azurewebsites.net/";
@@ -31,7 +31,7 @@ const logout = () => {
 };
 
 const modifyUser = (user) => {
-  return axios.patch(API_URL + "patch", user);
+  return axios.patch(API_URL + "patch", user, { headers: authHeader() });
 }
 
 const exports = { register, login, logout, modifyUser }
