@@ -6,7 +6,3 @@ export const LOGOUT = "LOGOUT";
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 export const MODIFY_USER = "MODIFY_USER";
-// export const MODIFY_LASTNAME = "MODIFY_LASTNAME";
-// export const MODIFY_USERNAME = "MODIFY_USERNAME";
-// export const MODIFY_EMAIL = "MODIFY_EMAIL";
-// export const MODIFY_PASSWORD = "MODIFY_PASSWORD";

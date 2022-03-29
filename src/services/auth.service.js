@@ -35,6 +35,11 @@ const modifyUser = (user) => {
   return axios.patch(API_URL + "patch", user, { headers: authHeader() });
 }
 
-const exports = { register, login, logout, modifyUser }
+const modifyPassword = (passwordRequest) => {
+  console.log(passwordRequest)
+  return axios.patch(API_URL + "password", passwordRequest, { headers: authHeader() });
+}
+
+const exports = { register, login, logout, modifyUser, modifyPassword }
 
 export default exports;

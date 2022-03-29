@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -13,19 +13,44 @@ import FormControl from '@mui/material/FormControl';
 import SaveIcon from '@mui/icons-material/Save';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { useDispatch, useSelector } from 'react-redux'
+import { modifyPassword } from '../actions/auth';
 
 
 
 const PasswordAccordion = (props) => {
+
+    const user = useSelector(state => state.authReducer.user)
     const [passwordVisible, setPasswordVisible] = React.useState(false);
     const toggleShowPassword = () => {
         setPasswordVisible(!passwordVisible);
     };
+    const [passwordFields, setPasswordFields] = React.useState({});
+    const updatePasswords = (e) => {
+        setPasswordFields({ ...passwordFields, [e.target.name]: e.target.value })
+    }
+
 
     const passwordFieldData = [
         "old password", "new password", "repeat new password"
     ]
 
+    const dispatch = useDispatch();
+
+    const modify = () => {
+        if (passwordFields.input_1 === passwordFields.input_2) {
+            let passwordRequest = {
+                id: user.id,
+                oldPassword: passwordFields.input_0,
+                newPassword: passwordFields.input_1,
+            }
+            dispatch(modifyPassword(passwordRequest));
+        } else {
+            console.log("NOT EQUAL")
+        }
+
+
+    }
 
     return (
         <Accordion expanded={props.expanded === 'panel' + props.index} sx={{ width: '35%' }} onChange={props.handleChange('panel' + props.index)}>
@@ -49,6 +74,8 @@ const PasswordAccordion = (props) => {
                         <InputLabel>{data}</InputLabel>
                         <Input
                             type={passwordVisible ? "text" : "password"}
+                            name={"input_" + index}
+                            onChange={(e) => updatePasswords(e)}
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
@@ -61,7 +88,7 @@ const PasswordAccordion = (props) => {
                             }
                         />
                     </FormControl>)}
-                    <IconButton>
+                    <IconButton onClick={() => modify()}>
                         <SaveIcon fontSize="large" color="primary" />
                     </IconButton>
                 </Box>

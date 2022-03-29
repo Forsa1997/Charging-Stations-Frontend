@@ -11,8 +11,9 @@ import {
 } from "react-router-dom";
 import { Provider } from 'react-redux'
 import store from '../store';
-import { LOGIN_SUCCESS } from '../actions/types'
+import { LOGIN_SUCCESS, MODIFY_USER } from '../actions/types'
 import Input from '@mui/material/Input';
+
 
 beforeAll(() => {
     let data = {
@@ -50,62 +51,20 @@ it('renders the accordions with 7 Input Fields', () => {
     expect(wrapper.find(Input)).toHaveLength(7);
 })
 
+it('renders the changed username after a MODIFY Action', () => {
+    const wrapper = mount(<Provider store={store}><BrowserRouter><Profile /></BrowserRouter></Provider >)
+    expect(wrapper.text().includes('Bob')).toBe(true);
+    store.dispatch({
+        type: MODIFY_USER,
+        payload: { data: { firstName: "Fred" } },
+    });
+    expect(wrapper.text().includes('Fred')).toBe(true);
+})
 
-
-
-
-
-
-
-
-// it('renders a navbar in the App', () => {
-//     const wrapper = mount(<App />)
-//     expect(wrapper.find("Nav")).toHaveLength(1);
-// })
-
-// it('has 3 elements in the Navbar when no one is logged in', () => {
-//     const wrapper = mount(<App />)
-//     expect(wrapper.find(MenuItem)).toHaveLength(3);
-// })
-
-// it('has 2 elements in the Navbar when a user is logged in', () => {
-//     let data = {};
+// it('renders the changed password after a MODIFY Action', () => {
+//     const wrapper = mount(<Provider store={store}><BrowserRouter><Profile /></BrowserRouter></Provider >)
 //     store.dispatch({
-//         type: LOGIN_SUCCESS,
-//         payload: { user: data },
+//         type: MODIFY_PASSWORD,
 //     });
-//     const wrapper = mount(<App />)
-//     expect(wrapper.find(MenuItem)).toHaveLength(2);
-// })
-
-// it('render map component when burger map button is clicked', () => {
-//     const wrapper = mount(<App />)
-//     wrapper.find('.menuButtonNav').find('li').simulate('click');
-//     expect(wrapper.find(Map)).toHaveLength(1);
-// })
-
-// it('render map component when normal map button is clicked', () => {
-//     const wrapper = mount(<App />)
-//     wrapper.find('.menuButtonNav').find('button').simulate('click');
-//     expect(wrapper.find(Map)).toHaveLength(1);
-// })
-
-// it('render home component when burger home button is clicked', () => {
-//     const wrapper = mount(<App />)
-//     wrapper.find('.logoButton').find('div').last().simulate('click');
-//     expect(wrapper.find(Home)).toHaveLength(1);
-// })
-
-// it('render home component when normal home button is clicked', () => {
-//     const wrapper = mount(<App />)
-//     wrapper.find('.logoButton').find('div').first().simulate('click');
-//     expect(wrapper.find(Home)).toHaveLength(1);
-// })
-
-// it('the navbar stays as it is after we clicked the map button', () => {
-//     const wrapper = mount(<App />)
-//     const before = wrapper.find(Nav);
-//     wrapper.find('.menuButtonNav').find('button').simulate('click');
-//     const after = wrapper.find(Nav)
-//     expect(before).toEqual(after);
+//     expect(wrapper.text().includes('Fred')).toBe(true);
 // })
