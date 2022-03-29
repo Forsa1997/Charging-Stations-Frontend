@@ -11,7 +11,6 @@ app.use(express.static(path.join(__dirname, '..build/')))
 
 app.use('/login', login)
 
-
 app.get("*", (req, res) => {
     let html = ReactDOMServer.renderToString(
         <StaticRouter location={req.url}>
