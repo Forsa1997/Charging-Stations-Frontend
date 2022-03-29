@@ -18,13 +18,12 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/map" element={<Map />} />
-        <Route path="/register" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/logout" element={<Login />} />
+        <Route path={process.env.PUBLIC_URL + "/map"} element={<Map />} />
+        <Route path={process.env.PUBLIC_URL + "/register"} element={<SignUp />} />
+        <Route path={process.env.PUBLIC_URL + "/login"} element={<Login />} />
+        <Route path={process.env.PUBLIC_URL + "/profile"} element={<Profile />} />
+        <Route path={process.env.PUBLIC_URL + "/logout"} element={<Login />} />
       </Routes>
-      <script src="/build/client.entry.js" />
     </Provider>
   );
 }
