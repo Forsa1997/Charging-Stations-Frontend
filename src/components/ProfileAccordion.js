@@ -11,20 +11,20 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import SaveIcon from '@mui/icons-material/Save';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { modifyUser } from '../actions/auth';
 
 
 
 
 const ProfileAccordion = (props) => {
-    const [expanded, setExpanded] = React.useState(false);
     let user = useSelector(state => state.authReducer.user);
+    const dispatch = useDispatch();
     const inputField = useRef('')
-    const toggleExpanded = () => {
-        setExpanded(!expanded);
-    }
+
     const modify = () => {
+        console.log("MODIFY")
+        console.log(props.name)
         let change = inputField.current.value;
         let attribute;
         switch (props.name) {
@@ -39,30 +39,29 @@ const ProfileAccordion = (props) => {
             default: attribute = null;
         }
         user = { ...user, [attribute]: change };
-        modifyUser(user);
+        console.log(user)
+        dispatch(modifyUser(user));
     }
 
     return (
-        <Accordion sx={{ width: '35%' }} onChange={toggleExpanded}>
+        <Accordion expanded={props.expanded === 'panel' + props.index} sx={{ width: '35%' }} onChange={props.handleChange('panel' + props.index)}>
             <AccordionSummary
                 aria-controls="panel1bh-content"
-                id="panel1bh-header"
                 expandIcon={<EditIcon color="primary" />}
             >
                 <Typography sx={{ width: '33%', flexShrink: 0 }}>
                     {props.name}
                 </Typography>
                 {
-                    expanded ? null : <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                    props.expanded === 'panel' + props.index ? null : <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                         <Typography sx={{ color: 'text.secondary' }}>{props.content}</Typography>
                     </Box>
                 }
             </AccordionSummary>
             <AccordionDetails sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', alignItems: 'center', marginTop: -3 }} >
                 <FormControl sx={{ flexBasis: '40%', marginBottom: 2, m: 1, width: '25ch' }} variant="standard">
-                    <InputLabel htmlFor="standard-adornment">{props.content}</InputLabel>
+                    <InputLabel >{props.content}</InputLabel>
                     <Input
-                        id="standard-adornment"
                         inputRef={inputField}
                         endAdornment={
                             <InputAdornment position="end">
@@ -70,7 +69,7 @@ const ProfileAccordion = (props) => {
                         }
                     />
                 </FormControl>
-                <IconButton onClick={modify}>
+                <IconButton onClick={() => modify()}>
                     <SaveIcon fontSize="large" color="primary" />
                 </IconButton>
             </AccordionDetails>

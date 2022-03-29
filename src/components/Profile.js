@@ -6,6 +6,12 @@ import PasswordAccordion from "./PasswordAccordion";
 
 const Profile = () => {
 
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+    };
+
 
     let stateValues = useSelector((state) => state.authReducer);
     const accordionData = [
@@ -21,8 +27,8 @@ const Profile = () => {
     }
     return (
         <div style={{ display: 'flex', alignItems: 'center', width: '100%', flexDirection: "column", marginTop: 100 }}>
-            {accordionData.map((data, index) => <ProfileAccordion key={index} name={data.name} content={data.content} />)}
-            <PasswordAccordion />
+            {accordionData.map((data, index) => <ProfileAccordion key={index} expanded={expanded} handleChange={handleChange} index={index} name={data.name} content={data.content} />)}
+            <PasswordAccordion index={4} expanded={expanded} handleChange={handleChange} />
         </div>)
 }
 

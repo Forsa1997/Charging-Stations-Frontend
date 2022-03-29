@@ -16,11 +16,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 
 
-const PasswordAccordion = () => {
-    const [expanded, setExpanded] = React.useState(false);
-    const toggleExpanded = () => {
-        setExpanded(!expanded);
-    }
+const PasswordAccordion = (props) => {
     const [passwordVisible, setPasswordVisible] = React.useState(false);
     const toggleShowPassword = () => {
         setPasswordVisible(!passwordVisible);
@@ -32,7 +28,7 @@ const PasswordAccordion = () => {
 
 
     return (
-        <Accordion sx={{ width: '35%' }} onChange={toggleExpanded}>
+        <Accordion expanded={props.expanded === 'panel' + props.index} sx={{ width: '35%' }} onChange={props.handleChange('panel' + props.index)}>
             <AccordionSummary
                 aria-controls="panel3bh-content"
                 id="panel3bh-header"
@@ -40,7 +36,7 @@ const PasswordAccordion = () => {
                 <Typography sx={{ width: '40%', flexShrink: 0 }}>
                     Change Password
                 </Typography>
-                {(!expanded) && (
+                {(!props.expanded) && (
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                         <Typography sx={{ color: 'text.secondary' }}></Typography>
                         <EditIcon color="primary" />
@@ -50,9 +46,8 @@ const PasswordAccordion = () => {
             <AccordionDetails sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', alignItems: 'center', marginTop: -3 }} >
                 <Box component="form" noValidate sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', alignItems: 'center', marginTop: -3 }}>
                     {passwordFieldData.map((data, index) => <FormControl key={index} sx={{ flexBasis: '40%', marginBottom: 2, m: 1, width: '25ch' }} variant="standard">
-                        <InputLabel htmlFor="standard-adornment-password">{data}</InputLabel>
+                        <InputLabel>{data}</InputLabel>
                         <Input
-                            id="standard-adornment-password"
                             type={passwordVisible ? "text" : "password"}
                             endAdornment={
                                 <InputAdornment position="end">
