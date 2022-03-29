@@ -51,6 +51,12 @@ it('renders the accordions with 7 Input Fields', () => {
 })
 
 
+it('renders the accordions with 7 Input Fields', () => {
+    const wrapper = mount(<Provider store={store}><BrowserRouter><Profile /></BrowserRouter></Provider >)
+    expect(wrapper.find(Input)).toHaveLength(7);
+})
+
+
 
 
 

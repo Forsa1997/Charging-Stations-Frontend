@@ -3,7 +3,9 @@ import teslaData from "../data/teslaSupercharger"
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-
+import TextField from '@mui/material/TextField';
+import BasicSelect from "./inputs/BasisSelect"
+import BasicSlider from "./inputs/BasicSlider"
 
 const Map = () => {
 
@@ -16,12 +18,24 @@ const Map = () => {
                 flexDirection: 'row',
             }}
         >
-            <Box sx={{
+            <Box justify="flex-end" sx={{
                 width: '30%',
-                bgcolor: 'grey.700',
+                bgcolor: 'grey.400',
 
             }}
-            />
+            >
+                <TextField
+                    id="filled-textarea"
+                    label="Search"
+                    placeholder="Charging Station"
+                    multiline
+                />
+                <BasicSlider/>
+                <BasicSelect header="Plug Type"/>
+                <BasicSelect header="Provider"/>
+                <BasicSelect header="Free to use"/>
+
+            </Box>
             <Box sx={{
                 width: '70%',
             }}>
