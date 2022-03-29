@@ -3,7 +3,6 @@ import Nav from './components/Nav';
 import {
   Routes,
   Route,
-  BrowserRouter,
 } from "react-router-dom";
 import Home from './components/Home';
 import Map from './components/Map'
@@ -16,18 +15,16 @@ import store from './store';
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/logout" element={<Login />} />
-        </Routes>
-        <script src="/build/client.entry.js" />
-      </BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/logout" element={<Login />} />
+      </Routes>
+      <script src="/build/client.entry.js" />
     </Provider>
   );
 }

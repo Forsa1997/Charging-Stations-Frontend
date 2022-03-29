@@ -49,10 +49,10 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 user: {
                     ...user,
-                    firstName: payload.userData.firstName,
-                    lastName: payload.userData.lastName,
-                    username: payload.userData.username,
-                    email: payload.userData.email,
+                    firstName: payload.data.firstName,
+                    lastName: payload.data.lastName,
+                    username: payload.data.username,
+                    email: payload.data.email,
                 }
             }
         default:
