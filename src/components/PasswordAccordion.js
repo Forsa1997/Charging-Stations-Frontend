@@ -49,6 +49,7 @@ const PasswordAccordion = (props) => {
     const [disabled, setDisabled] = React.useState(true);
 
     React.useEffect(() => {
+        console.log("+++++++++++++EFFECT+++++++++++++")
         let errorFlag0 = false;
         let errorFlag1 = false;
         let errorFlag2 = false;
@@ -70,13 +71,14 @@ const PasswordAccordion = (props) => {
         })
 
         if (errorFlag0 || errorFlag1 || errorFlag2) {
+
             setColor("text-disabled")
             setDisabled(true)
         } else if (passwordFields.input_0 && passwordFields.input_1 && passwordFields.input_2) {
             setColor("primary")
             setDisabled(false)
         }
-    }, [passwordFields, error]
+    }, [passwordFields] // eslint-disable-line react-hooks/exhaustive-deps
     );
 
     return (
