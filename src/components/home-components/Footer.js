@@ -22,8 +22,7 @@ export default function Footer() {
         <Box
             sx={{
                 display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh',
+                flexDirection: 'column'
             }}
         >
             <Box
@@ -34,7 +33,7 @@ export default function Footer() {
                     mt: 'auto',
                     backgroundColor: (theme) =>
                         theme.palette.mode === 'light'
-                            ? theme.palette.grey[200]
+                            ? theme.palette.grey[300]
                             : theme.palette.grey[800],
                 }}
             >
