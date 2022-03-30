@@ -50,48 +50,50 @@ const SignUp = () => {
     } else {
       setDisabled(true)
     }
-  }
+  }, [error]
   );
 
   const validate = (e) => {
+    let name = e.target.name;
+    let value = e.target.value
     if (e.target.value === "") {
-      setError({ ...error, [e.target.name]: true })
-      setHelperText({ ...helperText, [e.target.name]: "Must not be empty" })
+      setError({ ...error, [name]: true })
+      setHelperText({ ...helperText, [name]: "Must not be empty" })
     } else {
-      setError({ ...error, [e.target.name]: false })
-      setHelperText({ ...helperText, [e.target.name]: "" })
+      setError({ ...error, [name]: false })
+      setHelperText({ ...helperText, [name]: "" })
     }
 
-    switch (e.target.name) {
+    switch (name) {
       case "firstName":
-        if (!/^[A-Za-z]+$/.test(e.target.value || e.target.value === "")) {
-          setError({ ...error, [e.target.name]: true })
-          setHelperText({ ...helperText, [e.target.name]: "Must only contain letters" })
+        if (!/^[A-Za-z]+$/.test(value) || value === "") {
+          setError({ ...error, [name]: true })
+          setHelperText({ ...helperText, [name]: "Must only contain letters" })
         };
         break;
       case "lastName":
-        if (!/^[A-Za-z]+$/.test(e.target.value || e.target.value === "")) {
-          setError({ ...error, [e.target.name]: true })
-          setHelperText({ ...helperText, [e.target.name]: "Must only contain letters" })
+        if (!/^[A-Za-z]+$/.test(value) || value === "") {
+          setError({ ...error, [name]: true })
+          setHelperText({ ...helperText, [name]: "Must only contain letters" })
         };
         break;
       case "username":
         if (e.target.value.length < 4) {
-          setError({ ...error, [e.target.name]: true })
-          setHelperText({ ...helperText, [e.target.name]: "Must contain at least 4 characters" })
+          setError({ ...error, [name]: true })
+          setHelperText({ ...helperText, [name]: "Must contain at least 4 characters" })
         };
         break;
       case "email":
-        if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(e.target.value || e.target.value === "")) {
-          setError({ ...error, [e.target.name]: true })
-          setHelperText({ ...helperText, [e.target.name]: "Must be a vaild email address" })
+        if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value || value === "")) {
+          setError({ ...error, [name]: true })
+          setHelperText({ ...helperText, [name]: "Must be a vaild email address" })
         };
 
         break;
       case "password":
-        if (e.target.value.length < 6) {
-          setError({ ...error, [e.target.name]: true })
-          setHelperText({ ...helperText, [e.target.name]: "Must contain at least 6 characters" })
+        if (value.length < 6) {
+          setError({ ...error, [name]: true })
+          setHelperText({ ...helperText, [name]: "Must contain at least 6 characters" })
         };
         break;
       default: ;
