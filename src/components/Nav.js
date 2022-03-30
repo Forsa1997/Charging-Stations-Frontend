@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from '../actions/auth';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
 const logoutText = "Logout";
 const loginText = "Login";
@@ -130,7 +131,9 @@ const Nav = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar {...stringAvatar(user === null ? null : `${user.firstName} ${user.lastName}`)} />
+                                <Avatar {...stringAvatar(user === null ? null : `${user.firstName} ${user.lastName}`)}>
+                                    {user === null && <PersonOutlineIcon />}
+                                </Avatar>
                             </IconButton>
                         </Tooltip>
                         <Menu

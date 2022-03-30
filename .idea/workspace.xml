@@ -2,12 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/home-components/Hero.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home-components/HeroLayout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home-components/Theme.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home-components/Typography.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home-components/Values.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home-components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,6 +51,11 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/home-components" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -41,6 +66,8 @@
       <updated>1648206656283</updated>
       <workItem from="1648206659358" duration="68000" />
       <workItem from="1648548730757" duration="8764000" />
+      <workItem from="1648567795799" duration="1754000" />
+      <workItem from="1648628875021" duration="11646000" />
     </task>
     <servers />
   </component>

@@ -11,9 +11,16 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import { Provider } from 'react-redux';
 import store from './store';
+import { ThemeProvider } from '@mui/material/styles';
+import Theme from "./components/home-components/Theme";
+
+
 
 function App() {
-  return (
+    const theme = Theme;
+
+    return (
+      <ThemeProvider theme={theme}>
     <Provider store={store}>
       <Nav />
       <Routes>
@@ -25,6 +32,7 @@ function App() {
         <Route path="/logout" element={<Login />} />
       </Routes>
     </Provider>
+      </ThemeProvider>
   );
 }
 
