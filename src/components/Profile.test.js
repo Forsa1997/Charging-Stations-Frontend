@@ -61,8 +61,31 @@ it('renders the changed username after a MODIFY Action', () => {
     expect(wrapper.text().includes('Fred')).toBe(true);
 })
 
-// it('renders the changed password after a MODIFY Action', () => {
-//     const wrapper = mount(<Provider store={store}><BrowserRouter><Profile /></BrowserRouter></Provider >)
+it('renders the accordions with 7 Input Fields', () => {
+    const wrapper = mount(<Provider store={store}><BrowserRouter><Profile /></BrowserRouter></Provider >)
+    expect(wrapper.find(Input)).toHaveLength(7);
+})
+
+
+
+
+
+
+
+
+
+// it('renders a navbar in the App', () => {
+//     const wrapper = mount(<App />)
+//     expect(wrapper.find("Nav")).toHaveLength(1);
+// })
+
+// it('has 3 elements in the Navbar when no one is logged in', () => {
+//     const wrapper = mount(<App />)
+//     expect(wrapper.find(MenuItem)).toHaveLength(3);
+// })
+
+// it('has 2 elements in the Navbar when a user is logged in', () => {
+//     let data = {};
 //     store.dispatch({
 //         type: MODIFY_PASSWORD,
 //     });
