@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import Typography from './Typography';
 import HeroLayout from './HeroLayout';
 import {useNavigate} from "react-router-dom";
-import MaximizeIcon from '@mui/icons-material/Maximize';
 
 const backgroundImage =
     'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
