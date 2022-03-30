@@ -1,3 +1,5 @@
+import Footer from './Footer'
+
 const Home = () => (
     <div>
         Home
@@ -7,6 +9,7 @@ const Home = () => (
             <li>2</li>
             <li>3</li>
         </ul>
+    <Footer />
     </div>
 )
 
