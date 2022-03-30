@@ -76,7 +76,7 @@ const PasswordAccordion = (props) => {
             setColor("primary")
             setDisabled(false)
         }
-    }, [passwordFields]
+    }, [passwordFields, error]
     );
 
     return (
