@@ -49,7 +49,6 @@ const PasswordAccordion = (props) => {
     const [disabled, setDisabled] = React.useState(true);
 
     React.useEffect(() => {
-        console.log("+++++++++++++EFFECT+++++++++++++")
         let errorFlag0 = false;
         let errorFlag1 = false;
         let errorFlag2 = false;
