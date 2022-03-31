@@ -54,7 +54,7 @@ const Nav = () => {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="sticky">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -131,9 +131,7 @@ const Nav = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, boxShadow: '0px 0px 8px #072895' }}>
-                                <Avatar {...stringAvatar(user === null ? null : `${user.firstName} ${user.lastName}`)}>
-                                    {user === null && <PersonOutlineIcon />}
-                                </Avatar>
+                                {user === null ? <Avatar sx={{bgcolor: '#1565c0'}}><PersonOutlineIcon /></Avatar> : <Avatar {...stringAvatar(`${user.firstName} ${user.lastName}`)}/>}
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -186,15 +184,6 @@ function stringToColor(string) {
 }
 
 function stringAvatar(name) {
-
-    if (name === null) {
-        return {
-            sx: {
-                bgcolor: 'text.disabled',
-            },
-            children: "?"
-        };
-    }
 
     return {
         sx: {

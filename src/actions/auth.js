@@ -103,3 +103,26 @@ export const modifyUser = (user) => (dispatch) => {
         }
     );
 };
+
+export const modifyPassword = (passwordRequest) => (dispatch) => {
+    return AuthService.modifyPassword(passwordRequest).then(
+        () => {
+            dispatch({
+                type: SET_MESSAGE,
+                payload: "Password succesfully changed",
+            });
+        },
+        (error) => {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });
+        }
+    );
+};

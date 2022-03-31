@@ -23,8 +23,6 @@ const ProfileAccordion = (props) => {
     const inputField = useRef('')
 
     const modify = () => {
-        console.log("MODIFY")
-        console.log(props.name)
         let change = inputField.current.value;
         let attribute;
         switch (props.name) {
@@ -43,6 +41,52 @@ const ProfileAccordion = (props) => {
         dispatch(modifyUser(user));
     }
 
+    const [error, setError] = React.useState(false);
+    const [color, setColor] = React.useState("text-disabled");
+    const [disabled, setDisabled] = React.useState(true);
+
+    const validate = (e) => {
+        let errorflag = false;
+        let change = inputField.current.value;
+        if (e.target.value === "") {
+            errorflag = true;
+        }
+        switch (props.name) {
+            case "First name":
+                if (!/^[A-Za-z]+$/.test(change)) {
+                    errorflag = true;
+                };
+                break;
+            case "Last name":
+                if (!/^[A-Za-z]+$/.test(change)) {
+                    errorflag = true;
+                };
+                break;
+            case "Username":
+                if (change.length < 4) {
+                    errorflag = true;
+                };
+                break;
+            case "E-Mail":
+                if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(change)) {
+                    errorflag = true;
+                };
+                break;
+            default: ;
+        }
+
+        if (errorflag) {
+            setError(true)
+            setColor("text-disabled")
+            setDisabled(true)
+        } else {
+            setError(false)
+            setColor("primary")
+            setDisabled(false)
+        }
+    }
+
+
     return (
         <Accordion expanded={props.expanded === 'panel' + props.index} sx={{ width: '35%' }} onChange={props.handleChange('panel' + props.index)}>
             <AccordionSummary
@@ -59,9 +103,12 @@ const ProfileAccordion = (props) => {
                 }
             </AccordionSummary>
             <AccordionDetails sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', alignItems: 'center', marginTop: -3 }} >
-                <FormControl sx={{ flexBasis: '40%', marginBottom: 2, m: 1, width: '25ch' }} variant="standard">
+                <FormControl sx={{ flexBasis: '40%', marginBottom: 2, m: 1, }} variant="standard">
                     <InputLabel >{props.content}</InputLabel>
                     <Input
+                        error={error}
+                        onChange={(e) => validate(e)}
+                        onBlur={(e) => validate(e)}
                         inputRef={inputField}
                         endAdornment={
                             <InputAdornment position="end">
@@ -69,8 +116,8 @@ const ProfileAccordion = (props) => {
                         }
                     />
                 </FormControl>
-                <IconButton onClick={() => modify()}>
-                    <SaveIcon fontSize="large" color="primary" />
+                <IconButton disabled={disabled} onClick={() => modify()}>
+                    <SaveIcon fontSize="large" color={color} />
                 </IconButton>
             </AccordionDetails>
         </Accordion >

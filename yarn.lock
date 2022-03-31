@@ -8817,7 +8817,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.0", "prop-types@^15.7.2", "prop-types@^15.8.1":
+"prop-types@^15.5.7", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.0", "prop-types@^15.7.2", "prop-types@^15.8.1":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -9111,6 +9111,14 @@
   dependencies:
     "object-assign" "^4.1.1"
     "react-is" "^16.12.0 || ^17.0.0"
+
+"react-split@^2.0.14":
+  "integrity" "sha512-bKWydgMgaKTg/2JGQnaJPg51T6dmumTWZppFgEbbY0Fbme0F5TuatAScCLaqommbGQQf/ZT1zaejuPDriscISA=="
+  "resolved" "https://registry.npmjs.org/react-split/-/react-split-2.0.14.tgz"
+  "version" "2.0.14"
+  dependencies:
+    "prop-types" "^15.5.7"
+    "split.js" "^1.6.0"
 
 "react-test-renderer@^17.0.0", "react-test-renderer@^17.0.2":
   "integrity" "sha512-yaQ9cB89c17PUb0x6UfWRs7kQCorVdHlutU1boVPEsB8IDZH6n9tHxMacc3y0JoXOJUsZb/t/Mb8FUWMKaM7iQ=="
@@ -10020,6 +10028,11 @@
   "version" "3.1.0"
   dependencies:
     "extend-shallow" "^3.0.0"
+
+"split.js@^1.6.0":
+  "integrity" "sha512-mPTnGCiS/RiuTNsVhCm9De9cCAUsrNFFviRbADdKiiV+Kk8HKp/0fWu7Kr8pi3/yBmsqLFHuXGT9UUZ+CNLwFw=="
+  "resolved" "https://registry.npmjs.org/split.js/-/split.js-1.6.5.tgz"
+  "version" "1.6.5"
 
 "sprintf-js@~1.0.2":
   "integrity" "sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw="

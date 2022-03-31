@@ -1,38 +1,46 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import teslaData from "../data/teslaSupercharger"
-import MarkerClusterGroup from 'react-leaflet-markercluster';
 
-
-
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import BasicSelect from "./inputs/BasicSelect"
+import BasicSlider from "./inputs/BasicSlider"
+import BasicTextField from "./inputs/BasisTextfield"
+import ChargingMap from './ChargingMap';
+import ChipSelect from './inputs/ChipSelect'
 
 const Map = () => {
 
-    return (
-        <MapContainer center={[52.3758916, 9.7320104]} zoom={10}>
-            {/* <TileLayer
-                attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-                url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png"
-            /> */}
-             <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-            <MarkerClusterGroup>
-                {teslaData.map(tesla => (
-                    <Marker key={tesla.id}
-                        position={[tesla.gps.latitude, tesla.gps.longitude]} >
-                        <Popup>
-                            Status: {tesla.status}<br />
-                            {tesla.name}<br />
-                            {tesla.address.street}, {tesla.address.city}<br />
-                            Stallcount: {tesla.stallCount}<br />
-                            Max Charge Power: {tesla.powerKilowatt} KW
-                        </Popup>
-                    </Marker>
-                ))}
-            </MarkerClusterGroup>
-        </MapContainer>
+    const plugTypes = [{ value: 0, name: "Type 2" }, { value: 1, name: "CCS" }]
+    const chargingProviders = [{ value: 0, name: "Ionity" }, { value: 1, name: "EnBw" }, { value: 2, name: "Shell" }]
+    const chargingFree = [{ value: 0, name: "No" }, { value: 1, name: "Yes" }]
 
+    return (
+        <Box
+            style={{ height: 'calc(100vh - 70px)' }}
+            sx={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'row',
+            }}
+        >
+            <Box justify="flex-end" sx={{
+                width: '30%',
+                bgcolor: 'grey.400',
+                p: 7,
+                border: '1px solid grey',
+                
+            }}
+            >
+                <BasicTextField />
+                <BasicSlider />
+                <BasicSelect values={plugTypes} header="Plug Type" />
+                <ChipSelect values={chargingProviders} header="Provider"/>
+                <BasicSelect values={chargingFree} header="Free to use" />
+
+            </Box>
+            <Box sx={{ width: '70%'}}>
+                <ChargingMap/>
+            </Box>
+        </Box>
     )
 
 }

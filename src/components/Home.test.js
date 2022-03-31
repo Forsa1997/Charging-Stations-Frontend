@@ -1,12 +1,13 @@
-import Home from './Home';
-import { mount } from 'enzyme'
+import {render} from "@testing-library/react";
+import Home from "./Home";
+import Theme from "./home-components/Theme";
+import { ThemeProvider } from '@mui/material/styles';
+import {BrowserRouter} from "react-router-dom";
 
-it('has a image', () => {
-    const wrapper = mount(<Home />)
-    expect(wrapper.find("img")).toHaveLength(1);
+
+it('home renders', () => {
+    const theme = Theme;
+    const div = document.createElement('div')
+    render(<BrowserRouter><ThemeProvider theme={theme}><Home /></ThemeProvider></BrowserRouter>, div)
+
 })
-
-it('has a list with 3 elements', () => {
-    const wrapper = mount(<Home />)
-    expect(wrapper.find("li")).toHaveLength(3);
-}) 

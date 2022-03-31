@@ -38,6 +38,6 @@
 }
 
 .leaflet-container{
-  width:70vw;
   height:calc(100vh - 70px);
-}
+  width: 70vw;
+  }
