@@ -14,25 +14,14 @@ import { useDispatch } from "react-redux";
 import { register } from "../actions/auth";
 import { useNavigate } from 'react-router';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const theme = createTheme();
 
 const SignUp = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleLinkLogin = () => navigate('/login')
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -205,14 +194,13 @@ const SignUp = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link onClick={handleLinkLogin} variant="body2" sx={{cursor: 'pointer'}}>
                   Already have an account?
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

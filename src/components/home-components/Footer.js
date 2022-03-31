@@ -24,7 +24,7 @@ export default function Footer() {
                  justifyContent: 'center',
                  alignItems: 'center',
                  width: '100vw',
-                 boxShadow: '0px -3px 8px #3B3B3B',
+                 boxShadow: '0px -3px 8px #646464',
                  backgroundColor: (theme) =>
                      theme.palette.mode === 'light'
                          ? theme.palette.grey[300]

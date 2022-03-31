@@ -14,26 +14,18 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { login } from '../actions/auth';
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import {Navigate, useNavigate} from "react-router-dom";
 
 const theme = createTheme();
-//const loggedIn = useSelector(state => state.authReducer.loggedIn);
 
-export default function Login() {
+
+
+const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleLinkRegister = () => navigate('/register')
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -46,8 +38,8 @@ export default function Login() {
 
   return (
     useSelector(state => state.authReducer.isLoggedIn) ? <Navigate to="/profile"></Navigate> :
-      <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
+        <ThemeProvider theme={theme}>
+        <Container component="main" maxWidth="xs" >
           <CssBaseline />
           <Box
             sx={{
@@ -99,20 +91,20 @@ export default function Login() {
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
-                    Forgot password?
+                    {/*Forgot password?*/}
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link onClick={handleLinkRegister} sx={{cursor: 'pointer'}} variant="body2">
                     {"Don't have an account?"}
                   </Link>
                 </Grid>
               </Grid>
             </Box>
           </Box>
-          <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
       </ThemeProvider>
-
   );
 }
+
+export default Login

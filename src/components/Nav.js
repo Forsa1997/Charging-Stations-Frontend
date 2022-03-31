@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from '../actions/auth';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import logo from '../assets/logo.png'
 
 const logoutText = "Logout";
 const loginText = "Login";
@@ -40,6 +41,8 @@ const Nav = () => {
         setAnchorElUser(event.currentTarget);
     };
 
+    const handleRegisterButton = () => navigate('/')
+
     const handleCloseNavMenu = (page = "") => {
         if (page === logoutText) {
             dispatch(logout());
@@ -62,10 +65,10 @@ const Nav = () => {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, cursor: 'pointer' }}
+                        sx={{ display: { xs: 'none', md: 'flex' }, cursor: 'pointer' }}
                         onClick={() => handleCloseNavMenu()}
                     >
-                        LOGO
+                        <Button><img src={logo} alt="logo" onClick={handleRegisterButton} style={{ width: 40}} /></Button>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -113,7 +116,7 @@ const Nav = () => {
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, cursor: 'pointer' }}
                         onClick={() => handleCloseNavMenu()}
                     >
-                        LOGO
+                        <Button><img src={logo} alt="logo" onClick={handleRegisterButton} style={{ width: 40}} /></Button>
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (

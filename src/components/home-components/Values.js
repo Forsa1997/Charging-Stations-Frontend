@@ -7,9 +7,7 @@ import Typography from './Typography';
 import ElectricBoltSharpIcon from '@mui/icons-material/ElectricBoltSharp';
 import SwitchAccountSharpIcon from '@mui/icons-material/SwitchAccountSharp';
 import MapSharpIcon from '@mui/icons-material/MapSharp';
-
-const backgroundValues = `
-https://images.unsplash.com/photo-1561542611-7af32c97f8db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80`
+import backgroundValues from '../../assets/clouds.jpeg'
 
 const item = {
     display: 'flex',
@@ -26,12 +24,19 @@ function ProductValues() {
                 boxShadow: '0px 6px 8px #3B3B3B inset',
                 display: 'flex',
                 overflow: 'hidden',
-                bgcolor: 'secondary.light',
+
                 backgroundImage: `url(${backgroundValues})`,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center' }}
+                backgroundPosition: 'center'
+
+            }}
         >
-            <Container sx={{mt: 15, mb: 20, display: 'flex', position: 'relative', marginRight: 'auto'}}>
+            <Container sx={{
+                mt: 15,
+                mb: 20,
+                display: 'flex',
+                position: 'relative'
+            }}>
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={4}>
                         <Box sx={item}>
