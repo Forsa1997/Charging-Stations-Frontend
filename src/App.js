@@ -17,22 +17,22 @@ import Theme from "./components/home-components/Theme";
 
 
 function App() {
-    const theme = Theme;
+  const theme = Theme;
 
-    return (
-      <ThemeProvider theme={theme}>
-    <Provider store={store}>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path= "/map" element={<Map />} />
-        <Route path="/register" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/logout" element={<Login />} />
-      </Routes>
-    </Provider>
-      </ThemeProvider>
+  return (
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/logout" element={<Login />} />
+        </Routes>
+      </Provider>
+    </ThemeProvider>
   );
 }
 

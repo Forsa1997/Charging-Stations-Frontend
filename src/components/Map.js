@@ -6,11 +6,13 @@ import BasicSlider from "./inputs/BasicSlider"
 import BasicTextField from "./inputs/BasisTextfield"
 import ChargingMap from './ChargingMap';
 import ChipSelect from './inputs/ChipSelect'
+import referenceData from '../data/referenceData'
 
 const Map = () => {
 
-    const plugTypes = [{ value: 0, name: "Type 2" }, { value: 1, name: "CCS" }]
-    const chargingProviders = [{ value: 0, name: "Ionity" }, { value: 1, name: "EnBw" }, { value: 2, name: "Shell" }]
+    const plugTypes = [{ values: [25, 1036], name: "Type 2" }, { values: [32, 33], name: "CCS" }]
+    const chargingProviders = referenceData.Operators
+    console.log(chargingProviders)
     const chargingFree = [{ value: 0, name: "No" }, { value: 1, name: "Yes" }]
 
     return (
@@ -38,7 +40,7 @@ const Map = () => {
 
             </Box>
             <Box sx={{ width: '70%'}}>
-                <ChargingMap/>
+                <ChargingMap />
             </Box>
         </Box>
     )
