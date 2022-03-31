@@ -64,11 +64,11 @@ export default function MultipleSelectChip(props) {
         >
           {props.values.map((inputs) => (
             <MenuItem
-              key={inputs.name}
-              value={inputs.name}
-              style={getStyles(inputs.name, providerName, theme)}
+              key={inputs.Title}
+              value={inputs.Title}
+              style={getStyles(inputs.Title, providerName, theme)}
             >
-              {inputs.name}
+              {inputs.Title}
             </MenuItem>
           ))}
         </Select>
