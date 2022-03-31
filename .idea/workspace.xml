@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/home-components/Hero.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home-components/HeroLayout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home-components/Theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home-components/Typography.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home-components/Values.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/charging-image.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home-components/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home-components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home-components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home-components/Hero.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home-components/Hero.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home-components/HeroLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home-components/HeroLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home-components/Values.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home-components/Values.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +29,15 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="26sK3ZrMNMqrMm7m2dIyH9v7wtr" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -84,5 +80,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
