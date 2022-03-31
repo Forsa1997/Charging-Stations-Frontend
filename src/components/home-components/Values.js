@@ -7,6 +7,7 @@ import Typography from './Typography';
 import ElectricBoltSharpIcon from '@mui/icons-material/ElectricBoltSharp';
 import SwitchAccountSharpIcon from '@mui/icons-material/SwitchAccountSharp';
 import MapSharpIcon from '@mui/icons-material/MapSharp';
+import backgroundValues from '../../assets/clouds.jpeg'
 
 const item = {
     display: 'flex',
@@ -19,15 +20,23 @@ function ProductValues() {
     return (
         <Box
             component="section"
-            sx={{display: 'flex', overflow: 'hidden', bgcolor: 'secondary.light'}}
+            sx={{
+                boxShadow: '0px 6px 8px #3B3B3B inset',
+                display: 'flex',
+                overflow: 'hidden',
+
+                backgroundImage: `url(${backgroundValues})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+
+            }}
         >
-            <Container sx={{mt: 15, mb: 30, display: 'flex', position: 'relative'}}>
-                <Box
-                    component="img"
-                    src="/static/themes/onepirate/productCurvyLines.png"
-                    alt="curvy lines"
-                    sx={{pointerEvents: 'none', position: 'absolute', top: -180}}
-                />
+            <Container sx={{
+                mt: 15,
+                mb: 20,
+                display: 'flex',
+                position: 'relative'
+            }}>
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={4}>
                         <Box sx={item}>
@@ -42,11 +51,11 @@ function ProductValues() {
                             </Typography>
                             <Typography variant="h5">
                                 {
-                                    'From the latest trendy boutique hotel to the iconic palace with XXL pool'
+                                    'We are also supporting the fastest available chargers on our map.'
                                 }
 
                                 {
-                                    ', go for a mini-vacation just a few subway stops away from your home.'
+                                    ` So if you are in hurry, you won't regret using these.`
                                 }
                             </Typography>
                         </Box>
@@ -64,10 +73,10 @@ function ProductValues() {
                             </Typography>
                             <Typography variant="h5">
                                 {
-                                    'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '
+                                    'Create an account to use all features supported on our website.'
                                 }
 
-                                {'your Sundays will not be alike.'}
+                                {' Just save your favorite charging stations to find them quickly.'}
                             </Typography>
                         </Box>
                     </Grid>
@@ -83,8 +92,8 @@ function ProductValues() {
                                 smart and user friendly map
                             </Typography>
                             <Typography variant="h5">
-                                {'By registering, you will access specially negotiated rates '}
-                                {'that you will not find anywhere else.'}
+                                {'You can apply filters to list the charging stations you really want to see.'}
+                                {' Every single charging station has all the information you need.'}
                             </Typography>
                         </Box>
                     </Grid>
