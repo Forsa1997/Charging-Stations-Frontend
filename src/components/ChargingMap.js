@@ -2,7 +2,6 @@ import {MapContainer, TileLayer, Marker, Popup, ZoomControl} from 'react-leaflet
 import teslaData from "../data/teslaSupercharger"
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from "leaflet";
-// import reactElementToJSXString from 'react-element-to-jsx-string';
 import { useSelector } from 'react-redux';
 import mapReducer from '../reducers/mapReducer';
 import { useState } from 'react';
