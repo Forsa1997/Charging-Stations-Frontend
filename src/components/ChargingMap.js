@@ -1,9 +1,8 @@
-import {MapContainer, TileLayer, Marker, Popup, ZoomControl} from 'react-leaflet'
-import teslaData from "../data/teslaSupercharger"
+import {MapContainer, TileLayer, ZoomControl} from 'react-leaflet';
+// eslint-disable-next-line
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from "leaflet";
 import { useSelector } from 'react-redux';
-import mapReducer from '../reducers/mapReducer';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -14,7 +13,7 @@ export default function ChargingMap() {
 
     useEffect(() => {
         refreshLocations();
-    }, [filteredStations])
+    }, [filteredStations]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const setMapReference = (map) => {
         refreshLocations();

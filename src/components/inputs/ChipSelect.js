@@ -44,7 +44,7 @@ export default function MultipleSelectChip(props) {
       typeof value === 'string' ? value.split(',') : value,
     );
     let operatorIds = [];
-    event.target.value.map((value) => {
+    event.target.value.forEach((value) => {
       operatorIds=[...operatorIds, value.ID]
     }
     )

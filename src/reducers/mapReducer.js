@@ -84,8 +84,8 @@ const mapReducer = (state = initialState, action) => {
     switch (type) {
         case GET_NEW_DATA:
             let maxPower = 0;
-            payload.map((station) => {
-                station.connections.map(connection => {
+            payload.forEach((station) => {
+                station.connections.forEach(connection => {
                     if (maxPower < connection.powerKW) {
                         maxPower = connection.powerKW
                     }
