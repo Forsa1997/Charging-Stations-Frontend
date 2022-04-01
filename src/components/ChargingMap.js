@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import teslaData from "../data/teslaSupercharger"
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from "leaflet";
-import reactElementToJSXString from 'react-element-to-jsx-string';
+// import reactElementToJSXString from 'react-element-to-jsx-string';
 import { useSelector } from 'react-redux';
 import mapReducer from '../reducers/mapReducer';
 import { useState } from 'react';
@@ -28,8 +28,6 @@ export default function ChargingMap() {
         map.on('zoomend', function () {
             let radius = 8;
             const zoom = map.getZoom();
-            console.log(zoom);
-
             if (zoom < 18) {
                 radius = 7;
             } else if (zoom < 17) {
@@ -70,7 +68,7 @@ export default function ChargingMap() {
                 color: '#fff',
                 weight: 3,
             }).bindPopup(
-                reactElementToJSXString(popup)
+                "marker"
             ).addTo(myMarkers);
         })
     };
@@ -83,7 +81,7 @@ export default function ChargingMap() {
     }
 
     return (
-        <MapContainer center={center} zoom={12} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
+        <MapContainer center={center} zoom={3} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

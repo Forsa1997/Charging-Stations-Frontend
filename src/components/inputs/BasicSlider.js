@@ -30,6 +30,8 @@ export default function DiscreteSliderLabel(props) {
                 step={props.steps}
                 marks={props.marks}
                 valueLabelDisplay="off"
+                track="inverted"
+                min={props.min}
                 max={props.max}
                 onChange={handleSliderChange}
                 onMouseUp={() => dispatch(filterPower(value))}              
