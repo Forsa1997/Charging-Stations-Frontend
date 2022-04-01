@@ -9,14 +9,14 @@ import Map from './components/Map'
 import SignUp from './components/Register';
 import Login from './components/Login';
 import Profile from './components/Profile';
-import { Provider } from 'react-redux';
+import { Provider} from 'react-redux';
 import store from './store';
 import { ThemeProvider } from '@mui/material/styles';
 import Theme from "./components/home-components/Theme";
 
 
-
 function App() {
+
   const theme = Theme;
 
   return (

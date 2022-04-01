@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import ChargingMap from './ChargingMap';
+<<<<<<< HEAD
 import PrimarySearchAppBar from "./inputs/PrimarySearchAppBar";
 import Collapse from "@mui/material/Collapse";
 import Card from "@mui/material/Card";
@@ -76,6 +77,21 @@ const Map = () => {
 )
 
 
+=======
+import BasicPopover from './inputs/BasicPopover';
+import { GET_NEW_DATA } from '../actions/types';
+import stationData from "../data/stationData.json"
+import { useDispatch } from 'react-redux';
+
+
+
+const Map = () => {
+    const dispatch = useDispatch();
+    dispatch({
+        type: GET_NEW_DATA,
+        payload: stationData,
+    })
+>>>>>>> mapTestScale
 
     return (
         <StyledEngineProvider injectFirst>

@@ -7,6 +7,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
+import { useDispatch } from 'react-redux';
+import { filterOperators } from '../../actions/filter';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -22,7 +24,7 @@ const MenuProps = {
 function getStyles(name, providerName, theme) {
   return {
     fontWeight:
-    providerName.indexOf(name) === -1
+      providerName.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
@@ -31,6 +33,7 @@ function getStyles(name, providerName, theme) {
 export default function MultipleSelectChip(props) {
   const theme = useTheme();
   const [providerName, setProviderName] = React.useState([]);
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const {
@@ -40,10 +43,16 @@ export default function MultipleSelectChip(props) {
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
+    let operatorIds = [];
+    event.target.value.map((value) => {
+      operatorIds=[...operatorIds, value.ID]
+    }
+    )
+    dispatch(filterOperators(operatorIds));
   };
 
   return (
-    <Box sx={{maxWidth: 300, pt: 3 }}>
+    <Box sx={{ maxWidth: 300, pt: 3 }}>
       <FormControl sx={{ width: 300 }}>
         <InputLabel id="provider-selector-label">{props.header}</InputLabel>
         <Select
@@ -56,7 +65,7 @@ export default function MultipleSelectChip(props) {
           renderValue={(selected) => (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
               {selected.map((value) => (
-                <Chip key={value} label={value} />
+                <Chip key={value.ID} label={value.Title} />
               ))}
             </Box>
           )}
@@ -65,7 +74,7 @@ export default function MultipleSelectChip(props) {
           {props.values.map((inputs) => (
             <MenuItem
               key={inputs.Title}
-              value={inputs.Title}
+              value={inputs}
               style={getStyles(inputs.Title, providerName, theme)}
             >
               {inputs.Title}

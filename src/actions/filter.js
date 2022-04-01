@@ -14,13 +14,12 @@ import {
     
     export const filterPlug = (plug) => (dispatch) => {
         let payload;
-        console.log(plug)
         switch (plug) {
             case "ccs": payload = [32,33];
             break;
             case "type2": payload = [25,1036];
             break;
-            default: payload = [25,32,33,1036];
+            default: payload = [];
         }    
         dispatch({
             type: FILTER_PLUGTYPE,
@@ -35,4 +34,9 @@ import {
         })
     }
 
-    // ["Free", "0", "Kostenlos", "Free of charge", "free"]
+    export const filterOperators = (operators) => (dispatch) => {
+        dispatch({
+            type: FILTER_OPERATOR,
+            payload: operators,
+        })
+    }

@@ -8,9 +8,6 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 export default function ChargingMap() {
-
-
-
     const filteredStations = useSelector(state => state.mapReducer.filteredData)
     const [myMarkers, setMyMarkers] = useState(L.markerClusterGroup());
     const [map, setMap] = useState(null)
@@ -24,24 +21,6 @@ export default function ChargingMap() {
         setMap(map);
         myMarkers.addTo(map);
         setMyMarkers(myMarkers)
-        map.on('zoomend', function () {
-            let radius = 8;
-            const zoom = map.getZoom();
-            if (zoom < 18) {
-                radius = 7;
-            } else if (zoom < 17) {
-                radius = 6;
-            } else if (zoom < 16) {
-                radius = 5;
-            } else if (zoom < 15) {
-                radius = 4;
-            } else if (zoom < 14) {
-                radius = 1;
-            }
-            myMarkers.eachLayer(function (marker) {
-                marker.setRadius(radius);
-            });
-        });
     }
 
     const center = {
@@ -49,6 +28,34 @@ export default function ChargingMap() {
         lng: 9.7320104,
     };
     let latlngpairs = [];
+    const redIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    const orangeIcon = new L.Icon({
+        ...redIcon.options,
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+    });
+
+    const greenIcon = new L.Icon({
+        ...redIcon.options,
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    });
+
+    const iconColor = (power) => {
+        if (power >= 150) {
+           return redIcon;
+        }
+        else if (power >= 50) {
+            return orangeIcon
+        } else {
+            return greenIcon;
+        }
+    }
 
     const refreshLocations = () => {
 
@@ -58,16 +65,9 @@ export default function ChargingMap() {
             latlngpairs.push([location.addressInfo.latitude, location.addressInfo.longitude])
 
             let coordinates = L.latLng(location.addressInfo.latitude, location.addressInfo.longitude);
-            let popup = (<>Marker information here</>);
-
-            L.circleMarker(coordinates, {
-                radius: 8,
-                fillColor: "FF0000",
-                fillOpacity: 1,
-                color: '#fff',
-                weight: 3,
-            }).bindPopup(
-                "marker"
+            let popup = "marker"
+            L.marker(coordinates, { icon: iconColor(location.maxChargePower) }).bindPopup(
+                popup
             ).addTo(myMarkers);
         })
     };
@@ -81,6 +81,7 @@ export default function ChargingMap() {
 
     return (
         <MapContainer zoomControl={false} center={center} zoom={3} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
+
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

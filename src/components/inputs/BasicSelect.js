@@ -4,7 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { filterPlug } from '../../actions/filter';
+import { filterPlug, filterFreeToUse } from '../../actions/filter';
 import { useDispatch } from 'react-redux';
 
 
@@ -16,6 +16,7 @@ export default function BasicSelect(props) {
     setPlugType(event.target.value);
     switch (props.filterType){
       case "FILTER_PLUGTYPE": dispatch(filterPlug(event.target.value)); break;
+      case "FILTER_FREETOUSE": dispatch(filterFreeToUse(event.target.value)); break;
       default:;
     }
   };
