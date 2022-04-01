@@ -21,6 +21,12 @@ const filterState = (state, filter) => {
     if (filters.filterPlugtype) {
         filtered = plugTypeFilter(filtered, filters.filterPlugtype)
     }
+    if(filters.filterOperator){
+        filtered = operatorFilter(filtered, filters.filterOperator)
+    }
+    if (filters.filterFreeToUse) {
+        filtered = freeToUseFilter(filtered, filters.filterFreeToUse)
+    }
 
     return { filtered, filters };
 
@@ -46,8 +52,27 @@ const plugTypeFilter = (data, filter) => {
 }
 
 const freeToUseFilter = (data, filter) => {
-    
+    switch (filter) {
+        case "all":
+            return data;
+        case "yes":
+            return data.filter(station =>  [0, 1, 2, 3, 5].includes(station.usageTypeID));
+        case "no":
+            return data.filter(station =>  [4, 6, 7].includes(station.usageTypeID));
+        default:
+            return data;
+    }
+
 }
+
+const operatorFilter = (data, filter) => {
+    if(filter.length === 0){
+        return data;
+    } else { 
+        return data.filter(station =>  filter.includes(station.operatorID));
+    }
+}
+
 
 const mapReducer = (state = initialState, action) => {
     const { type, payload } = action;
@@ -64,10 +89,9 @@ const mapReducer = (state = initialState, action) => {
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
 
         case FILTER_OPERATOR:
-            return {
-                ...state,
-                isLoggedIn: false,
-            };
+            filterParams = filterState(state, ["filterOperator", payload]);
+            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
+
         case FILTER_FREETOUSE:
             filterParams = filterState(state, ["filterFreeToUse", payload]);
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }

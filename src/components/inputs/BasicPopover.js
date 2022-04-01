@@ -11,9 +11,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const BasicPopover = () => {
 
-  const plugTypes = [{ value: "type2", name: "Type 2" }, { value: "ccs", name: "CCS" }, { value: "all", name: "All" }]
+  const plugTypes = [{ value: "all", name: "All" },{ value: "type2", name: "Type 2" }, { value: "ccs", name: "CCS" }]
   const chargingProviders = referenceData.Operators
-  const chargingFree = [{ value: "no", name: "No" }, { value: "yes", name: "Yes" }]
+  const chargingFree = [{ value: "all", name: "All" },{ value: "no", name: "No" }, { value: "yes", name: "Yes" }]
   const marks = [
     {
       value: 0,
