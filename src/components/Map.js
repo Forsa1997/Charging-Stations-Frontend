@@ -14,6 +14,24 @@ const Map = () => {
     const chargingProviders = referenceData.Operators
     console.log(chargingProviders)
     const chargingFree = [{ value: 0, name: "No" }, { value: 1, name: "Yes" }]
+    const marks = [
+        {
+            value: 0,
+            label: '0KW',
+        },
+        {
+            value: 50,
+            label: '50KW',
+        },
+        {
+            value: 150,
+            label: '150KW',
+        },
+        {
+            value: 300,
+            label: '300KW',
+        },
+    ];
 
     return (
         <Box
@@ -33,7 +51,7 @@ const Map = () => {
             }}
             >
                 <BasicTextField />
-                <BasicSlider />
+                <BasicSlider marks={marks} max={300} steps={5} default={50}/>
                 <BasicSelect values={plugTypes} header="Plug Type" />
                 <ChipSelect values={chargingProviders} header="Provider"/>
                 <BasicSelect values={chargingFree} header="Free to use" />

@@ -2,42 +2,37 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
+import { filterPower } from '../../actions/filter';
+import { useDispatch } from "react-redux";
 
-const marks = [
-    {
-        value: 0,
-        label: '0KW',
-    },
-    {
-        value: 50,
-        label: '50KW',
-    },
-    {
-        value: 150,
-        label: '150KW',
-    },
-    {
-        value: 300,
-        label: '300KW',
-    },
-];
 
 function valuetext(value) {
     return `${value}KW`;
 }
 
-export default function DiscreteSliderLabel() {
+
+export default function DiscreteSliderLabel(props) {
+    let dispatch = useDispatch();
+    const [value, setValue] = React.useState(props.default);
+
+    const handleSliderChange = (event, newValue) => {
+        setValue(newValue);
+    };
+    
+
     return (
-        <Box sx={{ width: 300, pt: 3 }}>
+        <Box sx={{ width: 300, pt: 3 }} >
             <Typography gutterBottom>Charging Power</Typography>
             <Slider
                 aria-label="Always visible"
-                defaultValue={50}
+                defaultValue={props.default}
                 getAriaValueText={valuetext}
-                step={5}
-                marks={marks}
+                step={props.steps}
+                marks={props.marks}
                 valueLabelDisplay="off"
-                max={300}
+                max={props.max}
+                onChange={handleSliderChange}
+                onMouseUp={() => dispatch(filterPower(value))}              
             />
         </Box>
     );

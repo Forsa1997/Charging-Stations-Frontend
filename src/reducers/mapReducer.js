@@ -13,7 +13,7 @@ const mapReducer = (state = initialState, action) => {
     switch (type) {
         case FILTER_CHARGINGPOWER:
             // Math.max.apply(Math, stations.connections.map(function(o) { return o.powerKW; }))
-            return {...state, filteredData: state.data.filter(station => station.connections.filter(connection => connection.powerKW >= payload.kw).length >= 1)}
+            return {...state, filteredData: state.data.filter(station => station.connections.filter(connection => connection.powerKW >= payload).length >= 1)}
 
         case FILTER_PLUGTYPE:
             return {
