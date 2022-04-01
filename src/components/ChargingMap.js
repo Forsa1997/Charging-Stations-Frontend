@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import {MapContainer, TileLayer, Marker, Popup, ZoomControl} from 'react-leaflet'
 import teslaData from "../data/teslaSupercharger"
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from "leaflet";
@@ -81,12 +81,14 @@ export default function ChargingMap() {
     }
 
     return (
-        <MapContainer center={center} zoom={3} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
+        <MapContainer zoomControl={false} center={center} zoom={3} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
+            <ZoomControl position={"bottomright"} />
         </MapContainer>
+
 
     )
 }

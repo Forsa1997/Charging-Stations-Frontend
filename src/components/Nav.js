@@ -57,7 +57,7 @@ const Nav = () => {
     };
 
     return (
-        <AppBar position="sticky">
+        <AppBar position="sticky" sx={{zIndex: 1000000}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
