@@ -1,48 +1,95 @@
-
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import BasicSelect from "./inputs/BasicSelect"
-import BasicSlider from "./inputs/BasicSlider"
-import BasicTextField from "./inputs/BasisTextfield"
 import ChargingMap from './ChargingMap';
-import ChipSelect from './inputs/ChipSelect'
-import referenceData from '../data/referenceData'
+import PrimarySearchAppBar from "./inputs/PrimarySearchAppBar";
+import Collapse from "@mui/material/Collapse";
+import Card from "@mui/material/Card";
+import {StyledEngineProvider} from "@mui/material/styles";
+import BasicTextField from "./inputs/BasisTextfield";
+import BasicSlider from "./inputs/BasicSlider";
+import BasicSelect from "./inputs/BasicSelect";
+import ChipSelect from "./inputs/ChipSelect";
+import referenceData from "../data/referenceData.json";
+import CloseIcon from '@mui/icons-material/Close';
+import {IconButton} from "@mui/material";
+
 
 const Map = () => {
+    const [checked, setChecked] = React.useState(false);
 
-    const plugTypes = [{ values: [25, 1036], name: "Type 2" }, { values: [32, 33], name: "CCS" }]
+    const plugTypes = [{ value: "type2", name: "Type 2" }, { value: "ccs", name: "CCS" }, { value: "all", name: "All" }]
     const chargingProviders = referenceData.Operators
-    console.log(chargingProviders)
-    const chargingFree = [{ value: 0, name: "No" }, { value: 1, name: "Yes" }]
+    const chargingFree = [{ value: "no", name: "No" }, { value: "yes", name: "Yes" }]
+    const marks = [
+        {
+            value: 0,
+            label: '0KW',
+        },
+        {
+            value: 50,
+            label: '50KW',
+        },
+        {
+            value: 150,
+            label: '150KW',
+        },
+        {
+            value: 300,
+            label: '300KW',
+        },
+    ];
+
+
+    const handleOnMenuClick = () => {
+        setChecked(prev => !prev);
+    }
+
+    const card = (
+        <Card sx={{
+            m: 0,
+            position: 'relative',
+            bgcolor: 'white',
+            p: 4,
+            border: '1px solid grey',
+            borderBottom: 0,
+            borderTop: 0,
+            borderLeft: 0,
+            width: '19vw',
+            zIndex: 2,
+            height: 'calc(100vh - 68px)',
+            display: 'flex',
+            flexDirection: 'column'
+        }}
+        >
+            <Box>
+            <IconButton sx={{float: 'right'}} onClick={handleOnMenuClick}>
+                <CloseIcon color='grey' fontSize='large'/>
+            </IconButton>
+            </Box>
+            <BasicTextField />
+            <BasicSlider marks={marks} max={300} min={0} steps={5} default={50} />
+            <BasicSelect filterType="FILTER_PLUGTYPE" values={plugTypes} header="Plug Type" />
+            <ChipSelect  values={chargingProviders} header="Operator" />
+            <BasicSelect filterType="FILTER_FREETOUSE" values={chargingFree} header="Free to use" />
+        </Card>
+
+)
+
+
 
     return (
-        <Box
-            style={{ height: 'calc(100vh - 70px)' }}
-            sx={{
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'row',
-            }}
-        >
-            <Box justify="flex-end" sx={{
-                width: '30%',
-                bgcolor: 'grey.400',
-                p: 7,
-                border: '1px solid grey',
-                
-            }}
-            >
-                <BasicTextField />
-                <BasicSlider />
-                <BasicSelect values={plugTypes} header="Plug Type" />
-                <ChipSelect values={chargingProviders} header="Provider"/>
-                <BasicSelect values={chargingFree} header="Free to use" />
+        <StyledEngineProvider injectFirst>
 
+            <Box sx={{width: '100vw', height: 'calc(100vh - 68px)', display: 'flex'}}>
+                <Collapse orientation="horizontal" in={checked}>
+                    {card}
+                </Collapse>
+                <PrimarySearchAppBar handleOnMenuClick={handleOnMenuClick}/>
+                <ChargingMap/>
             </Box>
-            <Box sx={{ width: '70%'}}>
-                <ChargingMap />
-            </Box>
-        </Box>
+        </StyledEngineProvider>
+
+
     )
 
 }
