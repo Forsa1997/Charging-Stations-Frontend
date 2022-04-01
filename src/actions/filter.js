@@ -19,7 +19,7 @@ import {
             break;
             case "type2": payload = [25,1036];
             break;
-            default: payload = [25,32,33,1036];
+            default: payload = [];
         }    
         dispatch({
             type: FILTER_PLUGTYPE,
