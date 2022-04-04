@@ -79,7 +79,7 @@ export default function ChargingMap() {
     }
 
     return (
-        <MapContainer zoomControl={false} center={center} zoom={3} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
+        <MapContainer zoomControl={false} center={center} zoom={10} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
 
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
