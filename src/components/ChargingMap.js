@@ -3,7 +3,7 @@ import { MapContainer, Marker, TileLayer, ZoomControl } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from "leaflet";
 import { useSelector } from 'react-redux';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import useGeoLocation from '../hooks/useGeoLocation';
 import Button from '@mui/material/Button';
@@ -15,14 +15,13 @@ export default function ChargingMap() {
     const [myMarkers, setMyMarkers] = useState(L.markerClusterGroup());
     const [map, setMap] = useState(null)
     const location = useGeoLocation();
-    const mapRef = useRef()
+
 
     const showMyLocation = () => {
         if (location.loaded && !location.error) {
-            map.current.leafletElement.flyTo([location.coordinates.lat, location.coordinates.lng], 9, { animate: true })
+            map.flyTo([location.coordinates.lat, location.coordinates.lng], 9, { animate: true })
         } else {
             alert(location.error.message)
-            map.current.leafletElement.flyTo([50,10], 9, { animate: true })
         }
     }
 
