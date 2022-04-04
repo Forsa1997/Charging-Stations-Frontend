@@ -19,9 +19,10 @@ export default function ChargingMap() {
 
     const showMyLocation = () => {
         if (location.loaded && !location.error) {
-            mapRef.current.leafletElement.flyTo([location.coordinates.lat, location.coordinates.lng], 9, { animate: true })
+            map.current.leafletElement.flyTo([location.coordinates.lat, location.coordinates.lng], 9, { animate: true })
         } else {
             alert(location.error.message)
+            map.current.leafletElement.flyTo([50,10], 9, { animate: true })
         }
     }
 
@@ -113,7 +114,7 @@ export default function ChargingMap() {
                 marginLeft: 'auto',
                 marginRight: 'auto', 
                 zIndex: 100000
-                }} onClick={showMyLocation}>
+                }} onClick={() => showMyLocation()}>
             Locate me!
         </Button>
         </div >
