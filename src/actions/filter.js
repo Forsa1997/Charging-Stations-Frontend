@@ -3,6 +3,7 @@ import {
     FILTER_OPERATOR,
     FILTER_FREETOUSE,
     FILTER_CHARGINGPOWER,
+    FILTER_SAVE,
     } from "./types";
     
     export const filterPower = (power) => (dispatch) => {
@@ -38,5 +39,44 @@ import {
         dispatch({
             type: FILTER_OPERATOR,
             payload: operators,
+        })
+    }
+
+    // TODO saveFilter umschreiben und an das Backend schicken
+    // export const register = (firstName, lastName, username, email, password) => (dispatch) => {
+    //     return AuthService.register(firstName, lastName, username, email, password).then(
+    //         (response) => {
+    //             dispatch({
+    //                 type: REGISTER_SUCCESS,
+    //             });
+    //             dispatch({
+    //                 type: SET_MESSAGE,
+    //                 payload: response.data.message,
+    //             });
+    //             return Promise.resolve();
+    //         },
+    //         (error) => {
+    //             const message =
+    //                 (error.response &&
+    //                     error.response.data &&
+    //                     error.response.data.message) ||
+    //                 error.message ||
+    //                 error.toString();
+    //             dispatch({
+    //                 type: REGISTER_FAIL,
+    //             });
+    //             dispatch({
+    //                 type: SET_MESSAGE,
+    //                 payload: message,
+    //             });
+    //             return Promise.reject();
+    //         }
+    //     );
+    // };
+
+    export const saveFilter = (filterName, userId) => (dispatch) => {
+        dispatch({
+            type: FILTER_SAVE,
+            payload: filterName, userId
         })
     }

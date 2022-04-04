@@ -4,15 +4,14 @@ import {
     FILTER_OPERATOR,
     FILTER_FREETOUSE,
     GET_NEW_DATA,
+    FILTER_SAVE,
 } from "../actions/types";
 import stationData from "../data/stationData.json"
 
-const initialState = { activeFilters: {}, data: stationData, filteredData: stationData };
+const initialState = { activeFilters: {}, data: stationData, filteredData: stationData, savedFilters: {} };
 
 const filterState = (state, filter) => {
     let filters = { ...state.activeFilters, [filter[0]]: filter[1] }
-    console.log(filters)
-
     let filtered = state.data
 
     if (filters.filterKW) {
@@ -109,6 +108,12 @@ const mapReducer = (state = initialState, action) => {
         case FILTER_FREETOUSE:
             filterParams = filterState(state, ["filterFreeToUse", payload]);
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
+        case FILTER_SAVE:
+            return {...state,  savedFilters: {
+                ...state.activeFilters,
+                name: payload.filterName,
+                userId: payload.userId,             
+            }}
         default:
             return state;
     }

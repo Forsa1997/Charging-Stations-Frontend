@@ -15,7 +15,8 @@ import { IconButton } from "@mui/material";
 import { GET_NEW_DATA } from '../actions/types';
 import stationData from "../data/stationData.json"
 import { useDispatch } from 'react-redux';
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
+import SaveFilterDialog from './inputs/SaveFilterDialog';
 
 
 const Map = () => {
@@ -82,6 +83,7 @@ const Map = () => {
             <BasicSelect filterType="FILTER_PLUGTYPE" values={plugTypes} header="Plug Type" />
             <ChipSelect values={chargingProviders} header="Operator" />
             <BasicSelect filterType="FILTER_FREETOUSE" values={chargingFree} header="Free to use" />
+            <SaveFilterDialog />
         </Card>
 
     )
