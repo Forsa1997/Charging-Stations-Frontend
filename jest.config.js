@@ -12,3 +12,8 @@ module.exports = async () => {
         verbose: true,
     };
 };
+
+HTMLCanvasElement.prototype.getContext = () => { 
+    // return whatever getContext has to return
+    return {}
+  };

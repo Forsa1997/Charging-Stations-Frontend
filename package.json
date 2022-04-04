@@ -58,7 +58,9 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "jest-canvas-mock": "^2.3.1",
     "jest-enzyme": "^7.1.2",
     "react-test-renderer": "^17.0.2"
   }
+
 }

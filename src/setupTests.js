@@ -5,6 +5,7 @@
 // import '@testing-library/jest-dom';
 //import 'jest-enzyme';
 import Enzyme from 'enzyme'
+import 'jest-canvas-mock';
 // import Adapter from 'enzyme-adapter-react-17'
 import '@testing-library/jest-dom'
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
