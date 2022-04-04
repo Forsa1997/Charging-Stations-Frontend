@@ -31,7 +31,7 @@ const SearchField = () => {
     useEffect(() => {
         map.addControl(searchControl);
         return () => map.removeControl(searchControl);
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return null;
 };

@@ -8,7 +8,6 @@ import { useEffect } from 'react';
 import useGeoLocation from '../hooks/useGeoLocation';
 import Button from '@mui/material/Button';
 import SearchField from './inputs/SearchField';
-import PrimarySearchAppBar from './inputs/PrimarySearchAppBar';
 
 
 
@@ -109,16 +108,17 @@ export default function ChargingMap() {
                 <ZoomControl position={"bottomright"} />
             <SearchField />
             </MapContainer>
-            {/* <Button sx={{
+            <Button sx={{
                 position: 'absolute',
                 left: 0,
                 right: 0,
+                bottom: 0,
                 marginLeft: 'auto',
                 marginRight: 'auto', 
                 zIndex: 100000
                 }} onClick={() => showMyLocation()}>
             Locate me!
-        </Button> */}
+        </Button>
         </div >
 
     )
