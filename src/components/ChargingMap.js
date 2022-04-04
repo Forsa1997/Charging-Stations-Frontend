@@ -1,15 +1,29 @@
-import {MapContainer, TileLayer, ZoomControl} from 'react-leaflet';
+import { MapContainer, Marker, TileLayer, ZoomControl } from 'react-leaflet';
 // eslint-disable-next-line
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from "leaflet";
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useEffect } from 'react';
+import useGeoLocation from '../hooks/useGeoLocation';
+import Button from '@mui/material/Button';
+
+
 
 export default function ChargingMap() {
     const filteredStations = useSelector(state => state.mapReducer.filteredData)
     const [myMarkers, setMyMarkers] = useState(L.markerClusterGroup());
     const [map, setMap] = useState(null)
+    const location = useGeoLocation();
+    const mapRef = useRef()
+
+    const showMyLocation = () => {
+        if (location.loaded && !location.error) {
+            mapRef.current.leafletElement.flyTo([location.coordinates.lat, location.coordinates.lng], 9, { animate: true })
+        } else {
+            alert(location.error.message)
+        }
+    }
 
     useEffect(() => {
         refreshLocations();
@@ -47,7 +61,7 @@ export default function ChargingMap() {
 
     const iconColor = (power) => {
         if (power >= 150) {
-           return redIcon;
+            return redIcon;
         }
         else if (power >= 50) {
             return orangeIcon
@@ -68,6 +82,7 @@ export default function ChargingMap() {
             L.marker(coordinates, { icon: iconColor(location.maxChargePower) }).bindPopup(
                 popup
             ).addTo(myMarkers);
+
         })
     };
 
@@ -79,15 +94,29 @@ export default function ChargingMap() {
     }
 
     return (
-        <MapContainer zoomControl={false} center={center} zoom={10} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
+        <div>
+            <MapContainer zoomControl={false} center={center} zoom={10} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
 
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <ZoomControl position={"bottomright"} />
-        </MapContainer>
-
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {location.loaded && !location.error && (
+                    <Marker position={[location.coordinates.lat, location.coordinates.lng]}></Marker>
+                )}
+                <ZoomControl position={"bottomright"} />
+            </MapContainer>
+            <Button sx={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                marginLeft: 'auto',
+                marginRight: 'auto', 
+                zIndex: 100000
+                }} onClick={showMyLocation}>
+            Locate me!
+        </Button>
+        </div >
 
     )
 }
