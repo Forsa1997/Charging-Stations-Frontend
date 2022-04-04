@@ -52,8 +52,8 @@ export default function MultipleSelectChip(props) {
   };
 
   return (
-    <Box sx={{ maxWidth: 300, pt: 3 }}>
-      <FormControl sx={{ width: 300 }}>
+    <Box sx={{ maxWidth: '100%', pt: 3 }}>
+      <FormControl sx={{ width: '100%' }}>
         <InputLabel id="provider-selector-label">{props.header}</InputLabel>
         <Select
           labelId="provider-selector-label"

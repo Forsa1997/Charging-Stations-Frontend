@@ -7,10 +7,10 @@ import {
 } from "../actions/types";
 import stationData from "../data/stationData.json"
 
-const initialState = { activeFilters: {}, data: stationData, filteredData: stationData };
+const initialState = {activeFilters: {}, data: stationData, filteredData: stationData};
 
 const filterState = (state, filter) => {
-    let filters = { ...state.activeFilters, [filter[0]]: filter[1] }
+    let filters = {...state.activeFilters, [filter[0]]: filter[1]}
     console.log(filters)
 
     let filtered = state.data
@@ -28,7 +28,7 @@ const filterState = (state, filter) => {
         filtered = freeToUseFilter(filtered, filters.filterFreeToUse)
     }
 
-    return { filtered, filters };
+    return {filtered, filters};
 
 }
 
@@ -48,7 +48,8 @@ const plugTypeFilter = (data, filter) => {
                     if (filter[i] === connection.connectionTypeID) {
                         return true;
                     }
-                } return false;
+                }
+                return false;
             })
                 .length >= 1
         )
@@ -56,17 +57,15 @@ const plugTypeFilter = (data, filter) => {
 }
 
 const freeToUseFilter = (data, filter) => {
-    switch (filter) {
-        case "all":
-            return data;
-        case "yes":
-            return data.filter(station => [0, 1, 2, 3, 5].includes(station.usageTypeID));
-        case "no":
-            return data.filter(station => [4, 6, 7].includes(station.usageTypeID));
-        default:
-            return data;
+    if (filter.length === 1) {
+        switch (filter[0]) {
+            case "yes":
+                return data.filter(station => [0, 1, 2, 3, 5].includes(station.usageTypeID));
+            case "no":
+                return data.filter(station => [4, 6, 7].includes(station.usageTypeID));
+        }
     }
-
+    return data;
 }
 
 const operatorFilter = (data, filter) => {
@@ -79,7 +78,7 @@ const operatorFilter = (data, filter) => {
 
 
 const mapReducer = (state = initialState, action) => {
-    const { type, payload } = action;
+    const {type, payload} = action;
     let filterParams;
     switch (type) {
         case GET_NEW_DATA:
@@ -93,22 +92,22 @@ const mapReducer = (state = initialState, action) => {
                 station.maxChargePower = maxPower;
                 maxPower = 0;
             })
-            return { ...state, data: payload }
+            return {...state, data: payload}
         case FILTER_CHARGINGPOWER:
             filterParams = filterState(state, ["filterKW", payload]);
-            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
+            return {...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters}
 
         case FILTER_PLUGTYPE:
             filterParams = filterState(state, ["filterPlugtype", payload]);
-            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
+            return {...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters}
 
         case FILTER_OPERATOR:
             filterParams = filterState(state, ["filterOperator", payload]);
-            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
+            return {...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters}
 
         case FILTER_FREETOUSE:
             filterParams = filterState(state, ["filterFreeToUse", payload]);
-            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
+            return {...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters}
         default:
             return state;
     }

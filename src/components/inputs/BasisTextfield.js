@@ -8,7 +8,7 @@ export default function BasisSelect() {
             label="Search"
             placeholder="Charging Station"
             multiline
-            sx={{ width: 300, maxWidth: 300 }}
+            sx={{ width: '100%', maxWidth: '100%' }}
         />
     )
 }
