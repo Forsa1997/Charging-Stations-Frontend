@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/inputs/Sidebar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ChargingMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ChargingMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/inputs/BasicPopover.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/inputs/PrimarySearchAppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inputs/PrimarySearchAppBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
