@@ -22,7 +22,7 @@ it('renders a navbar in the App', () => {
 })
 
 it('has 3 elements in the Navbar when no one is logged in', () => {
-    const wrapper = mount(<BrowserRouter><App /></BrowserRouter>)
+    const wrapper = mount(<Provider store={store}><BrowserRouter><Nav /></BrowserRouter></Provider>)
     expect(wrapper.find(MenuItem)).toHaveLength(3);
 })
 
@@ -32,36 +32,37 @@ it('has 2 elements in the Navbar when a user is logged in', () => {
         type: LOGIN_SUCCESS,
         payload: { user: data },
     });
-    const wrapper = mount(<BrowserRouter><App /></BrowserRouter>)
+    const wrapper = mount(<Provider store={store}><BrowserRouter><Nav /></BrowserRouter></Provider>)
     expect(wrapper.find(MenuItem)).toHaveLength(3);
 })
 
 it('render map component when burger map button is clicked', () => {
-    const wrapper = mount(<BrowserRouter><App /></BrowserRouter>)
+    const wrapper = mount(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>)
     wrapper.find('.menuButtonNav').find('li').simulate('click');
     expect(wrapper.find(Map)).toHaveLength(1);
 })
 
 it('render map component when normal map button is clicked', () => {
-    const wrapper = mount(<BrowserRouter><App /></BrowserRouter>)
+    const wrapper = mount(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>)
     wrapper.find('.menuButtonNav').find('button').simulate('click');
     expect(wrapper.find(Map)).toHaveLength(1);
 })
 
+
 it('render home component when burger home button is clicked', () => {
-    const wrapper = mount(<BrowserRouter><App /></BrowserRouter>)
-    wrapper.find('.logoButton').find('div').last().simulate('click');
+    const wrapper = mount(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>)
+    wrapper.find('.logoButton').find('button').last().simulate('click');
     expect(wrapper.find(Home)).toHaveLength(1);
 })
 
 it('render home component when normal home button is clicked', () => {
-    const wrapper = mount(<BrowserRouter><App /></BrowserRouter>)
-    wrapper.find('.logoButton').find('div').first().simulate('click');
+    const wrapper = mount(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>)
+    wrapper.find('.logoButton').find('button').first().simulate('click');
     expect(wrapper.find(Home)).toHaveLength(1);
 })
 
 it('the navbar stays as it is after we clicked the map button', () => {
-    const wrapper = mount(<BrowserRouter><App /></BrowserRouter>)
+    const wrapper = mount(<Provider store={store}><BrowserRouter><Nav /></BrowserRouter></Provider>)
     const before = wrapper.find(Nav);
     wrapper.find('.menuButtonNav').find('button').simulate('click');
     const after = wrapper.find(Nav)
