@@ -12,6 +12,7 @@ import ChipSelect from "./inputs/ChipSelect";
 import referenceData from "../data/referenceData.json";
 import CloseIcon from '@mui/icons-material/Close';
 import {IconButton} from "@mui/material";
+import {Helmet} from "react-helmet";
 
 
 const Map = () => {
@@ -79,6 +80,9 @@ const Map = () => {
 
     return (
         <StyledEngineProvider injectFirst>
+            <Helmet>
+                <title>EV-Map | Map</title>
+            </Helmet>
 
             <Box sx={{width: '100vw', height: 'calc(100vh - 68px)', display: 'flex'}}>
                 <Collapse orientation="horizontal" in={checked}>

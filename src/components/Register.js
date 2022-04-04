@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch } from "react-redux";
 import { register } from "../actions/auth";
 import { useNavigate } from 'react-router';
+import {Helmet} from "react-helmet";
 
 const theme = createTheme();
 
@@ -91,6 +92,9 @@ const SignUp = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <title>EV-Map | Register</title>
+      </Helmet>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
