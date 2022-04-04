@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/inputs/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ChargingMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ChargingMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/inputs/BasicPopover.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/inputs/PrimarySearchAppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inputs/PrimarySearchAppBar.js" afterDir="false" />
-    </list>
+    <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,13 +41,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/home-components" />
     </key>
@@ -74,6 +68,7 @@
       <workItem from="1648567795799" duration="1754000" />
       <workItem from="1648628875021" duration="15969000" />
       <workItem from="1648804728181" duration="465000" />
+      <workItem from="1649060625723" duration="1227000" />
     </task>
     <servers />
   </component>

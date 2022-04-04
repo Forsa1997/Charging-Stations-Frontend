@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import ProfileAccordion from "./ProfileAccordion";
 import PasswordAccordion from "./PasswordAccordion";
+import {Helmet} from "react-helmet";
 
 const Profile = () => {
 
@@ -27,6 +28,9 @@ const Profile = () => {
     }
     return (
         <div style={{ display: 'flex', alignItems: 'center', width: '100%', flexDirection: "column", marginTop: 100 }}>
+            <Helmet>
+                <title>EV-Map | Profile</title>
+            </Helmet>
             {accordionData.map((data, index) => <ProfileAccordion key={index} expanded={expanded} handleChange={handleChange} index={index} name={data.name} content={data.content} />)}
             <PasswordAccordion index={4} expanded={expanded} handleChange={handleChange} />
         </div>)
