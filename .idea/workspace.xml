@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="" />
+    <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/inputs/MapMenuButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/BasicSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inputs/BasicSelect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/BasicSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inputs/BasicSlider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/BasisSelectBackup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/BasisTextfield.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inputs/BasisTextfield.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/ChipSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inputs/ChipSelect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/PrimarySearchAppBar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/Sidebar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/mapReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/mapReducer.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +84,8 @@
       <workItem from="1648567795799" duration="1754000" />
       <workItem from="1648628875021" duration="15969000" />
       <workItem from="1648804728181" duration="465000" />
-      <workItem from="1649060625723" duration="1227000" />
+      <workItem from="1649060625723" duration="2760000" />
+      <workItem from="1649064436603" duration="16110000" />
     </task>
     <servers />
   </component>

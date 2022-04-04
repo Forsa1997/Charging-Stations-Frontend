@@ -4,7 +4,7 @@
 
 .App-logo {
   height: 40vmin;
-  pointer-events: none;
+  pointer-events: none
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -38,8 +38,9 @@
 }
 
 .leaflet-container{
-  height:calc(100vh - 68px);
-  width: 100%;
+  height: calc(100vh - 68.32px - 68.32px);
+  width: 100vw;
   position: absolute;
   z-index: 0;
+  padding-top: 68.32px;
   }

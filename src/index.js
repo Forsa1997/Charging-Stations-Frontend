@@ -9,7 +9,7 @@ const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
 
 renderMethod(
         <HashRouter>
-            <App/>
+            <App />
         </HashRouter>
     ,
     document.getElementById('root')
