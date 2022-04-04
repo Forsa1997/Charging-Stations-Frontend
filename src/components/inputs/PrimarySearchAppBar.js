@@ -151,7 +151,7 @@ export default function PrimarySearchAppBar(props) {
 
   return (
     <Box >
-      <AppBar color={''} position="absolute" sx={{zIndex: 1, mt: 10, mr: '79vw', height: 50, width: '20vw', display: 'flex', justifyContent: 'center'}}>
+      <AppBar color={''} position="absolute" sx={{ zIndex: 1, mt: 10, mr: '79vw', height: 50, width: '20vw', display: 'flex', justifyContent: 'center' }}>
         <Toolbar>
           <IconButton
             size="large"

@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import useGeoLocation from '../hooks/useGeoLocation';
 import Button from '@mui/material/Button';
+import SearchField from './inputs/SearchField';
+import PrimarySearchAppBar from './inputs/PrimarySearchAppBar';
 
 
 
@@ -19,7 +21,7 @@ export default function ChargingMap() {
 
     const showMyLocation = () => {
         if (location.loaded && !location.error) {
-            map.flyTo([location.coordinates.lat, location.coordinates.lng], 9, { animate: true })
+            map.flyTo([location.coordinates.lat, location.coordinates.lng], 13, { animate: true })
         } else {
             alert(location.error.message)
         }
@@ -51,7 +53,7 @@ export default function ChargingMap() {
     });
     const orangeIcon = new L.Icon({
         ...redIcon.options,
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
     });
 
     const greenIcon = new L.Icon({
@@ -105,8 +107,9 @@ export default function ChargingMap() {
                     <Marker position={[location.coordinates.lat, location.coordinates.lng]}></Marker>
                 )}
                 <ZoomControl position={"bottomright"} />
+            <SearchField />
             </MapContainer>
-            <Button sx={{
+            {/* <Button sx={{
                 position: 'absolute',
                 left: 0,
                 right: 0,
@@ -115,7 +118,7 @@ export default function ChargingMap() {
                 zIndex: 100000
                 }} onClick={() => showMyLocation()}>
             Locate me!
-        </Button>
+        </Button> */}
         </div >
 
     )
