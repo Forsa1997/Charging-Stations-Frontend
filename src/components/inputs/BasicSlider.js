@@ -21,7 +21,7 @@ export default function DiscreteSliderLabel(props) {
     
 
     return (
-        <Box sx={{ width: 300, pt: 3 }} >
+        <Box sx={{ width: '100%', pt: 3 }} >
             <Typography gutterBottom>Charging Power</Typography>
             <Slider
                 aria-label="Always visible"

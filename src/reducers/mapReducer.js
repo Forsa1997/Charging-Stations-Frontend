@@ -12,6 +12,7 @@ const initialState = { activeFilters: {}, data: stationData, filteredData: stati
 
 const filterState = (state, filter) => {
     let filters = { ...state.activeFilters, [filter[0]]: filter[1] }
+
     let filtered = state.data
 
     if (filters.filterKW) {
@@ -47,7 +48,8 @@ const plugTypeFilter = (data, filter) => {
                     if (filter[i] === connection.connectionTypeID) {
                         return true;
                     }
-                } return false;
+                }
+                return false;
             })
                 .length >= 1
         )
@@ -55,17 +57,17 @@ const plugTypeFilter = (data, filter) => {
 }
 
 const freeToUseFilter = (data, filter) => {
-    switch (filter) {
-        case "all":
-            return data;
-        case "yes":
-            return data.filter(station => [0, 1, 2, 3, 5].includes(station.usageTypeID));
-        case "no":
-            return data.filter(station => [4, 6, 7].includes(station.usageTypeID));
-        default:
-            return data;
+    if (filter.length === 1) {
+        switch (filter[0]) {
+            case "yes":
+                return data.filter(station => [0, 1, 2, 3, 5].includes(station.usageTypeID));
+            case "no":
+                return data.filter(station => [4, 6, 7].includes(station.usageTypeID));
+            default:
+                break;
+        }
     }
-
+    return data;
 }
 
 const operatorFilter = (data, filter) => {
@@ -109,11 +111,14 @@ const mapReducer = (state = initialState, action) => {
             filterParams = filterState(state, ["filterFreeToUse", payload]);
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
         case FILTER_SAVE:
-            return {...state,  savedFilters: {
-                ...state.activeFilters,
-                name: payload.filterName,
-                userId: payload.userId,             
-            }}
+            return {
+                ...state, savedFilters: {
+                    ...state.activeFilters,
+                    name: payload.filterName,
+                    userId: payload.userId,
+                }
+            }
+
         default:
             return state;
     }

@@ -23,7 +23,7 @@ it('renders a navbar in the App', () => {
 
 it('has 3 elements in the Navbar when no one is logged in', () => {
     const wrapper = mount(<Provider store={store}><BrowserRouter><Nav /></BrowserRouter></Provider>)
-    expect(wrapper.find(MenuItem)).toHaveLength(3);
+    expect(wrapper.find(MenuItem)).toHaveLength(2);
 })
 
 it('has 2 elements in the Navbar when a user is logged in', () => {
@@ -33,7 +33,7 @@ it('has 2 elements in the Navbar when a user is logged in', () => {
         payload: { user: data },
     });
     const wrapper = mount(<Provider store={store}><BrowserRouter><Nav /></BrowserRouter></Provider>)
-    expect(wrapper.find(MenuItem)).toHaveLength(3);
+    expect(wrapper.find(MenuItem)).toHaveLength(2);
 })
 
     // it('render map component when burger map button is clicked', () => {
@@ -61,11 +61,11 @@ it('has 2 elements in the Navbar when a user is logged in', () => {
     //     expect(wrapper.find(Home)).toHaveLength(1);
     // })
 
-it('the navbar stays as it is after we clicked the map button', () => {
-    const wrapper = mount(<Provider store={store}><BrowserRouter><Nav /></BrowserRouter></Provider>)
-    const before = wrapper.find(Nav);
-    wrapper.find('.menuButtonNav').find('button').simulate('click');
-    const after = wrapper.find(Nav)
-    expect(before).toEqual(after);
-})
+// it('the navbar stays as it is after we clicked the map button', () => {
+//     const wrapper = mount(<Provider store={store}><BrowserRouter><Nav /></BrowserRouter></Provider>)
+//     const before = wrapper.find(Nav);
+//     wrapper.find('.menuButtonNav').find('button').simulate('click');
+//     const after = wrapper.find(Nav)
+//     expect(before).toEqual(after);
+// })
 
