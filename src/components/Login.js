@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { login } from '../actions/auth';
 import { useDispatch, useSelector } from "react-redux";
 import {Navigate, useNavigate} from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 const theme = createTheme();
 
@@ -39,6 +40,9 @@ const Login = () => {
   return (
     useSelector(state => state.authReducer.isLoggedIn) ? <Navigate to="/profile"></Navigate> :
         <ThemeProvider theme={theme}>
+          <Helmet>
+            <title>EV-Map | Login</title>
+          </Helmet>
         <Container component="main" maxWidth="xs" >
           <CssBaseline />
           <Box
