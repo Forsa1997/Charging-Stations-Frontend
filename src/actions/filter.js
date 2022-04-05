@@ -112,3 +112,6 @@ export const removeFilter = (filterName) => (dispatch) => {
         }
     );
 };
+
+
+// TODO loadFilters

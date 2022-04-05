@@ -6,13 +6,21 @@ import {
     GET_NEW_DATA,
     FILTER_SAVE,
     FILTER_REMOVE,
+    FILTER_PRESELECT,
+    FILTER_LOAD,
 } from "../actions/types";
 import stationData from "../data/stationData.json"
 
 const initialState = { activeFilters: {}, data: stationData, filteredData: stationData, savedFilters: [] };
 
-const filterState = (state, filter) => {
-    let filters = { ...state.activeFilters, [filter[0]]: filter[1] }
+const filterState = (state, filter, preselect) => {
+    let filters;
+    
+    if (preselect){
+        filters = preselect;
+    } else {
+        filters = { ...state.activeFilters, [filter[0]]: filter[1] }
+    }
 
     let filtered = state.data
 
@@ -111,14 +119,19 @@ const mapReducer = (state = initialState, action) => {
         case FILTER_FREETOUSE:
             filterParams = filterState(state, ["filterFreeToUse", payload]);
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
+            
+        case FILTER_PRESELECT:
+            filterParams = filterState(state, [],  payload);
+            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
+
         case FILTER_SAVE:
-            return {
-                ...state, savedFilters: [...state.savedFilters, {
-                    ...state.activeFilters,
-                    name: payload.name,
-                    userId: payload.userId,
-                }]
-            }
+        return {
+            ...state, savedFilters: [...state.savedFilters, {
+                ...state.activeFilters,
+                name: payload.name,
+                userId: payload.userId,
+            }]
+        }
         case FILTER_REMOVE:
             let newSavedFilters = [];
             state.savedFilters.forEach(filter => {
@@ -129,6 +142,8 @@ const mapReducer = (state = initialState, action) => {
             return {
                 ...state, savedFilters: newSavedFilters
             }
+        case FILTER_LOAD:
+            return {...state, savedFilters: payload.filters}
         default:
             return state;
     }
