@@ -48,12 +48,15 @@ export const login = (username, password) => (dispatch) => {
         (data) => {
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: { user: data },
+                payload: {user: data},
             });
             dispatch({
                 type: CLEAR_MESSAGE,
             });
-            // return Promise.resolve();
+
+            return true
+
+
         },
         (error) => {
             const message =
@@ -69,7 +72,9 @@ export const login = (username, password) => (dispatch) => {
                 type: SET_MESSAGE,
                 payload: message,
             });
-            // return Promise.reject();
+            return false
+
+
         }
     );
 };
