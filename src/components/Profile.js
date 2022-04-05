@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import ProfileAccordion from "./ProfileAccordion";
-import PasswordAccordion from "./PasswordAccordion";
+import ProfileAccordion from "./accordions/ProfileAccordion";
+import PasswordAccordion from "./accordions/PasswordAccordion";
 import {Helmet} from "react-helmet";
+import FilterAccordion from "./accordions/FilterAccordion";
 
 const Profile = () => {
 
@@ -21,6 +22,7 @@ const Profile = () => {
         { name: "Username", content: stateValues.user.username },
         { name: "E-Mail", content: stateValues.user.email }
     ]
+    let savedFilters = useSelector((state) => state.mapReducer.savedFilters)
 
     const { user: currentUser } = useSelector((state) => state.authReducer);
     if (!currentUser) {
@@ -33,6 +35,7 @@ const Profile = () => {
             </Helmet>
             {accordionData.map((data, index) => <ProfileAccordion key={index} expanded={expanded} handleChange={handleChange} index={index} name={data.name} content={data.content} />)}
             <PasswordAccordion index={4} expanded={expanded} handleChange={handleChange} />
+            {savedFilters.map((filter, index) => <FilterAccordion key={index} expanded={expanded} handleChange={handleChange} index={index} name={filter.name}/>)}
         </div>)
 }
 

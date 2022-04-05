@@ -14,7 +14,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useDispatch, useSelector } from 'react-redux'
-import { modifyPassword } from '../actions/auth';
+import { modifyPassword } from '../../actions/auth';
 
 
 

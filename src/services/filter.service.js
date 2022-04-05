@@ -13,6 +13,9 @@ const load = async () => {
     return await axios.get(API_URL + "filter", { headers: authHeader() })
 }
 
-const exports = { save, load, }
+const remove = async (filterName) => {
+    return await axios.delete(API_URL + "filter", {headers: authHeader(), data: {name: filterName}})
+}
+const exports = { save, load, remove}
 
 export default exports;

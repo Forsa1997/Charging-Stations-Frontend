@@ -5,6 +5,7 @@ import {
     FILTER_CHARGINGPOWER,
     FILTER_SAVE,
     SET_MESSAGE,
+    FILTER_REMOVE,
 } from "./types";
 import FilterService from "../services/filter.service";
 
@@ -37,12 +38,19 @@ export const filterPlug = (plug) => (dispatch) => {
         type: FILTER_PLUGTYPE,
         payload,
     })
-}
+}    
 
 export const filterOperators = (operators) => (dispatch) => {
     dispatch({
         type: FILTER_OPERATOR,
         payload: operators,
+    })    
+}        
+
+export const filterFreeToUse = (isFreeToUse) => (dispatch) => {
+    dispatch({
+        type: FILTER_FREETOUSE,
+        payload: isFreeToUse,
     })
 }
 
@@ -51,7 +59,37 @@ export const saveFilter = (filter) => (dispatch) => {
         (response) => {
             dispatch({
                 type: FILTER_SAVE,
-                payload: response,
+                payload: filter,
+            })    
+            dispatch({
+                type: SET_MESSAGE,
+                payload: response.data.message,
+            });    
+            return Promise.resolve();
+        },    
+        (error) => {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||    
+                error.toString();
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });    
+            return Promise.reject();
+        }    
+    );    
+};    
+
+export const removeFilter = (filterName) => (dispatch) => {
+
+    return FilterService.remove(filterName).then(
+        (response) => {
+            dispatch({
+                type: FILTER_REMOVE,
+                payload: filterName,
             })
             dispatch({
                 type: SET_MESSAGE,
@@ -74,11 +112,3 @@ export const saveFilter = (filter) => (dispatch) => {
         }
     );
 };
-
-export const filterFreeToUse = (isFreeToUse) => (dispatch) => {
-    dispatch({
-        type: FILTER_FREETOUSE,
-        payload: isFreeToUse,
-    })
-}
-
