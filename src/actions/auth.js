@@ -21,7 +21,7 @@ export const register = (firstName, lastName, username, email, password) => (dis
                 type: SET_MESSAGE,
                 payload: response.data.message,
             });
-            return Promise.resolve();
+            return true;
         },
         (error) => {
             const message =
@@ -37,7 +37,7 @@ export const register = (firstName, lastName, username, email, password) => (dis
                 type: SET_MESSAGE,
                 payload: message,
             });
-            return Promise.reject();
+            return false;
         }
     );
 };
