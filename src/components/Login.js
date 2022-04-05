@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -16,25 +14,29 @@ import { login } from '../actions/auth';
 import { useDispatch, useSelector } from "react-redux";
 import {Navigate, useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
+import Alert from '@mui/material/Alert';
+
 
 const theme = createTheme();
 
 
 
 const Login = () => {
+
+  const [showError, setShowError] = React.useState(false);
+
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleLinkRegister = () => navigate('/register')
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    dispatch(login(data.get('email'), data.get('password')))
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    let resolve = await dispatch(login(data.get('email'), data.get('password')))
+    setShowError(!resolve);
+
   };
 
   return (
@@ -80,10 +82,7 @@ const Login = () => {
                 id="password"
                 autoComplete="current-password"
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+              {showError && <Alert severity="error">Username or password is wrong.</Alert>}
               <Button
                 type="submit"
                 fullWidth
