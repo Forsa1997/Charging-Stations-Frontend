@@ -69,7 +69,7 @@ const Map = () => {
                    width: {sm: '19vw', xs: 'calc(100vw - 65px)'},
                    minWidth: '286.480px',
                    zIndex: 2,
-                   height: 'calc(100vh - 68.32px - 68.32px)',
+                   height: 'calc(100vh - 68.31px - 68.31px)',
                    display: 'flex',
                    flexDirection: 'column'
                }}
