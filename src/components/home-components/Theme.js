@@ -1,11 +1,13 @@
 import { createTheme } from '@mui/material/styles';
-import { green, grey, red, blue } from '@mui/material/colors';
+import { green, grey, red } from '@mui/material/colors';
 
 const rawTheme = createTheme({
     palette: {
-        primary: blue,
+        primary: {
+            main: '#007bff'
+        },
         secondary: {
-            main: '#fffaf0'
+            main: '#ff007b'
         },
         warning: {
             main: '#ffc071',
@@ -21,6 +23,9 @@ const rawTheme = createTheme({
             main: green[500],
             dark: green[700],
         },
+        bookmark: {
+
+        }
     },
     typography: {
         fontFamily: "'Work Sans', sans-serif",

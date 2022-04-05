@@ -9,7 +9,7 @@ export default function MapMenuButton(props) {
 
     return (
         <Box sx={{ m: 1, position: 'absolute', zIndex: 1 }}>
-            <Fab color="white" size="medium" onClick={props.handleOnMenuClick}>
+            <Fab color="secondary" size="large" onClick={props.handleOnMenuClick}>
                 <MenuIcon />
             </Fab>
         </Box>

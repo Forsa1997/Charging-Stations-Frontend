@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux';
 import { Helmet } from "react-helmet";
 import Paper from '@mui/material/Paper';
 import MapMenuButton from "./inputs/MapMenuButton";
+import BookmarkButton from "./inputs/BookmarkButton"
 
 
 const Map = () => {
@@ -57,22 +58,23 @@ const Map = () => {
 
     const card = (
         <Paper elevation={6}
-            sx={{
-                m: 0,
-                position: 'relative',
-                bgcolor: 'white',
-                p: 4,
-                border: '1px solid grey',
-                borderBottom: 0,
-                borderTop: 0,
-                borderLeft: 0,
-                width: { sm: '19vw', xs: 'calc(100vw - 65px)' },
-                minWidth: '286.480px',
-                zIndex: 2,
-                height: 'calc(100vh - 68.32px - 68.32px)',
-                display: 'flex',
-                flexDirection: 'column'
-            }}
+               sx={{
+                   m: 0,
+                   position: 'relative',
+                   bgcolor: 'white',
+                   p: 4,
+                   border: '1px solid grey',
+                   borderBottom: 0,
+                   borderTop: 0,
+                   borderLeft: 0,
+                   width: {sm: '19vw', xs: 'calc(100vw - 65px)'},
+                   minWidth: '286.480px',
+                   zIndex: 2,
+                   height: 'calc(100vh - 68.31px - 68.31px)',
+                   maxHeight: 'calc(100vh - 68.31px - 68.31px)',
+                   display: 'flex',
+                   flexDirection: 'column'
+               }}
         >
             <Box>
                 <IconButton sx={{ float: 'right', mt: -3, mb: 2 }} onClick={handleOnMenuClick}>
@@ -101,8 +103,9 @@ const Map = () => {
                 <Collapse orientation="horizontal" in={checked}>
                     {card}
                 </Collapse>
-                {!checked && <MapMenuButton handleOnMenuClick={handleOnMenuClick} />}
-                <ChargingMap />
+                {!checked && <MapMenuButton handleOnMenuClick={handleOnMenuClick}/>}
+                <ChargingMap checked={checked}/>
+                <BookmarkButton />
             </Box>
         </StyledEngineProvider>
 
