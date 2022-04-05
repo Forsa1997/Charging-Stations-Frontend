@@ -15,6 +15,7 @@ export default function SaveFilterDialog() {
   const dispatch = useDispatch();
   const inputField = useRef('')
   const user = useSelector(state => state.authReducer.user)
+  const activeFilters = useSelector(state => state.mapReducer.activeFilters)
 
 
   const handleClickOpen = () => {
@@ -27,12 +28,16 @@ export default function SaveFilterDialog() {
 
   const handleSaveClose = () => {
     setOpen(false);
-      dispatch(saveFilter(inputField.current.value), user.id)
+    let filter = {
+      ...activeFilters, name: inputField.current.value, userId: user.id,
+    }
+    console.log(filter)
+    dispatch(saveFilter(filter))
   };
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="contained" size="large" onClick={handleClickOpen}>
         Save Filter
       </Button>
       <Dialog open={open} onClose={handleCancelClose}>
