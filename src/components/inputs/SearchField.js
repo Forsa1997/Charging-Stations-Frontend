@@ -12,6 +12,7 @@ const SearchField = () => {
         provider: provider,
         style: 'bar',
         autoClose: true,
+
         keepResult: true,
         marker: {
             // optional: L.Marker    - default L.Icon.Default

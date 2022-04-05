@@ -1,26 +1,27 @@
-import { MapContainer, Marker, TileLayer, ZoomControl } from 'react-leaflet';
+import {MapContainer, Marker, TileLayer, ZoomControl} from 'react-leaflet';
 // eslint-disable-next-line
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from "leaflet";
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import {useSelector} from 'react-redux';
+import {useState} from 'react';
+import {useEffect} from 'react';
 import useGeoLocation from '../hooks/useGeoLocation';
-import Button from '@mui/material/Button';
 import SearchField from './inputs/SearchField';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
+import Fab from '@mui/material/Fab';
+import * as React from "react";
 
 
+export default function ChargingMap(props) {
 
-export default function ChargingMap() {
     const filteredStations = useSelector(state => state.mapReducer.filteredData)
     const [myMarkers, setMyMarkers] = useState(L.markerClusterGroup());
     const [map, setMap] = useState(null)
     const location = useGeoLocation();
 
-
     const showMyLocation = () => {
         if (location.loaded && !location.error) {
-            map.flyTo([location.coordinates.lat, location.coordinates.lng], 13, { animate: true })
+            map.flyTo([location.coordinates.lat, location.coordinates.lng], 13, {animate: true})
         } else {
             alert(location.error.message)
         }
@@ -63,8 +64,7 @@ export default function ChargingMap() {
     const iconColor = (power) => {
         if (power >= 150) {
             return redIcon;
-        }
-        else if (power >= 50) {
+        } else if (power >= 50) {
             return orangeIcon
         } else {
             return greenIcon;
@@ -80,7 +80,7 @@ export default function ChargingMap() {
 
             let coordinates = L.latLng(location.addressInfo.latitude, location.addressInfo.longitude);
             let popup = "marker"
-            L.marker(coordinates, { icon: iconColor(location.maxChargePower) }).bindPopup(
+            L.marker(coordinates, {icon: iconColor(location.maxChargePower)}).bindPopup(
                 popup
             ).addTo(myMarkers);
 
@@ -95,32 +95,29 @@ export default function ChargingMap() {
     }
 
     return (
-        <div>
-            <MapContainer zoomControl={false} center={center} zoom={10} whenCreated={setMapReference} scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
-
+        <div style={{ position: 'absolute', width: '100vw', height: 'calc(100vh - 68.31px)'}}>
+            <MapContainer zoomControl={false} center={center} zoom={10} whenCreated={setMapReference}
+                          scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {location.loaded && !location.error && (
-                    <Marker position={[location.coordinates.lat, location.coordinates.lng]}></Marker>
+                    <Marker position={[location.coordinates.lat, location.coordinates.lng]}/>
                 )}
-                <ZoomControl position={"bottomright"} />
-            <SearchField />
+                <ZoomControl position={"bottomright"}/>
+                <SearchField />
             </MapContainer>
-            <Button sx={{
+            <Fab color='secondary' size='large' onClick={showMyLocation} sx={{
                 position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: 0,
-                marginLeft: 'auto',
-                marginRight: 'auto', 
-                zIndex: 100000
-                }} onClick={() => showMyLocation()}>
-            Locate me!
-        </Button>
-        </div >
+                zIndex: 1,
+                right: 53,
+                bottom: 30
 
+            }} >
+                <MyLocationIcon/>
+            </Fab>
+        </div>
     )
 }
 

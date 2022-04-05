@@ -36,7 +36,7 @@ const Hero = () => {
                 Enjoy searching charging stations world wide easily
             </Typography>
             <Button
-                color="primary"
+                color="secondary"
                 variant="contained"
                 size="large"
                 component="a"

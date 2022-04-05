@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="merge">
+      <change afterPath="$PROJECT_DIR$/src/components/inputs/BookmarkButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ChargingMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ChargingMap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home-components/Hero.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home-components/Hero.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home-components/Theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home-components/Theme.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/inputs/MapMenuButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inputs/MapMenuButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/PrimarySearchAppBar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/SearchField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inputs/SearchField.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +82,7 @@
       <workItem from="1648804728181" duration="465000" />
       <workItem from="1649060625723" duration="2760000" />
       <workItem from="1649064436603" duration="17483000" />
-      <workItem from="1649146267924" duration="969000" />
+      <workItem from="1649146267924" duration="15153000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <created>1649087819070</created>

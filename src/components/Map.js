@@ -16,6 +16,7 @@ import {useDispatch} from 'react-redux';
 import {Helmet} from "react-helmet";
 import Paper from '@mui/material/Paper';
 import MapMenuButton from "./inputs/MapMenuButton";
+import BookmarkButton from "./inputs/BookmarkButton"
 
 
 const Map = () => {
@@ -70,6 +71,7 @@ const Map = () => {
                    minWidth: '286.480px',
                    zIndex: 2,
                    height: 'calc(100vh - 68.31px - 68.31px)',
+                   maxHeight: 'calc(100vh - 68.31px - 68.31px)',
                    display: 'flex',
                    flexDirection: 'column'
                }}
@@ -100,7 +102,8 @@ const Map = () => {
                     {card}
                 </Collapse>
                 {!checked && <MapMenuButton handleOnMenuClick={handleOnMenuClick}/>}
-                <ChargingMap/>
+                <ChargingMap checked={checked}/>
+                <BookmarkButton />
             </Box>
         </StyledEngineProvider>
 

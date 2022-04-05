@@ -14,6 +14,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {logout} from '../actions/auth';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import logo from '../assets/logo.png'
+import MapSharpIcon from '@mui/icons-material/MapSharp';
 
 const logoutText = "Logout";
 const loginText = "Login";
@@ -51,7 +52,7 @@ const Nav = () => {
     };
 
     return (
-        <AppBar position="sticky" sx={{zIndex: 1000000, maxWidth: '100vw'}}>
+        <AppBar position="sticky" sx={{zIndex: 100, maxWidth: '100vw'}}>
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', paddingRight: {xs: '15px'}}}>
                     <Typography
                         className='logoButton'
@@ -66,12 +67,13 @@ const Nav = () => {
                     </Typography>
                     {pages.map((page) => (
                         <Button
+                            variant="contained"
                             className="menuButtonNav"
                             key={page}
                             onClick={() => handleCloseNavMenu(page)}
-                            sx={{my: 2, color: 'white', display: {xs: 'block', md: 'none'}}}
+                            sx={{my: 2, color: 'white', display: {xs: 'flex', md: 'none'}, alignItems: 'center'}}
                         >
-                            {page}
+                            {page} <MapSharpIcon />
                         </Button>
                     ))}
                     <Button sx={{display: {xs: 'block', md: 'none'}}}><img src={logo} alt="logo" onClick={handleRegisterButton}
@@ -79,12 +81,13 @@ const Nav = () => {
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
                         {pages.map((page) => (
                             <Button
+                                variant="contained"
                                 className="menuButtonNav"
                                 key={page}
                                 onClick={() => handleCloseNavMenu(page)}
-                                sx={{my: 2, color: 'white', display: 'block'}}
+                                sx={{my: 2, color: 'white', display: 'flex', alignItems: 'center'}}
                             >
-                                {page}
+                                {page} <MapSharpIcon />
                             </Button>
                         ))}
                     </Box>

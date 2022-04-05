@@ -38,9 +38,28 @@
 }
 
 .leaflet-container{
+  max-height: calc(100vh - 68.31px - 68.31px);
   height: calc(100vh - 68.31px - 68.31px);
   width: 100vw;
   position: absolute;
   z-index: 0;
   padding-top: 68.32px;
   }
+
+.leaflet-control-geosearch {
+  position: absolute;
+  left: 72px;
+  top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .leaflet-control-geosearch {
+    width: 61vw;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .leaflet-control-geosearch {
+    width: 50vw;
+  }
+}
