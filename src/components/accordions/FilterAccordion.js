@@ -1,18 +1,9 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import EditIcon from '@mui/icons-material/Edit';
-import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
-import { useSelector, useDispatch } from 'react-redux'
-import { modifyUser } from '../../actions/auth';
+import { useDispatch } from 'react-redux'
 import { removeFilter } from '../../actions/filter';
 
 
