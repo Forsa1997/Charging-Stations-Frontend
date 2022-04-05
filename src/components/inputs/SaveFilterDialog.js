@@ -28,11 +28,13 @@ export default function SaveFilterDialog() {
 
   const handleSaveClose = () => {
     setOpen(false);
-    let filter = {
-      ...activeFilters, name: inputField.current.value, userId: user.id,
-    }
-    console.log(filter)
-    dispatch(saveFilter(filter))
+    // if(inputField.current.value >= 1){
+      let filter = {
+        ...activeFilters, name: inputField.current.value, userId: user.id,
+      }
+      // console.log(filter)
+      dispatch(saveFilter(filter))
+    // }
   };
 
   return (
@@ -60,6 +62,7 @@ export default function SaveFilterDialog() {
         <DialogActions>
           <Button onClick={handleCancelClose}>Cancel</Button>
           <Button onClick={handleSaveClose} disabled={user ? false : true}>Save</Button>
+    
         </DialogActions>
       </Dialog>
     </div>

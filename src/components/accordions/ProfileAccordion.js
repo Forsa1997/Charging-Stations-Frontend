@@ -12,7 +12,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import SaveIcon from '@mui/icons-material/Save';
 import { useSelector, useDispatch } from 'react-redux'
-import { modifyUser } from '../actions/auth';
+import { modifyUser } from '../../actions/auth';
 
 
 

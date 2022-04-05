@@ -5,10 +5,11 @@ import {
     FILTER_FREETOUSE,
     GET_NEW_DATA,
     FILTER_SAVE,
+    FILTER_REMOVE,
 } from "../actions/types";
 import stationData from "../data/stationData.json"
 
-const initialState = { activeFilters: {}, data: stationData, filteredData: stationData, savedFilters: {} };
+const initialState = { activeFilters: {}, data: stationData, filteredData: stationData, savedFilters: [] };
 
 const filterState = (state, filter) => {
     let filters = { ...state.activeFilters, [filter[0]]: filter[1] }
@@ -112,13 +113,22 @@ const mapReducer = (state = initialState, action) => {
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
         case FILTER_SAVE:
             return {
-                ...state, savedFilters: {
+                ...state, savedFilters: [...state.savedFilters, {
                     ...state.activeFilters,
-                    name: payload.filterName,
+                    name: payload.name,
                     userId: payload.userId,
-                }
+                }]
             }
-
+        case FILTER_REMOVE:
+            let newSavedFilters = [];
+            state.savedFilters.forEach(filter => {
+                if (!(filter.name === payload)) {
+                    newSavedFilters.add(filter)
+                }
+            })
+            return {
+                ...state, savedFilters: newSavedFilters
+            }
         default:
             return state;
     }
