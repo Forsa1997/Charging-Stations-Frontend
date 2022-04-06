@@ -81,7 +81,7 @@ const PasswordAccordion = (props) => {
     );
 
     return (
-        <Accordion expanded={props.expanded === 'panel' + props.index} sx={{ width: '35%' }} onChange={props.handleChange('panel' + props.index)}>
+        <Accordion expanded={props.expanded === 'panel' + props.index} sx={{ width: '35%', minWidth: '280px' }} onChange={props.handleChange('panel' + props.index)}>
             <AccordionSummary
                 aria-controls="panel3bh-content"
                 id="panel3bh-header"

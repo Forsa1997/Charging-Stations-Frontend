@@ -34,7 +34,7 @@ const Profile = () => {
                 <title>EV-Map | Profile</title>
             </Helmet>
             {accordionData.map((data, index) => <ProfileAccordion key={index} expanded={expanded} handleChange={handleChange} index={index} name={data.name} content={data.content} />)}
-            <PasswordAccordion index={4} expanded={expanded} handleChange={handleChange} />
+            <PasswordAccordion  index={4} expanded={expanded} handleChange={handleChange} />
             {savedFilters.map((filter, index) => <FilterAccordion key={index} expanded={expanded} handleChange={handleChange} index={index} name={filter.name}/>)}
         </div>)
 }

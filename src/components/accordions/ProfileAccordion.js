@@ -88,12 +88,12 @@ const ProfileAccordion = (props) => {
 
 
     return (
-        <Accordion expanded={props.expanded === 'panel' + props.index} sx={{ width: '35%' }} onChange={props.handleChange('panel' + props.index)}>
+        <Accordion expanded={props.expanded === 'panel' + props.index} sx={{ width: '35%', minWidth: '280px' }} onChange={props.handleChange('panel' + props.index)}>
             <AccordionSummary
                 aria-controls="panel1bh-content"
                 expandIcon={<EditIcon color="primary" />}
             >
-                <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                <Typography sx={{ width: { sm: '33%', xs: '40%'} , flexShrink: 0 }}>
                     {props.name}
                 </Typography>
                 {
