@@ -7,15 +7,15 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Typography from "@mui/material/Typography";
 
 
-export default function BasicSelect(props) {
+export default function BasicSelectFreeToUse(props) {
     const [plugType, setPlugType] = React.useState('');
     const dispatch = useDispatch();
 
     const handleChange = (event, newPlugType) => {
         setPlugType(newPlugType);
         switch (props.filterType) {
-            case "FILTER_PLUGTYPE":
-                dispatch(filterPlug(newPlugType));
+            case "FILTER_FREETOUSE":
+                dispatch(filterFreeToUse(newPlugType));
                 break;
             default:
                 ;
@@ -29,6 +29,7 @@ export default function BasicSelect(props) {
 
             <ToggleButtonGroup
                 color="primary"
+                exclusive
                 value={plugType}
                 onChange={handleChange}
             >

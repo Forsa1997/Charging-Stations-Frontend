@@ -10,12 +10,43 @@ import {
     FILTER_LOAD,
 } from "../actions/types";
 
-const initialState = { activeFilters: {}, data: [], filteredData: [], savedFilters: [] };
+const activeFilters = JSON.parse(localStorage.getItem("activeFilters"));
+const data = JSON.parse(localStorage.getItem("data"));
+const filteredData = JSON.parse(localStorage.getItem("filteredData"));
+const savedFilters = JSON.parse(localStorage.getItem("savedFilters"));
+
+const initialState = () => {
+    console.log(savedFilters)
+    let initData = [];
+    let initFilteredData = [];
+    let initSavedFilters = [];
+
+    const initActiveFilters = activeFilters ? activeFilters : {};
+
+    if (data && data.length !== 0) {  
+        initData = data;   
+    } 
+        
+    if (filteredData && filteredData.length !== 0) {
+        initFilteredData = filteredData;
+    }
+
+    if (savedFilters && savedFilters.length !== 0) {
+        initSavedFilters = savedFilters;
+    }
+
+    return ({
+        activeFilters: initActiveFilters,
+        data: initData,
+        filteredData: initFilteredData,
+        savedFilters: initSavedFilters,
+    })
+};
 
 const filterState = (state, filter, preselect) => {
     let filters;
-    
-    if (preselect){
+
+    if (preselect) {
         filters = preselect;
     } else {
         filters = { ...state.activeFilters, [filter[0]]: filter[1] }
@@ -35,14 +66,11 @@ const filterState = (state, filter, preselect) => {
     if (filters.filterFreeToUse) {
         filtered = freeToUseFilter(filtered, filters.filterFreeToUse)
     }
-
     return { filtered, filters };
-
 }
 
 const chargingPowerFilter = (data, filter) => {
-    // return data.filter(station => station.connections.filter(connection => connection.powerKW >= filter).length >= 1)
-    return data.filter(station => station.maxChargePower >= filter)
+    return data.filter(station => station.maxPower >= filter)
 }
 
 const plugTypeFilter = (data, filter) => {
@@ -50,17 +78,9 @@ const plugTypeFilter = (data, filter) => {
         return data;
     }
     return (
-        data.filter(station =>
-            station.connections.filter(connection => {
-                for (let i = 0; i < filter.length; i++) {
-                    if (filter[i] === connection.connectionTypeID) {
-                        return true;
-                    }
-                }
-                return false;
-            })
-                .length >= 1
-        )
+        data.filter(station => station.connectionTypeId.some(element => {
+            return filter.includes(element);
+        }))
     )
 }
 
@@ -86,26 +106,15 @@ const operatorFilter = (data, filter) => {
     }
 }
 
-
-const mapReducer = (state = initialState, action) => {
+const mapReducer = (state = initialState(), action) => {
     const { type, payload } = action;
     let filterParams;
     switch (type) {
         case GET_NEW_DATA:
-            let maxPower = 0;
-            payload.forEach((station) => {
-                station.connections.forEach(connection => {
-                    if (maxPower < connection.powerKW) {
-                        maxPower = connection.powerKW
-                    }
-                })
-                station.maxChargePower = maxPower;
-                maxPower = 0;
-            })
-            if (state.filteredData.length===0){
-                return { ...state, data: payload, filteredData: payload } 
+            if (state.filteredData.length === 0) {
+                return { ...state, data: payload.data, filteredData: payload.data }
             }
-            return { ...state, data: payload }
+            return { ...state, data: payload.data }
         case FILTER_CHARGINGPOWER:
             filterParams = filterState(state, ["filterKW", payload]);
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
@@ -121,35 +130,31 @@ const mapReducer = (state = initialState, action) => {
         case FILTER_FREETOUSE:
             filterParams = filterState(state, ["filterFreeToUse", payload]);
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
-            
+
         case FILTER_PRESELECT:
-            filterParams = filterState(state, [],  payload);
+            filterParams = filterState(state, [], payload);
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
 
         case FILTER_SAVE:
-        return {
-            ...state, savedFilters: [...state.savedFilters, {
-                ...state.activeFilters,
-                name: payload.name,
-                userId: payload.userId,
-            }]
-        }
+            return {
+                ...state, savedFilters: [...state.savedFilters, {
+                    ...state.activeFilters,
+                    name: payload.name,
+                    userId: payload.userId,
+                }]
+            }
         case FILTER_REMOVE:
             let newSavedFilters = [];
             state.savedFilters.forEach(filter => {
                 if (!(filter.name === payload)) {
-                    newSavedFilters.add(filter)
+                    newSavedFilters = [...newSavedFilters, filter]
                 }
             })
             return {
                 ...state, savedFilters: newSavedFilters
             }
         case FILTER_LOAD:
-            console.log("---------PAYLOAD-------")
-            console.log(payload)
-            console.log("---------PAYLOAD.DATA.FILTERS-------")
-            console.log(payload.data.filters)
-            return {...state, savedFilters: payload.data.filters}
+            return { ...state, savedFilters: payload.data.filters }
         default:
             return state;
     }

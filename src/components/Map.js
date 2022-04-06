@@ -5,12 +5,11 @@ import Collapse from "@mui/material/Collapse";
 import { StyledEngineProvider } from "@mui/material/styles";
 import BasicSlider from "./inputs/BasicSlider";
 import BasicSelect from "./inputs/BasicSelect";
+import BasicSelectFreeToUse from "./inputs/BasicSelect";
 import ChipSelect from "./inputs/ChipSelect";
 import referenceData from "../data/referenceData.json";
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from "@mui/material";
-import { GET_NEW_DATA } from '../actions/types';
-import stationData from "../data/stationData.json"
 import SaveFilterDialog from './inputs/SaveFilterDialog';
 import { useDispatch } from 'react-redux';
 import { Helmet } from "react-helmet";
@@ -20,17 +19,15 @@ import BookmarkButton from "./inputs/BookmarkButton"
 import Divider from '@mui/material/Divider';
 import Button from "@mui/material/Button";
 import { useSelector } from 'react-redux';
+import { loadStations } from '../actions/mapData';
 
 
 const Map = () => {
 
     const dispatch = useDispatch();
 
-    if (useSelector(state => state.mapReducer.data.length===0)){ 
-        dispatch({
-            type: GET_NEW_DATA,
-            payload: stationData,
-        })
+    if (useSelector(state => state.mapReducer.data.length===0)){
+        dispatch(loadStations());
     }
  
     const [checked, setChecked] = React.useState(false);
@@ -94,7 +91,7 @@ const Map = () => {
             <Divider color={'grey'} sx={{mt: '23px'}}/>
             <ChipSelect values={chargingProviders} header="Operator" />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
-            <BasicSelect filterType="FILTER_FREETOUSE" values={chargingFree} header="Free to use" />
+            <BasicSelectFreeToUse filterType="FILTER_FREETOUSE" values={chargingFree} header="Free to use" />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
             <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
                 <SaveFilterDialog />
@@ -116,7 +113,7 @@ const Map = () => {
                 <Collapse orientation="horizontal" in={checked}>
                     {card}
                 </Collapse>
-                {!checked && <MapMenuButton handleOnMenuClick={handleOnMenuClick}/>}
+                <MapMenuButton handleOnMenuClick={handleOnMenuClick}/>
                 <ChargingMap checked={checked} setChecked={setChecked}/>
                 <BookmarkButton />
             </Box>

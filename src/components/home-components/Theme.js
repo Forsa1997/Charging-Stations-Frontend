@@ -6,6 +6,9 @@ const rawTheme = createTheme({
         primary: {
             main: '#007bff'
         },
+        darkerPrimary: {
+            main: '#1269ec'
+        },
         secondary: {
             main: '#ff007b'
         },

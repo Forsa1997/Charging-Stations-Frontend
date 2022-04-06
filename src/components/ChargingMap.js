@@ -1,10 +1,10 @@
-import {MapContainer, Marker, TileLayer, ZoomControl} from 'react-leaflet';
+import { MapContainer, Marker, TileLayer, ZoomControl } from 'react-leaflet';
 // eslint-disable-next-line
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from "leaflet";
-import {useSelector} from 'react-redux';
-import {useState} from 'react';
-import {useEffect} from 'react';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import useGeoLocation from '../hooks/useGeoLocation';
 import SearchField from './inputs/SearchField';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
@@ -31,7 +31,7 @@ export default function ChargingMap(props) {
 
     const showMyLocation = () => {
         if (location.loaded && !location.error) {
-            map.flyTo([location.coordinates.lat, location.coordinates.lng], 13, {animate: true})
+            map.flyTo([location.coordinates.lat, location.coordinates.lng], 13, { animate: true })
         } else {
             alert(location.error.message)
         }
@@ -45,7 +45,6 @@ export default function ChargingMap(props) {
     const setMapReference = (map) => {
         refreshLocations();
         setMap(map);
-        map.tap.disable()
         myMarkers.addTo(map);
         setMyMarkers(myMarkers)
     }
@@ -87,12 +86,10 @@ export default function ChargingMap(props) {
 
         myMarkers.clearLayers();
 
-
-        filteredStations.forEach(location => {
-            latlngpairs.push([location.addressInfo.latitude, location.addressInfo.longitude])
-            let coordinates = L.latLng(location.addressInfo.latitude, location.addressInfo.longitude);
-            L.marker(coordinates, {icon: iconColor(location.maxChargePower)}).addTo(myMarkers).on('on click', () => handleOnMarkerClick())
-
+        filteredStations.forEach(station => {
+            latlngpairs.push(station.latLng)
+            let coordinates = L.latLng(station.latLng[0], station.latLng[1]);
+            L.marker(coordinates, { icon: iconColor(station.maxPower) }).addTo(myMarkers).once('on click', () => handleOnMarkerClick())
         })
     };
 
@@ -104,17 +101,17 @@ export default function ChargingMap(props) {
     }
 
     return (
-        <div style={{ position: 'absolute', width: '100vw', height: 'calc(100vh - 68.31px)'}}>
+        <div style={{ position: 'absolute', width: '100vw', height: 'calc(100vh - 68.31px)' }}>
             <MapContainer zoomControl={false} center={center} zoom={10} whenCreated={setMapReference}
-                          scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
+                scrollWheelZoom={true} preferCanvas={true} renderer={L.canvas()}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {location.loaded && !location.error && (
-                    <Marker position={[location.coordinates.lat, location.coordinates.lng]}/>
+                    <Marker position={[location.coordinates.lat, location.coordinates.lng]} />
                 )}
-                <ZoomControl position={"bottomright"}/>
+                <ZoomControl position={"bottomright"} />
                 <SearchField />
             </MapContainer>
             <Fab color='secondary' size='large' onClick={showMyLocation} sx={{
@@ -124,10 +121,10 @@ export default function ChargingMap(props) {
                 bottom: 30
 
             }} >
-                <MyLocationIcon/>
+                <MyLocationIcon />
             </Fab>
             <Collapse orientation="horizontal" in={checked}>
-                <MarkerInformations handleOnMarkerClick={handleOnMarkerClick}/>
+                <MarkerInformations handleOnMarkerClick={handleOnMarkerClick} />
             </Collapse>
         </div>
     )

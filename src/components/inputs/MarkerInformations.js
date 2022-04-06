@@ -36,7 +36,7 @@ export default function MarkerInformations(props) {
                 </IconButton>
             </Box>
             <Divider color={'grey'} sx={{mt: '23px' }}/>
-
+            
         </Paper>
     )
 }
