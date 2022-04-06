@@ -35,6 +35,7 @@ export default function ChargingMap(props) {
         refreshLocations();
         setMap(map);
         myMarkers.addTo(map);
+        map.on('popupopen', (e) => { alert(e.popup._source._popup._content); });
         setMyMarkers(myMarkers)
     }
 

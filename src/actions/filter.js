@@ -9,7 +9,6 @@ import {
     FILTER_LOAD,
 } from "./types";
 import FilterService from "../services/filter.service";
-import { responsiveFontSizes } from "@mui/material";
 
 
 export const filterPower = (power) => (dispatch) => {
