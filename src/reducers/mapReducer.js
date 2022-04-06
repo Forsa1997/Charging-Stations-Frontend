@@ -9,9 +9,8 @@ import {
     FILTER_PRESELECT,
     FILTER_LOAD,
 } from "../actions/types";
-import stationData from "../data/stationData.json"
 
-const initialState = { activeFilters: {}, data: stationData, filteredData: stationData, savedFilters: [] };
+const initialState = { activeFilters: {}, data: [], filteredData: [], savedFilters: [] };
 
 const filterState = (state, filter, preselect) => {
     let filters;
@@ -103,6 +102,9 @@ const mapReducer = (state = initialState, action) => {
                 station.maxChargePower = maxPower;
                 maxPower = 0;
             })
+            if (state.filteredData.length===0){
+                return { ...state, data: payload, filteredData: payload } 
+            }
             return { ...state, data: payload }
         case FILTER_CHARGINGPOWER:
             filterParams = filterState(state, ["filterKW", payload]);
