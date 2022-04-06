@@ -17,16 +17,20 @@ import { Helmet } from "react-helmet";
 import Paper from '@mui/material/Paper';
 import MapMenuButton from "./inputs/MapMenuButton";
 import BookmarkButton from "./inputs/BookmarkButton"
+import { useSelector } from 'react-redux';
 
 
 const Map = () => {
 
     const dispatch = useDispatch();
-    dispatch({
-        type: GET_NEW_DATA,
-        payload: stationData,
-    })
 
+    if (useSelector(state => state.mapReducer.data.length===0)){ 
+        dispatch({
+            type: GET_NEW_DATA,
+            payload: stationData,
+        })
+    }
+ 
     const [checked, setChecked] = React.useState(false);
 
     const plugTypes = [{ value: "type2", name: "Type 2" }, { value: "ccs", name: "CCS" }]
