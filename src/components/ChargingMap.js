@@ -10,16 +10,7 @@ import SearchField from './inputs/SearchField';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import Fab from '@mui/material/Fab';
 import * as React from "react";
-import Box from "@mui/material/Box";
-import {IconButton} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import BasicSlider from "./inputs/BasicSlider";
-import BasicSelect from "./inputs/BasicSelect";
-import ChipSelect from "./inputs/ChipSelect";
-import SaveFilterDialog from "./inputs/SaveFilterDialog";
-import Paper from "@mui/material/Paper";
 import Collapse from "@mui/material/Collapse";
-import MarkerInformation from "./inputs/MarkerInformations";
 import MarkerInformations from "./inputs/MarkerInformations";
 
 

@@ -98,7 +98,7 @@ const Map = () => {
             <Divider color={'grey'} sx={{mt: '23px'}}/>
             <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
                 <SaveFilterDialog />
-                <Button variant="contained" size="medium">Reset Filters</Button>
+                <Button color='secondary' variant="contained" size="medium">Reset Filters</Button>
             </Box>
 
         </Paper>
