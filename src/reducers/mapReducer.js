@@ -143,7 +143,11 @@ const mapReducer = (state = initialState, action) => {
                 ...state, savedFilters: newSavedFilters
             }
         case FILTER_LOAD:
-            return {...state, savedFilters: payload.filters}
+            console.log("---------PAYLOAD-------")
+            console.log(payload)
+            console.log("---------PAYLOAD.DATA.FILTERS-------")
+            console.log(payload.data.filters)
+            return {...state, savedFilters: payload.data.filters}
         default:
             return state;
     }

@@ -34,7 +34,7 @@ export default function ChargingMap(props) {
     const setMapReference = (map) => {
         refreshLocations();
         setMap(map);
-        myMarkers.addTo(map);
+        myMarkers.addTo(map).on('mouseclick', console.log("MOUSEOVER"));
         setMyMarkers(myMarkers)
     }
 
@@ -77,13 +77,11 @@ export default function ChargingMap(props) {
 
         filteredStations.forEach(location => {
             latlngpairs.push([location.addressInfo.latitude, location.addressInfo.longitude])
-
             let coordinates = L.latLng(location.addressInfo.latitude, location.addressInfo.longitude);
-            let popup = "marker"
-            L.marker(coordinates, {icon: iconColor(location.maxChargePower)}).bindPopup(
-                popup
-            ).addTo(myMarkers);
-
+            let popup =  location.addressInfo.title + "<br>"
+                       + location.addressInfo.addressLine1 + "<br>"
+                       + location.addressInfo.town + "<br>";         
+            L.marker(coordinates, {icon: iconColor(location.maxChargePower)}).bindPopup(popup).addTo(myMarkers);
         })
     };
 
