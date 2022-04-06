@@ -6,8 +6,10 @@ import {
     FILTER_SAVE,
     SET_MESSAGE,
     FILTER_REMOVE,
+    FILTER_LOAD,
 } from "./types";
 import FilterService from "../services/filter.service";
+import { responsiveFontSizes } from "@mui/material";
 
 
 export const filterPower = (power) => (dispatch) => {
@@ -90,6 +92,36 @@ export const removeFilter = (filterName) => (dispatch) => {
             dispatch({
                 type: FILTER_REMOVE,
                 payload: filterName,
+            })
+            dispatch({
+                type: SET_MESSAGE,
+                payload: response.data.message,
+            });
+            return Promise.resolve();
+        },
+        (error) => {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });
+            return Promise.reject();
+        }
+    );
+};
+
+export const loadFilter = () => (dispatch) => {
+
+    return FilterService.load().then(
+        (response) => {
+            dispatch({
+                type: FILTER_LOAD,
+                payload: response,
             })
             dispatch({
                 type: SET_MESSAGE,

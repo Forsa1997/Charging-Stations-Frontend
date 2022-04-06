@@ -9,6 +9,7 @@ import {
     MODIFY_USER,
 } from "./types";
 import AuthService from "../services/auth.service";
+import { loadFilter } from "./filter";
 
 
 export const register = (firstName, lastName, username, email, password) => (dispatch) => {
@@ -53,10 +54,9 @@ export const login = (username, password) => (dispatch) => {
             dispatch({
                 type: CLEAR_MESSAGE,
             });
-
-            return true
-
-
+            dispatch(loadFilter())
+            // return Promise.resolve();
+            return true;
         },
         (error) => {
             const message =
@@ -73,8 +73,6 @@ export const login = (username, password) => (dispatch) => {
                 payload: message,
             });
             return false
-
-
         }
     );
 };
