@@ -34,7 +34,7 @@ export default function ChargingMap(props) {
     const setMapReference = (map) => {
         refreshLocations();
         setMap(map);
-        myMarkers.addTo(map).on('mouseclick', console.log("MOUSEOVER"));
+        myMarkers.addTo(map);
         setMyMarkers(myMarkers)
     }
 
