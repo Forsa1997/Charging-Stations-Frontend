@@ -39,7 +39,7 @@ export default function SaveFilterDialog() {
 
   return (
     <div>
-      <Button variant="contained" size="large" onClick={handleClickOpen}>
+      <Button variant="contained" size="medium" onClick={handleClickOpen}>
         Save Filter
       </Button>
       <Dialog open={open} onClose={handleCancelClose}>

@@ -10,6 +10,17 @@ import SearchField from './inputs/SearchField';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import Fab from '@mui/material/Fab';
 import * as React from "react";
+import Box from "@mui/material/Box";
+import {IconButton} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import BasicSlider from "./inputs/BasicSlider";
+import BasicSelect from "./inputs/BasicSelect";
+import ChipSelect from "./inputs/ChipSelect";
+import SaveFilterDialog from "./inputs/SaveFilterDialog";
+import Paper from "@mui/material/Paper";
+import Collapse from "@mui/material/Collapse";
+import MarkerInformation from "./inputs/MarkerInformations";
+import MarkerInformations from "./inputs/MarkerInformations";
 
 
 export default function ChargingMap(props) {
@@ -18,6 +29,14 @@ export default function ChargingMap(props) {
     const [myMarkers, setMyMarkers] = useState(L.markerClusterGroup());
     const [map, setMap] = useState(null)
     const location = useGeoLocation();
+    const [checked, setChecked] = React.useState(false);
+
+    const handleOnMarkerClick = () => {
+        if (props.checked) {
+            props.setChecked(false)
+        }
+        setChecked(prev => !prev)
+    }
 
     const showMyLocation = () => {
         if (location.loaded && !location.error) {
@@ -27,6 +46,7 @@ export default function ChargingMap(props) {
         }
     }
 
+
     useEffect(() => {
         refreshLocations();
     }, [filteredStations]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -34,8 +54,8 @@ export default function ChargingMap(props) {
     const setMapReference = (map) => {
         refreshLocations();
         setMap(map);
+        map.tap.disable()
         myMarkers.addTo(map);
-        map.on('popupopen', (e) => { alert(e.popup._source._popup._content); });
         setMyMarkers(myMarkers)
     }
 
@@ -76,13 +96,12 @@ export default function ChargingMap(props) {
 
         myMarkers.clearLayers();
 
+
         filteredStations.forEach(location => {
             latlngpairs.push([location.addressInfo.latitude, location.addressInfo.longitude])
             let coordinates = L.latLng(location.addressInfo.latitude, location.addressInfo.longitude);
-            let popup =  location.addressInfo.title + "<br>"
-                       + location.addressInfo.addressLine1 + "<br>"
-                       + location.addressInfo.town + "<br>";         
-            L.marker(coordinates, {icon: iconColor(location.maxChargePower)}).bindPopup(popup).addTo(myMarkers);
+            L.marker(coordinates, {icon: iconColor(location.maxChargePower)}).addTo(myMarkers).on('on click', () => handleOnMarkerClick())
+
         })
     };
 
@@ -116,6 +135,9 @@ export default function ChargingMap(props) {
             }} >
                 <MyLocationIcon/>
             </Fab>
+            <Collapse orientation="horizontal" in={checked}>
+                <MarkerInformations handleOnMarkerClick={handleOnMarkerClick}/>
+            </Collapse>
         </div>
     )
 }

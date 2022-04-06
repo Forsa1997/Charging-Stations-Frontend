@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="merge">
+      <change afterPath="$PROJECT_DIR$/src/components/inputs/MarkerInformations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/accordions/PasswordAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordions/PasswordAccordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/accordions/ProfileAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordions/ProfileAccordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ChargingMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ChargingMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inputs/SaveFilterDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inputs/SaveFilterDialog.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +78,7 @@
       <workItem from="1649064436603" duration="17483000" />
       <workItem from="1649146267924" duration="21065000" />
       <workItem from="1649241676002" duration="1130000" />
+      <workItem from="1649245898451" duration="6071000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <created>1649087819070</created>

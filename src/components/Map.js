@@ -17,6 +17,9 @@ import { Helmet } from "react-helmet";
 import Paper from '@mui/material/Paper';
 import MapMenuButton from "./inputs/MapMenuButton";
 import BookmarkButton from "./inputs/BookmarkButton"
+import Divider from '@mui/material/Divider';
+import Button from "@mui/material/Button";
+
 
 
 const Map = () => {
@@ -81,13 +84,20 @@ const Map = () => {
                     <CloseIcon color='grey' fontSize='large' />
                 </IconButton>
             </Box>
+            <Divider color={'grey'} sx={{mt: '23px' }}/>
             <BasicSlider marks={marks} max={300} min={0} steps={5} default={0} />
+            <Divider color={'grey'} sx={{mt: '23px'}}/>
             <BasicSelect filterType="FILTER_PLUGTYPE" values={plugTypes} header="Plug Type" />
+            <Divider color={'grey'} sx={{mt: '23px'}}/>
             <ChipSelect values={chargingProviders} header="Operator" />
+            <Divider color={'grey'} sx={{mt: '23px'}}/>
             <BasicSelect filterType="FILTER_FREETOUSE" values={chargingFree} header="Free to use" />
-            <Box m="auto" sx={{ mt: 5 }}>
+            <Divider color={'grey'} sx={{mt: '23px'}}/>
+            <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
                 <SaveFilterDialog />
+                <Button variant="contained" size="medium">Reset Filters</Button>
             </Box>
+
         </Paper>
 
     )
@@ -104,7 +114,7 @@ const Map = () => {
                     {card}
                 </Collapse>
                 {!checked && <MapMenuButton handleOnMenuClick={handleOnMenuClick}/>}
-                <ChargingMap checked={checked}/>
+                <ChargingMap checked={checked} setChecked={setChecked}/>
                 <BookmarkButton />
             </Box>
         </StyledEngineProvider>
