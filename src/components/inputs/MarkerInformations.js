@@ -4,11 +4,17 @@ import {IconButton} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
+import Typography from '../home-components/Typography';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStation } from '../../actions/mapData';
 
 
 
 export default function MarkerInformations(props) {
-
+    
+    const station = useSelector(state => state.mapReducer.currentStation);
+    console.log(station.id)
+   
     return (
 
         <Paper elevation={6}
@@ -36,7 +42,7 @@ export default function MarkerInformations(props) {
                 </IconButton>
             </Box>
             <Divider color={'grey'} sx={{mt: '23px' }}/>
-            
+            <Typography>{station.id}</Typography>
         </Paper>
     )
 }

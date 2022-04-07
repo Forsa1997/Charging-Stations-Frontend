@@ -12,6 +12,8 @@ import Fab from '@mui/material/Fab';
 import * as React from "react";
 import Collapse from "@mui/material/Collapse";
 import MarkerInformations from "./inputs/MarkerInformations";
+import { useDispatch } from 'react-redux';
+import { getStation } from '../actions/mapData';
 
 
 export default function ChargingMap(props) {
@@ -21,12 +23,15 @@ export default function ChargingMap(props) {
     const [map, setMap] = useState(null)
     const location = useGeoLocation();
     const [checked, setChecked] = React.useState(false);
+    const dispatch = useDispatch();
 
-    const handleOnMarkerClick = () => {
+    const handleOnMarkerClick = (id) => {
         if (props.checked) {
             props.setChecked(false)
         }
-        setChecked(prev => !prev)
+        setChecked(prev => !prev) 
+        dispatch(getStation(id))
+
     }
 
     const showMyLocation = () => {
@@ -89,7 +94,7 @@ export default function ChargingMap(props) {
         filteredStations.forEach(station => {
             latlngpairs.push(station.latLng)
             let coordinates = L.latLng(station.latLng[0], station.latLng[1]);
-            L.marker(coordinates, { icon: iconColor(station.maxPower) }).addTo(myMarkers).once('on click', () => handleOnMarkerClick())
+            L.marker(coordinates, { icon: iconColor(station.maxPower) }).addTo(myMarkers).on('on click', () => handleOnMarkerClick(station.id))
         })
     };
 

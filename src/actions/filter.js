@@ -122,6 +122,7 @@ export const loadFilter = () => (dispatch) => {
                 type: FILTER_LOAD,
                 payload: response,
             })
+            localStorage.setItem("savedFilters", JSON.stringify(response.data.filters));
             dispatch({
                 type: SET_MESSAGE,
                 payload: response.data.message,

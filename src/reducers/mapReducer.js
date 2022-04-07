@@ -8,25 +8,20 @@ import {
     FILTER_REMOVE,
     FILTER_PRESELECT,
     FILTER_LOAD,
+    GET_STATION,
 } from "../actions/types";
 
 const activeFilters = JSON.parse(localStorage.getItem("activeFilters"));
-const data = JSON.parse(localStorage.getItem("data"));
 const filteredData = JSON.parse(localStorage.getItem("filteredData"));
 const savedFilters = JSON.parse(localStorage.getItem("savedFilters"));
 
+
 const initialState = () => {
-    console.log(savedFilters)
-    let initData = [];
     let initFilteredData = [];
     let initSavedFilters = [];
 
     const initActiveFilters = activeFilters ? activeFilters : {};
 
-    if (data && data.length !== 0) {  
-        initData = data;   
-    } 
-        
     if (filteredData && filteredData.length !== 0) {
         initFilteredData = filteredData;
     }
@@ -37,9 +32,10 @@ const initialState = () => {
 
     return ({
         activeFilters: initActiveFilters,
-        data: initData,
+        data: [],
         filteredData: initFilteredData,
         savedFilters: initSavedFilters,
+        currentStation: {},
     })
 };
 
@@ -51,7 +47,7 @@ const filterState = (state, filter, preselect) => {
     } else {
         filters = { ...state.activeFilters, [filter[0]]: filter[1] }
     }
-
+    localStorage.setItem("activeFilters", JSON.stringify(filters));
     let filtered = state.data
 
     if (filters.filterKW) {
@@ -66,6 +62,7 @@ const filterState = (state, filter, preselect) => {
     if (filters.filterFreeToUse) {
         filtered = freeToUseFilter(filtered, filters.filterFreeToUse)
     }
+    localStorage.setItem("filteredData", JSON.stringify(filtered));
     return { filtered, filters };
 }
 
@@ -155,6 +152,8 @@ const mapReducer = (state = initialState(), action) => {
             }
         case FILTER_LOAD:
             return { ...state, savedFilters: payload.data.filters }
+        case GET_STATION:
+            return { ...state, currentStation: payload }
         default:
             return state;
     }
