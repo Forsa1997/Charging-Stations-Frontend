@@ -141,6 +141,7 @@ npm is required to run this app.
 * Login: https://charging-stations-backend.azurewebsites.net/login
 * Stations: https://charging-stations-backend.azurewebsites.net/stations
 * Filter: https://charging-stations-backend.azurewebsites.net/filter
+* Password: https://charging-stations-backend.azurewebsites.net/password
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
