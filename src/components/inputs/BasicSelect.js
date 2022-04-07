@@ -8,13 +8,15 @@ import Typography from "@mui/material/Typography";
 
 
 export default function BasicSelect(props) {
+
+    console.log(props)
     const [plugType, setPlugType] = React.useState('');
     const dispatch = useDispatch();
 
     const handleChange = (event, newPlugType) => {
         setPlugType(newPlugType);
         dispatch(filterPlug(newPlugType));
-
+    
     };
     return (
         <Box sx={{maxWidth: 300, pt: 3}}>

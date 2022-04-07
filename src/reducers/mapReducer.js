@@ -10,6 +10,7 @@ import {
     FILTER_LOAD,
     GET_STATION,
     RESET_FILTER,
+    LOGOUT,
 } from "../actions/types";
 
 const activeFilters = JSON.parse(localStorage.getItem("activeFilters"));
@@ -18,6 +19,7 @@ const savedFilters = JSON.parse(localStorage.getItem("savedFilters"));
 
 
 const initialState = () => {
+
     let initFilteredData = [];
     let initSavedFilters = [];
 
@@ -132,9 +134,11 @@ const mapReducer = (state = initialState(), action) => {
         case FILTER_PRESELECT:
             filterParams = filterState(state, [], payload);
             return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }           
-        case RESET_FILTER:
-            return { ...state, filteredData: state.data, activeFilters: {} }
-        case FILTER_SAVE:
+        
+            case RESET_FILTER:
+            return { ...state, data:[], filteredData: [], activeFilters: {} }
+        
+            case FILTER_SAVE:
             return {
                 ...state, savedFilters: [...state.savedFilters, {
                     ...state.activeFilters,
@@ -154,8 +158,12 @@ const mapReducer = (state = initialState(), action) => {
             }
         case FILTER_LOAD:
             return { ...state, savedFilters: payload.data.filters }
+        
         case GET_STATION:
             return { ...state, currentStation: payload }
+
+        case LOGOUT:
+            return { ...state, activeFilters:[],   savedFilters: [], filterdData: state.data  }
         default:
             return state;
     }

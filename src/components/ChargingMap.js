@@ -33,9 +33,11 @@ export default function ChargingMap(props) {
             setChecked(false) 
             setTimeout(() => {
                 setChecked(true)
-            }, 300);
+            }, 400);
         } else {
-            setChecked(true) 
+            setTimeout(() => {
+                setChecked(true)
+            }, 400);
         }
         dispatch(getStation(id))
 

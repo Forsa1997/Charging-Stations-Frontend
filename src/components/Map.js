@@ -20,40 +20,34 @@ import Divider from '@mui/material/Divider';
 import Button from "@mui/material/Button";
 import { useSelector } from 'react-redux';
 import { loadStations } from '../actions/mapData';
+import { RESET_FILTER } from '../actions/types';
 
 
 const Map = () => {
 
     const dispatch = useDispatch();
-
+    const filter = useSelector(state => state.mapReducer.activeFilters)
     if (useSelector(state => state.mapReducer.data.length===0)){
         dispatch(loadStations());
     }
  
     const [checked, setChecked] = React.useState(false);
-
     const plugTypes = [{ value: "type2", name: "Type 2" }, { value: "ccs", name: "CCS" }]
     const chargingProviders = referenceData.Operators
     const chargingFree = [{ value: "no", name: "No" }, { value: "yes", name: "Yes" }]
     const marks = [
-        {
-            value: 0,
-            label: '0KW',
-        },
-        {
-            value: 50,
-            label: '50KW',
-        },
-        {
-            value: 150,
-            label: '150KW',
-        },
-        {
-            value: 300,
-            label: '300KW',
-        },
+        { value: 0,label: '0KW', },
+        { value: 50,label: '50KW', },
+        { value: 150,label: '150KW', },
+        { value: 300,label: '300KW', },
     ];
 
+    const resetFilters = () => {
+        localStorage.clear();
+        dispatch({
+            type: RESET_FILTER,
+        })
+    }
 
     const handleOnMenuClick = () => {
         setChecked(prev => !prev);
@@ -76,7 +70,8 @@ const Map = () => {
                    height: 'calc(100vh - 68.31px - 68.31px)',
                    maxHeight: 'calc(100vh - 68.31px - 68.31px)',
                    display: 'flex',
-                   flexDirection: 'column'
+                   flexDirection: 'column',
+                   overflow: 'auto'
                }}
         >
             <Box>
@@ -87,7 +82,7 @@ const Map = () => {
             <Divider color={'grey'} sx={{mt: '23px' }}/>
             <BasicSlider marks={marks} max={300} min={0} steps={5} default={0} />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
-            <BasicSelect values={plugTypes} header="Plug Type" />
+            <BasicSelect values={plugTypes} header="Plug Type" default={filter? filter.Plugtype : []}/>
             <Divider color={'grey'} sx={{mt: '23px'}}/>
             <ChipSelect values={chargingProviders} header="Operator" />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
@@ -95,9 +90,8 @@ const Map = () => {
             <Divider color={'grey'} sx={{mt: '23px'}}/>
             <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
                 <SaveFilterDialog />
-                <Button color='secondary' variant="contained" size="medium">Reset Filters</Button>
+                <Button onClick={resetFilters}  color='secondary' variant="contained" size="medium">Reset Filters</Button>
             </Box>
-
         </Paper>
 
     )
@@ -118,8 +112,6 @@ const Map = () => {
                 <BookmarkButton />
             </Box>
         </StyledEngineProvider>
-
-
     )
 
 }

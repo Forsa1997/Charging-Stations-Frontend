@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
 import { filterPower } from '../../actions/filter';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 function valuetext(value) {
@@ -13,6 +13,8 @@ function valuetext(value) {
 
 export default function DiscreteSliderLabel(props) {
     let dispatch = useDispatch();
+    // const filter = useSelector(state => state.mapReducer.activeFilters.filterKW)
+    // console.log(filter)
     const [value, setValue] = React.useState(props.default);
 
     const handleSliderChange = (event, newValue) => {
