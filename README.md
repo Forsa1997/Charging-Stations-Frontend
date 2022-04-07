@@ -127,9 +127,7 @@ npm is required to run this app.
 ## Frontend and Backend URLs
 
 * Running web app url: https://ev-map.de or https://icy-flower-043c43d03.1.azurestaticapps.net
-<br />
 * Frontend repo: https://github.com/Forsa1997/Charging-Stations-Frontend
-<br />
 * Microservice (backend) repo: https://github.com/Forsa1997/Charging-Stations-Backend
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -140,11 +138,8 @@ npm is required to run this app.
 ## Microservice endpoints
 
 * Register: https://charging-stations-backend.azurewebsites.net/register
-<br />
 * Login: https://charging-stations-backend.azurewebsites.net/login
-<br />
 * Stations: https://charging-stations-backend.azurewebsites.net/stations
-<br />
 * Filter: https://charging-stations-backend.azurewebsites.net/filter
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -154,11 +149,8 @@ npm is required to run this app.
 ## Responsibilities of each Team member
 
 * [Kaan](https://github.com/kaano29): Did most of the Frontend Design, helped with the deployment to azure and the backend.
-<br />
 * [Nicolas](https://github.com/nicodewel): Did some Frontend, helped with the deployment to azure and created the backend.
-<br />
 * [Christoph](https://github.com/Forsa1997): Did some Frontend, helped with the deployment to azure and created the backend.
-<br />
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
