@@ -1,28 +1,173 @@
-This is our Charging Stations Map Frontend! You can see all the Charging Stations with our Application.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="src/assets/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-Front-end url: https://ev-map.de or https://icy-flower-043c43d03.1.azurestaticapps.net/
-Front-end repo: https://github.com/Forsa1997/Charging-Stations-Frontend
+<h3 align="center">Charging Stations</h3>
 
-Microservice endpoints: Register: https://charging-stations-backend.azurewebsites.net/register
-                        Login: https://charging-stations-backend.azurewebsites.net/login
-                        Stations: https://charging-stations-backend.azurewebsites.net/stations
-                        Filter: https://charging-stations-backend.azurewebsites.net/filter
-                        
-Microservice repo: https://github.com/Forsa1997/Charging-Stations-Backend
+  <p align="center">
+    This is our Charging Stations Map Frontend! You can see all the Charging Stations with our Application.
+    <br />
+    <br />
+    <a href="https://ev-map.de">View Demo</a>
+    
+  </p>
+</div>
 
-Responsibilities of each Teammember:
-                        Kaan: Did most of the Frontend Design, helped with the deployment to azure and the backend.
-                        Nicolas: Did some Frontend, helped with the deployment to azure and created the backend.
-                        Christoph: Did some Frontend, helped with the deployment to azure and created the backend.
 
-AdditionalDetails:
-                        Deployment: The Project is deployed on Azure.
-                        Build with: React.js, Spring Java, Postgresql
-                          Frontend: React, Redux, MaterialUI, Leaflet
-                          Backend: Spring Java, Spring Security, Gradle
-                          Dataprovider: OpenChargeMap
-                          
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+This is our project done in galvanize school. We are displaying all the available charging stations in germany for the time being.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+### Built With
+Frontend:
+* [React.js](https://reactjs.org/)
+* [Leaflet Map](https://react-leaflet.js.org/)
+* [Material UI](https://mui.com)
+<br />
+
+Backend
+* [Java](https://www.java.com/)
+* [Spring](https://spring.io/)
+* [Gradle](https://gradle.org/)
+<br />
+
+Database
+* [PostgreSQL](https://www.postgresql.org/)
+<br />
+
+Dataprovider
+* [OpenChargeMap](https://openchargemap.org/)
+<br />
+
+Deployment
+* [Microsoft Azure](https://azure.microsoft.com/)
+
+
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+Here is a quick guide to setup your environment and start the web app.
+
+### Prerequisites
+
+npm is required to run this app.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Forsa1997/Charging-Stations-Frontend.git
+   ```
+2. Switch to the repo folder
+   ```sh
+   cd Charging-Stations-Frontend/
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Start the app
+   ```js
+   npm start
+   ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+## Frontend and Backend URL's
+
+* Running web app url: https://ev-map.de or https://icy-flower-043c43d03.1.azurestaticapps.net
+<br />
+* Frontend repo: https://github.com/Forsa1997/Charging-Stations-Frontend
+<br />
+* Microservice (backend) repo: https://github.com/Forsa1997/Charging-Stations-Backend
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
+## Microservice endpoints
+
+* Register: https://charging-stations-backend.azurewebsites.net/register
+<br />
+* Login: https://charging-stations-backend.azurewebsites.net/login
+<br />
+* Stations: https://charging-stations-backend.azurewebsites.net/stations
+<br />
+* Filter: https://charging-stations-backend.azurewebsites.net/filter
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+## Responsibilities of each Teammember
+
+* [Kaan](https://github.com/kaano29): Did most of the Frontend Design, helped with the deployment to azure and the backend.
+<br />
+* [Nicolas](https://github.com/nicodewel): Did some Frontend, helped with the deployment to azure and created the backend.
+<br />
+* [Christoph](https://github.com/Forsa1997): Did some Frontend, helped with the deployment to azure and created the backend.
+<br />
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## Additional Details
+
 We invested much time into making the Application performant. Because we have so much data, we had big problems at the beginning.
 Most of the calculation is done by the backend, like api calls to the datasource and refining the result to ensure the frontend works fast.
 
-                        
+<p align="right">(<a href="#top">back to top</a>)</p>
