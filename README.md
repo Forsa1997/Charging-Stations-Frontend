@@ -1,11 +1,28 @@
-1 As User I want to see a welcome page, when I visit the main URL, so that I know what the application does. ✅
-4 As User I want a Navbar visible at all times, that helps me to navigate the web page. ✅
-    That the user is on the website	the home page loads	a navbar should be visible.
-    That the user is on the website	the usere clicks on a link in the navbar the page changes.
-    That the user is on the website	the usere clicks on a link in the navbar the url changes.
-    That the user is on the website	the usere clicks on a link in the navbar the navbar stays as it is.
-    That the user is on the website	the window gets resized smaller than the width of 
-    the nav elements the elements of the navbar get compressed into a burger menu
-2 As User I want to be able to create an account and login so that I can see my user information.
-3 As User I want a Button, that quickly moves me to my current position so I don´t need to write my position in the searchbar.
+This is our Charging Stations Map Frontend! You can see all the Charging Stations with our Application.
 
+Front-end url: https://ev-map.de or https://icy-flower-043c43d03.1.azurestaticapps.net/
+Front-end repo: https://github.com/Forsa1997/Charging-Stations-Frontend
+
+Microservice endpoints: Register: https://charging-stations-backend.azurewebsites.net/register
+                        Login: https://charging-stations-backend.azurewebsites.net/login
+                        Stations: https://charging-stations-backend.azurewebsites.net/stations
+                        Filter: https://charging-stations-backend.azurewebsites.net/filter
+                        
+Microservice repo: https://github.com/Forsa1997/Charging-Stations-Backend
+
+Responsibilities of each Teammember:
+                        Kaan: Did most of the Frontend Design, helped with the deployment to azure and the backend.
+                        Nicolas: Did some Frontend, helped with the deployment to azure and created the backend.
+                        Christoph: Did some Frontend, helped with the deployment to azure and created the backend.
+
+AdditionalDetails:
+                        Deployment: The Project is deployed on Azure.
+                        Build with: React.js, Spring Java, Postgresql
+                          Frontend: React, Redux, MaterialUI, Leaflet
+                          Backend: Spring Java, Spring Security, Gradle
+                          Dataprovider: OpenChargeMap
+                          
+We invested much time into making the Application performant. Because we have so much data, we had big problems at the beginning.
+Most of the calculation is done by the backend, like api calls to the datasource and refining the result to ensure the frontend works fast.
+
+                        
