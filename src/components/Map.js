@@ -5,12 +5,11 @@ import Collapse from "@mui/material/Collapse";
 import { StyledEngineProvider } from "@mui/material/styles";
 import BasicSlider from "./inputs/BasicSlider";
 import BasicSelect from "./inputs/BasicSelect";
+import FreeToUseSelect from "./inputs/FreeToUseSelect";
 import ChipSelect from "./inputs/ChipSelect";
 import referenceData from "../data/referenceData.json";
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from "@mui/material";
-import { GET_NEW_DATA } from '../actions/types';
-import stationData from "../data/stationData.json"
 import SaveFilterDialog from './inputs/SaveFilterDialog';
 import { useDispatch } from 'react-redux';
 import { Helmet } from "react-helmet";
@@ -20,43 +19,35 @@ import BookmarkButton from "./inputs/BookmarkButton"
 import Divider from '@mui/material/Divider';
 import Button from "@mui/material/Button";
 import { useSelector } from 'react-redux';
+import { loadStations } from '../actions/mapData';
+import { RESET_FILTER } from '../actions/types';
 
 
 const Map = () => {
 
     const dispatch = useDispatch();
-
-    if (useSelector(state => state.mapReducer.data.length===0)){ 
-        dispatch({
-            type: GET_NEW_DATA,
-            payload: stationData,
-        })
+    const filter = useSelector(state => state.mapReducer.activeFilters)
+    if (useSelector(state => state.mapReducer.data.length===0)){
+        dispatch(loadStations());
     }
  
     const [checked, setChecked] = React.useState(false);
-
     const plugTypes = [{ value: "type2", name: "Type 2" }, { value: "ccs", name: "CCS" }]
     const chargingProviders = referenceData.Operators
     const chargingFree = [{ value: "no", name: "No" }, { value: "yes", name: "Yes" }]
     const marks = [
-        {
-            value: 0,
-            label: '0KW',
-        },
-        {
-            value: 50,
-            label: '50KW',
-        },
-        {
-            value: 150,
-            label: '150KW',
-        },
-        {
-            value: 300,
-            label: '300KW',
-        },
+        { value: 0,label: '0KW', },
+        { value: 50,label: '50KW', },
+        { value: 150,label: '150KW', },
+        { value: 300,label: '300KW', },
     ];
 
+    const resetFilters = () => {
+        localStorage.clear();
+        dispatch({
+            type: RESET_FILTER,
+        })
+    }
 
     const handleOnMenuClick = () => {
         setChecked(prev => !prev);
@@ -79,7 +70,8 @@ const Map = () => {
                    height: 'calc(100vh - 68.31px - 68.31px)',
                    maxHeight: 'calc(100vh - 68.31px - 68.31px)',
                    display: 'flex',
-                   flexDirection: 'column'
+                   flexDirection: 'column',
+                   overflow: 'auto'
                }}
         >
             <Box>
@@ -90,17 +82,16 @@ const Map = () => {
             <Divider color={'grey'} sx={{mt: '23px' }}/>
             <BasicSlider marks={marks} max={300} min={0} steps={5} default={0} />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
-            <BasicSelect filterType="FILTER_PLUGTYPE" values={plugTypes} header="Plug Type" />
+            <BasicSelect values={plugTypes} header="Plug Type" default={filter? filter.Plugtype : []}/>
             <Divider color={'grey'} sx={{mt: '23px'}}/>
             <ChipSelect values={chargingProviders} header="Operator" />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
-            <BasicSelect filterType="FILTER_FREETOUSE" values={chargingFree} header="Free to use" />
+            <FreeToUseSelect values={chargingFree} header="Free to use" />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
             <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
                 <SaveFilterDialog />
-                <Button color='secondary' variant="contained" size="medium">Reset Filters</Button>
+                <Button onClick={resetFilters}  color='secondary' variant="contained" size="medium">Reset Filters</Button>
             </Box>
-
         </Paper>
 
     )
@@ -116,13 +107,11 @@ const Map = () => {
                 <Collapse orientation="horizontal" in={checked}>
                     {card}
                 </Collapse>
-                {!checked && <MapMenuButton handleOnMenuClick={handleOnMenuClick}/>}
+                <MapMenuButton handleOnMenuClick={handleOnMenuClick}/>
                 <ChargingMap checked={checked} setChecked={setChecked}/>
                 <BookmarkButton />
             </Box>
         </StyledEngineProvider>
-
-
     )
 
 }

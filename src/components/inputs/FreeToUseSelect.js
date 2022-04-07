@@ -7,25 +7,25 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Typography from "@mui/material/Typography";
 
 
-export default function BasicSelect(props) {
-
-    console.log(props)
-    const [plugType, setPlugType] = React.useState('');
+export default function FreeToUseSelect(props) {
+    const [freeToUse, setFreeToUse] = React.useState('');
     const dispatch = useDispatch();
 
-    const handleChange = (event, newPlugType) => {
-        setPlugType(newPlugType);
-        dispatch(filterPlug(newPlugType));
-    
+    const test = (event, newFreeToUse) => {
+        setFreeToUse(newFreeToUse)
+        dispatch(filterFreeToUse(newFreeToUse));
     };
+
+
     return (
         <Box sx={{maxWidth: 300, pt: 3}}>
             <Typography gutterBottom>{props.header}</Typography>
 
             <ToggleButtonGroup
                 color="primary"
-                value={plugType}
-                onChange={handleChange}
+                exclusive
+                value={freeToUse}
+                onChange={test}
             >
                 {props.values.map((input, index) => {
                     return (

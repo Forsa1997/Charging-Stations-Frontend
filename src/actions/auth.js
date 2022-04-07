@@ -79,6 +79,7 @@ export const login = (username, password) => (dispatch) => {
 
 export const logout = () => (dispatch) => {
     AuthService.logout();
+    localStorage.clear();
     dispatch({
         type: LOGOUT,
     });

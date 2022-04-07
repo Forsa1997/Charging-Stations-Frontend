@@ -1,3 +1,4 @@
+
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -15,3 +16,5 @@ export const FILTER_SAVE = "FILTER_SAVE"
 export const FILTER_REMOVE = "FILTER_REMOVE"
 export const FILTER_PRESELECT = "FILTER_PRESELECT";
 export const FILTER_LOAD = "FILTER_LOAD";
+export const GET_STATION = "GET_STATION";
+export const RESET_FILTER = "RESET_FILTER";

@@ -9,11 +9,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import {useNavigate} from 'react-router-dom';
-import {useDispatch, useSelector} from "react-redux";
-import {logout} from '../actions/auth';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from '../actions/auth';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import logo from '../assets/logo.png'
+import Fab from '@mui/material/Fab';
 import MapSharpIcon from '@mui/icons-material/MapSharp';
 
 const logoutText = "Logout";
@@ -52,77 +53,73 @@ const Nav = () => {
     };
 
     return (
-        <AppBar position="sticky" sx={{zIndex: 100, maxWidth: '100vw'}}>
-                <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', paddingRight: {xs: '15px'}}}>
-                    <Typography
-                        className='logoButton'
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{display: {xs: 'none', md: 'flex'}, cursor: 'pointer'}}
-                        onClick={() => handleCloseNavMenu()}
+        <AppBar position="sticky" sx={{ zIndex: 100, maxWidth: '100vw' }}>
+            <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', paddingRight: { xs: '15px' } }}>
+            
+                    <Fab color='darkerPrimary' size='medium' sx={{marginLeft: 1, display: { xs: 'none', md: 'block' }}} onClick={handleRegisterButton} ><img src={logo} alt="logo" 
+                        style={{ width: 30, height: 30, marginTop: '3px' }} /></Fab>
+                {pages.map((page) => (
+                    <Fab 
+                        color='secondary'
+                        variant="extended"
+                        className="menuButtonNav"
+                        size='small'
+                        key={page}
+                        onClick={() => handleCloseNavMenu(page)}
+                        sx={{ my: 2, marginLeft: 1, display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}
                     >
-                        <Button><img src={logo} alt="logo" onClick={handleRegisterButton}
-                                     style={{width: 40, height: 40}}/></Button>
-                    </Typography>
+                        {page}{' '}<MapSharpIcon />
+                    </Fab>
+                ))}
+                <Fab color='darkerPrimary' size='medium' sx={{ display: { xs: 'block', md: 'none' }, right: '14px' }}><img src={logo} alt="logo" onClick={handleRegisterButton}
+                    style={{ width: 30, height: 30, marginTop: '3px' }} /></Fab>
+                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     {pages.map((page) => (
-                        <Button
-                            variant="contained"
+                        <Fab 
+                            color='secondary'
+                            variant="extended"
                             className="menuButtonNav"
+                            size='small'
                             key={page}
                             onClick={() => handleCloseNavMenu(page)}
-                            sx={{my: 2, color: 'white', display: {xs: 'flex', md: 'none'}, alignItems: 'center'}}
+                            sx={{ my: 2, marginLeft: 1, display: 'flex', alignItems: 'center' }}
                         >
-                            {page} <MapSharpIcon />
-                        </Button>
+                            {page}{' '}<MapSharpIcon />
+                        </Fab>
                     ))}
-                    <Button sx={{display: {xs: 'block', md: 'none'}}}><img src={logo} alt="logo" onClick={handleRegisterButton}
-                                 style={{width: 37, height: 37, paddingRight: '3px'}}/></Button>
-                    <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-                        {pages.map((page) => (
-                            <Button
-                                variant="contained"
-                                className="menuButtonNav"
-                                key={page}
-                                onClick={() => handleCloseNavMenu(page)}
-                                sx={{my: 2, color: 'white', display: 'flex', alignItems: 'center'}}
-                            >
-                                {page} <MapSharpIcon />
-                            </Button>
-                        ))}
-                    </Box>
+                </Box>
 
-                    <Box sx={{flexGrow: 0}}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{p: 0, boxShadow: '0px 0px 8px #072895', marginLeft: '7.5px'}}>
-                                {user === null ? <Avatar sx={{bgcolor: '#1565c0'}}><PersonOutlineIcon/></Avatar> :
-                                    <Avatar {...stringAvatar(`${user.firstName} ${user.lastName}`)}/>}
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{mt: '45px'}}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={() => handleCloseNavMenu(setting)}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                </Toolbar>
+                <Box sx={{ flexGrow: 0 }}>
+                    <Tooltip title="Open settings">
+                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, boxShadow: '0px 0px 8px #072895', marginLeft: '7.5px' }}>
+                            {user === null ? <Avatar sx={{ bgcolor: '#1565c0' }}><PersonOutlineIcon /></Avatar> :
+                                <Avatar {...stringAvatar(`${user.firstName} ${user.lastName}`)} />}
+                        </IconButton>
+                    </Tooltip>
+                    <Menu
+                        sx={{ mt: '45px' }}
+                        id="menu-appbar"
+                        anchorEl={anchorElUser}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        open={Boolean(anchorElUser)}
+                        onClose={handleCloseUserMenu}
+                    >
+                        {settings.map((setting) => (
+                            <MenuItem key={setting} onClick={() => handleCloseNavMenu(setting)}>
+                                <Typography textAlign="center">{setting}</Typography>
+                            </MenuItem>
+                        ))}
+                    </Menu>
+                </Box>
+            </Toolbar>
         </AppBar>
     );
 };
