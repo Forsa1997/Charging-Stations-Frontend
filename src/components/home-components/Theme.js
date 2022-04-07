@@ -8,7 +8,7 @@ const rawTheme = createTheme({
         },
         darkerPrimary: {
             main: '#1269ec'
-        },
+        }, 
         secondary: {
             main: '#ff007b'
         },

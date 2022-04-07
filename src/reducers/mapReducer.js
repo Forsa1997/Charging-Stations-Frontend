@@ -9,6 +9,7 @@ import {
     FILTER_PRESELECT,
     FILTER_LOAD,
     GET_STATION,
+    RESET_FILTER,
 } from "../actions/types";
 
 const activeFilters = JSON.parse(localStorage.getItem("activeFilters"));
@@ -82,16 +83,16 @@ const plugTypeFilter = (data, filter) => {
 }
 
 const freeToUseFilter = (data, filter) => {
-    if (filter.length === 1) {
-        switch (filter[0]) {
-            case "yes":
-                return data.filter(station => [0, 1, 2, 3, 5].includes(station.usageTypeID));
-            case "no":
-                return data.filter(station => [4, 6, 7].includes(station.usageTypeID));
-            default:
-                break;
-        }
+
+    switch (filter) {
+        case "no":
+            return data.filter(station => [0, 1, 2, 3, 5].includes(station.usageTypeID));
+        case "yes":
+            return data.filter(station => [4, 6, 7].includes(station.usageTypeID));
+        default:
+            break;
     }
+
     return data;
 }
 
@@ -130,8 +131,9 @@ const mapReducer = (state = initialState(), action) => {
 
         case FILTER_PRESELECT:
             filterParams = filterState(state, [], payload);
-            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
-
+            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }           
+        case RESET_FILTER:
+            return { ...state, filteredData: state.data, activeFilters: {} }
         case FILTER_SAVE:
             return {
                 ...state, savedFilters: [...state.savedFilters, {

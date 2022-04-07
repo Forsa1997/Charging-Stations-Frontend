@@ -13,16 +13,9 @@ export default function BasicSelect(props) {
 
     const handleChange = (event, newPlugType) => {
         setPlugType(newPlugType);
-        switch (props.filterType) {
-            case "FILTER_PLUGTYPE":
-                dispatch(filterPlug(newPlugType));
-                break;
-            default:
-                ;
-        }
+        dispatch(filterPlug(newPlugType));
+
     };
-
-
     return (
         <Box sx={{maxWidth: 300, pt: 3}}>
             <Typography gutterBottom>{props.header}</Typography>

@@ -5,7 +5,7 @@ import Collapse from "@mui/material/Collapse";
 import { StyledEngineProvider } from "@mui/material/styles";
 import BasicSlider from "./inputs/BasicSlider";
 import BasicSelect from "./inputs/BasicSelect";
-import BasicSelectFreeToUse from "./inputs/BasicSelect";
+import FreeToUseSelect from "./inputs/FreeToUseSelect";
 import ChipSelect from "./inputs/ChipSelect";
 import referenceData from "../data/referenceData.json";
 import CloseIcon from '@mui/icons-material/Close';
@@ -87,11 +87,11 @@ const Map = () => {
             <Divider color={'grey'} sx={{mt: '23px' }}/>
             <BasicSlider marks={marks} max={300} min={0} steps={5} default={0} />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
-            <BasicSelect filterType="FILTER_PLUGTYPE" values={plugTypes} header="Plug Type" />
+            <BasicSelect values={plugTypes} header="Plug Type" />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
             <ChipSelect values={chargingProviders} header="Operator" />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
-            <BasicSelectFreeToUse filterType="FILTER_FREETOUSE" values={chargingFree} header="Free to use" />
+            <FreeToUseSelect values={chargingFree} header="Free to use" />
             <Divider color={'grey'} sx={{mt: '23px'}}/>
             <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
                 <SaveFilterDialog />

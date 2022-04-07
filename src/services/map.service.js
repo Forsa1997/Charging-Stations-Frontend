@@ -9,7 +9,7 @@ const loadStations = async () => {
 }
 
 const getStation = async (id) => {
-    let apiUrl =  "https://api.openchargemap.io/v3/poi/?output=json&maxresults=1&chargepointid=" + id + "&key=326ba9d9-34a9-4031-9408-c17a289623b2"
+    let apiUrl =  "https://api.openchargemap.io/v3/poi/?output=json&camelcase=true&maxresults=1&chargepointid=" + id + "&key=326ba9d9-34a9-4031-9408-c17a289623b2"
     return await axios.get(apiUrl)
 }
 

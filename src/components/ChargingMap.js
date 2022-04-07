@@ -27,11 +27,22 @@ export default function ChargingMap(props) {
 
     const handleOnMarkerClick = (id) => {
         if (props.checked) {
-            props.setChecked(false)
+            props.setChecked(false) 
         }
-        setChecked(prev => !prev) 
+        if (checked) {
+            setChecked(false) 
+            setTimeout(() => {
+                setChecked(true)
+            }, 300);
+        } else {
+            setChecked(true) 
+        }
         dispatch(getStation(id))
 
+    }
+
+    const handleOnCloseClick = () => {
+        setChecked(false) 
     }
 
     const showMyLocation = () => {
@@ -94,9 +105,12 @@ export default function ChargingMap(props) {
         filteredStations.forEach(station => {
             latlngpairs.push(station.latLng)
             let coordinates = L.latLng(station.latLng[0], station.latLng[1]);
-            L.marker(coordinates, { icon: iconColor(station.maxPower) }).addTo(myMarkers).on('on click', () => handleOnMarkerClick(station.id))
+            let popup = '<b>' + station.addressTitle + '</b>' + '<br />' + station.addressStreet + '<br />' + station.addressTown + '<br />' + 'Maximal Power: ' + station.maxPower + 'kW'
+            L.marker(coordinates, { icon: iconColor(station.maxPower) }).bindPopup(popup).addTo(myMarkers).on('on click', () => handleOnMarkerClick(station.id))
         })
     };
+
+
 
     if (latlngpairs.length > 0) {
         const bounds = L.latLngBounds(latlngpairs.map((c) => {
@@ -129,7 +143,7 @@ export default function ChargingMap(props) {
                 <MyLocationIcon />
             </Fab>
             <Collapse orientation="horizontal" in={checked}>
-                <MarkerInformations handleOnMarkerClick={handleOnMarkerClick} />
+                <MarkerInformations handleOnCloseClick={handleOnCloseClick} />
             </Collapse>
         </div>
     )
