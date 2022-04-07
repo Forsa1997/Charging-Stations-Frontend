@@ -23,4 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock
 
-/.idea
+# User-specific stuff:
+.idea/workspace.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/google-java-format.xml
+.idea/Charging-Stations-Frontend.iml
