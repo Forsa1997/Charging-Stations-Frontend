@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="383120cf-6c76-49b2-9b05-ea96ad1147f5" name="Changes" comment="merge">
-      <change afterPath="$PROJECT_DIR$/src/assets/home-screenshot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/map-screenshot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -78,7 +76,7 @@
       <workItem from="1649146267924" duration="21065000" />
       <workItem from="1649241676002" duration="1130000" />
       <workItem from="1649245898451" duration="6985000" />
-      <workItem from="1649320582109" duration="4531000" />
+      <workItem from="1649320582109" duration="4605000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <created>1649087819070</created>

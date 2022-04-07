@@ -35,7 +35,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#frontend-and-backend-urls's">Frontend and Backend URL's</a></li>
+    <li><a href="#frontend-and-backend-urls">Frontend and Backend URLs</a></li>
     <li><a href="#microservice-endpoints">Microservice endpoints</a></li>
     <li><a href="#responsibilities-of-each-teammember">Responsibilities of each team member</a></li>
     <li><a href="#additional-detail">Additional Details</a></li>
@@ -123,8 +123,8 @@ npm is required to run this app.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<!-- FRONTEND AND BACKEND URL'S -->
-## Frontend and Backend URL's
+<!-- FRONTEND AND BACKEND URLs -->
+## Frontend and Backend URLs
 
 * Running web app url: https://ev-map.de or https://icy-flower-043c43d03.1.azurestaticapps.net
 <br />
