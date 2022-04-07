@@ -107,7 +107,7 @@ export default function ChargingMap(props) {
         filteredStations.forEach(station => {
             latlngpairs.push(station.latLng)
             let coordinates = L.latLng(station.latLng[0], station.latLng[1]);
-            let popup = '<b>' + station.addressTitle + '</b>' + '<br />' + station.addressStreet + '<br />' + station.addressTown + '<br />' + 'Maximal Power: ' + station.maxPower + 'kW'
+            let popup = '<b>' + station.addressTitle + '</b><br />' + station.addressStreet + '<br />' + station.addressTown + '<br />Maximal Power: ' + station.maxPower + 'kW'
             L.marker(coordinates, { icon: iconColor(station.maxPower) }).bindPopup(popup).addTo(myMarkers).on('on click', () => handleOnMarkerClick(station.id))
         })
     };

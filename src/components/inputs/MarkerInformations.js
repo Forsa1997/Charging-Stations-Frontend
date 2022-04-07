@@ -5,15 +5,13 @@ import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from '../home-components/Typography';
-import { useDispatch, useSelector } from 'react-redux';
-import { getStation, loadStations } from '../../actions/mapData';
+import { useSelector } from 'react-redux';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import PowerTwoToneIcon from '@mui/icons-material/PowerTwoTone';
 import EuroSharpIcon from '@mui/icons-material/EuroSharp';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
 import { Link } from '@mui/material';
-import { Container } from '@mui/material';
 
 export default function MarkerInformations(props) {
 

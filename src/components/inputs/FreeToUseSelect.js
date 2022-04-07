@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import {filterPlug, filterFreeToUse} from '../../actions/filter';
+import { filterFreeToUse} from '../../actions/filter';
 import {useDispatch} from 'react-redux';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
