@@ -35,12 +35,10 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#frontend-and-backend-urls's">Frontend and Backend URL's</a></li>
+    <li><a href="#microservice-endpoints">Microservice endpoints</a></li>
+    <li><a href="#responsibilities-of-each-teammember">Responsibilities of each team member</a></li>
+    <li><a href="#additional-detail">Additional Details</a></li>
   </ol>
 </details>
 
@@ -49,7 +47,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="src/assets/home-screenshot.png" alt="Logo" width="686,7" height="474,6">
+<img src="src/assets/map-screenshot.png" alt="Logo" width="686,7" height="474,6">
+
 
 This is our project done in galvanize school. We are displaying all the available charging stations in germany for the time being.
 
@@ -123,7 +123,7 @@ npm is required to run this app.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
+<!-- FRONTEND AND BACKEND URL'S -->
 ## Frontend and Backend URL's
 
 * Running web app url: https://ev-map.de or https://icy-flower-043c43d03.1.azurestaticapps.net
@@ -136,7 +136,7 @@ npm is required to run this app.
 
 
 
-<!-- ROADMAP -->
+<!-- MICROSERVICE ENDPOINTS -->
 ## Microservice endpoints
 
 * Register: https://charging-stations-backend.azurewebsites.net/register
@@ -150,8 +150,8 @@ npm is required to run this app.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-## Responsibilities of each Teammember
+<!-- RESPONSIBILITIES OF EACH TEAM MEMBER -->
+## Responsibilities of each Team member
 
 * [Kaan](https://github.com/kaano29): Did most of the Frontend Design, helped with the deployment to azure and the backend.
 <br />
@@ -164,10 +164,12 @@ npm is required to run this app.
 
 
 
-<!-- LICENSE -->
-## Additional Details
+<!-- ADDITIONAL DETAILS -->
+## Additional details
 
 We invested much time into making the Application performant. Because we have so much data, we had big problems at the beginning.
 Most of the calculation is done by the backend, like api calls to the datasource and refining the result to ensure the frontend works fast.
+<br />
+Our web application is full responsive and supports all devices with any size.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
