@@ -20,7 +20,7 @@ export default function DiscreteSliderLabel(props) {
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
     };
-    
+
 
     return (
         <Box sx={{ width: '100%', pt: 3 }} >
@@ -36,7 +36,7 @@ export default function DiscreteSliderLabel(props) {
                 min={props.min}
                 max={props.max}
                 onChange={handleSliderChange}
-                onMouseUp={() => dispatch(filterPower(value))}              
+                onMouseUp={() => dispatch(filterPower(value))}
             />
         </Box>
     );

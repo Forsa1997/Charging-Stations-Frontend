@@ -39,14 +39,14 @@ export const filterPlug = (plug) => (dispatch) => {
         type: FILTER_PLUGTYPE,
         payload,
     })
-}    
+}
 
 export const filterOperators = (operators) => (dispatch) => {
     dispatch({
         type: FILTER_OPERATOR,
         payload: operators,
-    })    
-}        
+    })
+}
 
 export const filterFreeToUse = (isFreeToUse) => (dispatch) => {
     dispatch({
@@ -61,28 +61,28 @@ export const saveFilter = (filter) => (dispatch) => {
             dispatch({
                 type: FILTER_SAVE,
                 payload: filter,
-            })    
+            })
             dispatch({
                 type: SET_MESSAGE,
                 payload: response.data.message,
-            });    
+            });
             return Promise.resolve();
-        },    
+        },
         (error) => {
             const message =
                 (error.response &&
                     error.response.data &&
                     error.response.data.message) ||
-                error.message ||    
+                error.message ||
                 error.toString();
             dispatch({
                 type: SET_MESSAGE,
                 payload: message,
-            });    
+            });
             return Promise.reject();
-        }    
-    );    
-};    
+        }
+    );
+};
 
 export const removeFilter = (filterName) => (dispatch) => {
 

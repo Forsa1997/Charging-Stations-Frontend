@@ -27,23 +27,22 @@ const Map = () => {
 
     const dispatch = useDispatch();
     const filter = useSelector(state => state.mapReducer.activeFilters)
-    if (useSelector(state => state.mapReducer.data.length===0)){
+    if (useSelector(state => state.mapReducer.data.length === 0)) {
         dispatch(loadStations());
     }
- 
+
     const [checked, setChecked] = React.useState(false);
     const plugTypes = [{ value: "type2", name: "Type 2" }, { value: "ccs", name: "CCS" }]
     const chargingProviders = referenceData.Operators
     const chargingFree = [{ value: "no", name: "No" }, { value: "yes", name: "Yes" }]
     const marks = [
-        { value: 0,label: '0KW', },
-        { value: 50,label: '50KW', },
-        { value: 150,label: '150KW', },
-        { value: 300,label: '300KW', },
+        { value: 0, label: '0KW', },
+        { value: 50, label: '50KW', },
+        { value: 150, label: '150KW', },
+        { value: 300, label: '300KW', },
     ];
 
     const resetFilters = () => {
-        localStorage.clear();
         dispatch({
             type: RESET_FILTER,
         })
@@ -55,42 +54,42 @@ const Map = () => {
 
     const card = (
         <Paper elevation={6}
-               sx={{
-                   m: 0,
-                   position: 'relative',
-                   bgcolor: 'white',
-                   p: 4,
-                   border: '1px solid grey',
-                   borderBottom: 0,
-                   borderTop: 0,
-                   borderLeft: 0,
-                   width: {sm: '19vw', xs: 'calc(100vw - 65px)'},
-                   minWidth: '286.480px',
-                   zIndex: 2,
-                   height: 'calc(100vh - 68.31px - 68.31px)',
-                   maxHeight: 'calc(100vh - 68.31px - 68.31px)',
-                   display: 'flex',
-                   flexDirection: 'column',
-                   overflow: 'auto'
-               }}
+            sx={{
+                m: 0,
+                position: 'relative',
+                bgcolor: 'white',
+                p: 4,
+                border: '1px solid grey',
+                borderBottom: 0,
+                borderTop: 0,
+                borderLeft: 0,
+                width: { sm: '19vw', xs: 'calc(100vw - 65px)' },
+                minWidth: '286.480px',
+                zIndex: 2,
+                height: 'calc(100vh - 68.31px - 68.31px)',
+                maxHeight: 'calc(100vh - 68.31px - 68.31px)',
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'auto'
+            }}
         >
             <Box>
                 <IconButton sx={{ float: 'right', mt: -3, mb: 2 }} onClick={handleOnMenuClick}>
                     <CloseIcon color='grey' fontSize='large' />
                 </IconButton>
             </Box>
-            <Divider color={'grey'} sx={{mt: '23px' }}/>
+            <Divider color={'grey'} sx={{ mt: '23px' }} />
             <BasicSlider marks={marks} max={300} min={0} steps={5} default={0} />
-            <Divider color={'grey'} sx={{mt: '23px'}}/>
-            <BasicSelect values={plugTypes} header="Plug Type" default={filter? filter.Plugtype : []}/>
-            <Divider color={'grey'} sx={{mt: '23px'}}/>
+            <Divider color={'grey'} sx={{ mt: '23px' }} />
+            <BasicSelect values={plugTypes} header="Plug Type" default={filter ? filter.Plugtype : []} />
+            <Divider color={'grey'} sx={{ mt: '23px' }} />
             <ChipSelect values={chargingProviders} header="Operator" />
-            <Divider color={'grey'} sx={{mt: '23px'}}/>
+            <Divider color={'grey'} sx={{ mt: '23px' }} />
             <FreeToUseSelect values={chargingFree} header="Free to use" />
-            <Divider color={'grey'} sx={{mt: '23px'}}/>
+            <Divider color={'grey'} sx={{ mt: '23px' }} />
             <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
                 <SaveFilterDialog />
-                <Button onClick={resetFilters}  color='secondary' variant="contained" size="medium">Reset Filters</Button>
+                <Button onClick={resetFilters} color='secondary' variant="contained" size="medium">Reset Filters</Button>
             </Box>
         </Paper>
 
@@ -107,8 +106,8 @@ const Map = () => {
                 <Collapse orientation="horizontal" in={checked}>
                     {card}
                 </Collapse>
-                <MapMenuButton handleOnMenuClick={handleOnMenuClick}/>
-                <ChargingMap checked={checked} setChecked={setChecked}/>
+                <MapMenuButton handleOnMenuClick={handleOnMenuClick} />
+                <ChargingMap checked={checked} setChecked={setChecked} />
                 <BookmarkButton />
             </Box>
         </StyledEngineProvider>

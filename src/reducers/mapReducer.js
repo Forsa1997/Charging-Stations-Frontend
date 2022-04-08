@@ -133,12 +133,17 @@ const mapReducer = (state = initialState(), action) => {
 
         case FILTER_PRESELECT:
             filterParams = filterState(state, [], payload);
-            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }           
-        
-            case RESET_FILTER:
-            return { ...state, data:[], filteredData: [], activeFilters: {} }
-        
-            case FILTER_SAVE:
+            return { ...state, filteredData: filterParams.filtered, activeFilters: filterParams.filters }
+
+        case RESET_FILTER:
+            return { ...state, filteredData: state.data, activeFilters: {} }
+
+        case FILTER_SAVE:
+            localStorage.setItem("savedFilters", JSON.stringify([...state.savedFilters, {
+                ...state.activeFilters,
+                name: payload.name,
+                userId: payload.userId,
+            }]));
             return {
                 ...state, savedFilters: [...state.savedFilters, {
                     ...state.activeFilters,
@@ -153,17 +158,18 @@ const mapReducer = (state = initialState(), action) => {
                     newSavedFilters = [...newSavedFilters, filter]
                 }
             })
+            localStorage.setItem("savedFilters", JSON.stringify(newSavedFilters))
             return {
                 ...state, savedFilters: newSavedFilters
             }
         case FILTER_LOAD:
             return { ...state, savedFilters: payload.data.filters }
-        
+
         case GET_STATION:
             return { ...state, currentStation: payload }
 
         case LOGOUT:
-            return { ...state, activeFilters:[],   savedFilters: [], filterdData: state.data  }
+            return { ...state, activeFilters: [], savedFilters: [], filterdData: state.data }
         default:
             return state;
     }

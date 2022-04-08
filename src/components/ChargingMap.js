@@ -1,4 +1,4 @@
-import { MapContainer, Marker, TileLayer, ZoomControl } from 'react-leaflet';
+import { MapContainer, TileLayer, ZoomControl } from 'react-leaflet';
 // eslint-disable-next-line
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from "leaflet";
@@ -27,10 +27,10 @@ export default function ChargingMap(props) {
 
     const handleOnMarkerClick = (id) => {
         if (props.checked) {
-            props.setChecked(false) 
+            props.setChecked(false)
         }
         if (checked) {
-            setChecked(false) 
+            setChecked(false)
             setTimeout(() => {
                 setChecked(true)
             }, 400);
@@ -44,7 +44,7 @@ export default function ChargingMap(props) {
     }
 
     const handleOnCloseClick = () => {
-        setChecked(false) 
+        setChecked(false)
     }
 
     const showMyLocation = () => {
@@ -129,9 +129,6 @@ export default function ChargingMap(props) {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {location.loaded && !location.error && (
-                    <Marker position={[location.coordinates.lat, location.coordinates.lng]} />
-                )}
                 <ZoomControl position={"bottomright"} />
                 <SearchField />
             </MapContainer>
