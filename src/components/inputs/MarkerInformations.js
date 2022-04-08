@@ -92,9 +92,9 @@ export default function MarkerInformations(props) {
                 <Divider color={'grey'} sx={{ mt: '23px' }} />
                 {data.connections.map(conn => {
                     return <div style={{ marginTop: '25px', boxShadow: 'rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px' }}>
-                        <Typography sx={{ mt: '4px', mb: '4px', display: 'flex', alignItems: 'center' }} variant="subtitle1">Status:&nbsp;{statusAvailable(conn.statusType.isOperational)}</Typography>
-                        <Typography sx={{ mt: '4px', mb: '4px', display: 'flex', alignItems: 'center' }} variant="subtitle1"><ElectricBoltIcon color={calcAvailable(conn.statusType.isOperational)} />{conn.powerKW + " kW   "}</Typography>
-                        <Typography sx={{ mt: '4px', mb: '4px', display: 'flex', alignItems: 'center' }} variant="subtitle1"><PowerTwoToneIcon color={calcAvailable(conn.statusType.isOperational)} />{calculatePlug(conn.connectionType)}</Typography>
+                        <Typography sx={{ mt: '4px', mb: '4px', display: 'flex', alignItems: 'center' }} variant="subtitle1">Status:&nbsp;{statusAvailable(conn.statusType ? conn.statusType.isOperational : false)}</Typography>
+                        <Typography sx={{ mt: '4px', mb: '4px', display: 'flex', alignItems: 'center' }} variant="subtitle1"><ElectricBoltIcon color={calcAvailable(conn.statusType ? conn.statusType.isOperational : false)} />{conn.powerKW + " kW   "}</Typography>
+                        <Typography sx={{ mt: '4px', mb: '4px', display: 'flex', alignItems: 'center' }} variant="subtitle1"><PowerTwoToneIcon color={calcAvailable(conn.statusType ? conn.statusType.isOperational : false)} />{calculatePlug(conn.connectionType)}</Typography>
                     </div >
                 })}
                 <Divider color={'grey'} sx={{ mt: '23px', mb: '23px' }} />

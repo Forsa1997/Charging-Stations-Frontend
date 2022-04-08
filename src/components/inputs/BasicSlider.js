@@ -33,7 +33,7 @@ export default function BasicSlider(props) {
                 min={props.min}
                 max={props.max}
                 onChange={handleSliderChange}
-                onMouseUp={() => dispatch(filterPower(props.inputState))}
+                onMouseUp={() => dispatch(filterPower(props.inputState.slider))}
             />
         </Box>
     );

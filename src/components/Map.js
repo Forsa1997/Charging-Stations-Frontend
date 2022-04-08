@@ -25,7 +25,7 @@ import { RESET_FILTER } from '../actions/types';
 const Map = () => {
 
     const dispatch = useDispatch();
-    const filter = useSelector(state => state.mapReducer.activeFilters)
+    const filter = useSelector(state => state.mapReducer.activeFilters);
     if (useSelector(state => state.mapReducer.data.length === 0)) {
         dispatch(loadStations());
     }
@@ -48,6 +48,12 @@ const Map = () => {
         })
         setInputState({ slider: 0, plugType: [], providerName: [], freeToUse: '' })
     }
+
+    const loadFilter = () => {
+        console.log(filter)
+    }
+
+
 
     const handleOnMenuClick = () => {
         setChecked(prev => !prev);
@@ -109,7 +115,7 @@ const Map = () => {
                 </Collapse>
                 <MapMenuButton handleOnMenuClick={handleOnMenuClick} />
                 <ChargingMap checked={checked} setChecked={setChecked} />
-                <BookmarkButton />
+                <BookmarkButton loadFilter={loadFilter} />
             </Box>
         </StyledEngineProvider>
     )

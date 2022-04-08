@@ -9,7 +9,7 @@ import Typography from '../home-components/Typography';
 import { useSelector, useDispatch } from 'react-redux';
 import { FILTER_PRESELECT } from '../../actions/types';
 
-export default function BookmarkButton() {
+export default function BookmarkButton(props) {
 
     const filters = useSelector(state => state.mapReducer.savedFilters);
     const dispatch = useDispatch();
@@ -18,6 +18,7 @@ export default function BookmarkButton() {
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+
     };
 
     const handleClose = () => {
@@ -25,19 +26,20 @@ export default function BookmarkButton() {
     };
 
     const handleFilterSelection = (filter) => {
-        dispatch ({
+        dispatch({
             type: FILTER_PRESELECT,
             payload: filter
         })
+        props.loadFilter()
     }
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
     return (
-        <Box sx={{m: 1, position: 'absolute', zIndex: 1, right: 0}}>
+        <Box sx={{ m: 1, position: 'absolute', zIndex: 1, right: 0 }}>
             <Fab color="secondary" size="large" onClick={handleClick}>
-                <BookmarksSharpIcon/>
+                <BookmarksSharpIcon />
             </Fab>
             <Popover
                 id={id}
