@@ -79,7 +79,7 @@ export default function MarkerInformations(props) {
 
     return (
         station.data ?
-            <Paper elevation={6} sx={paperSx} style={{ overflow: 'auto'}}>
+            <Paper elevation={6} sx={paperSx} style={{ overflow: 'auto' }}>
                 <Box>
                     <IconButton sx={{ float: 'right', mt: -3, mb: 2 }} onClick={props.handleOnCloseClick}>
                         <CloseIcon color='grey' fontSize='large' />
@@ -98,7 +98,7 @@ export default function MarkerInformations(props) {
                     </div >
                 })}
                 <Divider color={'grey'} sx={{ mt: '23px', mb: '23px' }} />
-                {data.operatorInfo ? <Link sx={{ mt: '4px', mb: '4px' }} href={data.operatorInfo.websiteURL} variant="subtitle1">{data.operatorInfo.title}</Link>
+                {data.operatorInfo ? <Link sx={{ mt: '4px', mb: '4px' }} target="_blank" href={data.operatorInfo.websiteURL} variant="subtitle1">{data.operatorInfo.title}</Link>
                     : <Typography sx={{ mt: '4px', mb: '4px' }} variant="subtitle1">{data.operatorInfo ? data.operatorInfo : 'No Operator Info'}</Typography>
                 }
                 <Typography sx={{ mt: '4px', mb: '4px', display: 'flex', alignItems: 'center' }} variant="subtitle1"><EuroSharpIcon />{paymentRequired(data.usageTypeID)}</Typography>

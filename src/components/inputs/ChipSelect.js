@@ -32,20 +32,20 @@ function getStyles(name, providerName, theme) {
 
 export default function MultipleSelectChip(props) {
   const theme = useTheme();
-  const [providerName, setProviderName] = React.useState([]);
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setProviderName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    props.setInputState({
+      ...props.inputState, providerName:
+        // On autofill we get a stringified value.
+        typeof value === 'string' ? value.split(',') : value,
+    });
     let operatorIds = [];
     event.target.value.forEach((value) => {
-      operatorIds=[...operatorIds, value.ID]
+      operatorIds = [...operatorIds, value.ID]
     }
     )
     dispatch(filterOperators(operatorIds));
@@ -59,7 +59,7 @@ export default function MultipleSelectChip(props) {
           labelId="provider-selector-label"
           id="provider-selector"
           multiple
-          value={providerName}
+          value={props.inputState.providerName}
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-provider" label="Provider" />}
           renderValue={(selected) => (
@@ -75,7 +75,7 @@ export default function MultipleSelectChip(props) {
             <MenuItem
               key={inputs.Title}
               value={inputs}
-              style={getStyles(inputs.Title, providerName, theme)}
+              style={getStyles(inputs.Title, props.inputState.providerName, theme)}
             >
               {inputs.Title}
             </MenuItem>

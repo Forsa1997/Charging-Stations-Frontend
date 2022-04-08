@@ -47,6 +47,7 @@ export const getStation = (id) => (dispatch) => {
                 type: SET_MESSAGE,
                 payload: response.data.message,
             });
+            console.log(response)
             return Promise.resolve();
         },
         (error) => {

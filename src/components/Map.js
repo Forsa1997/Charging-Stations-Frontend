@@ -22,7 +22,6 @@ import { useSelector } from 'react-redux';
 import { loadStations } from '../actions/mapData';
 import { RESET_FILTER } from '../actions/types';
 
-
 const Map = () => {
 
     const dispatch = useDispatch();
@@ -32,6 +31,7 @@ const Map = () => {
     }
 
     const [checked, setChecked] = React.useState(false);
+    const [inputState, setInputState] = React.useState({ slider: 0, plugType: [], providerName: [], freeToUse: '' })
     const plugTypes = [{ value: "type2", name: "Type 2" }, { value: "ccs", name: "CCS" }]
     const chargingProviders = referenceData.Operators
     const chargingFree = [{ value: "no", name: "No" }, { value: "yes", name: "Yes" }]
@@ -46,6 +46,7 @@ const Map = () => {
         dispatch({
             type: RESET_FILTER,
         })
+        setInputState({ slider: 0, plugType: [], providerName: [], freeToUse: '' })
     }
 
     const handleOnMenuClick = () => {
@@ -79,13 +80,13 @@ const Map = () => {
                 </IconButton>
             </Box>
             <Divider color={'grey'} sx={{ mt: '23px' }} />
-            <BasicSlider marks={marks} max={300} min={0} steps={5} default={0} />
+            <BasicSlider marks={marks} max={300} min={0} steps={5} inputState={inputState} setInputState={setInputState} />
             <Divider color={'grey'} sx={{ mt: '23px' }} />
-            <BasicSelect values={plugTypes} header="Plug Type" default={filter ? filter.Plugtype : []} />
+            <BasicSelect values={plugTypes} header="Plug Type" default={filter ? filter.Plugtype : []} inputState={inputState} setInputState={setInputState} />
             <Divider color={'grey'} sx={{ mt: '23px' }} />
-            <ChipSelect values={chargingProviders} header="Operator" />
+            <ChipSelect values={chargingProviders} header="Operator" inputState={inputState} setInputState={setInputState} />
             <Divider color={'grey'} sx={{ mt: '23px' }} />
-            <FreeToUseSelect values={chargingFree} header="Free to use" />
+            <FreeToUseSelect values={chargingFree} header="Free to use" inputState={inputState} setInputState={setInputState} />
             <Divider color={'grey'} sx={{ mt: '23px' }} />
             <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
                 <SaveFilterDialog />

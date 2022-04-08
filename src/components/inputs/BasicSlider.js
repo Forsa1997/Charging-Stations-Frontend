@@ -11,14 +11,11 @@ function valuetext(value) {
 }
 
 
-export default function DiscreteSliderLabel(props) {
+export default function BasicSlider(props) {
     let dispatch = useDispatch();
-    // const filter = useSelector(state => state.mapReducer.activeFilters.filterKW)
-    // console.log(filter)
-    const [value, setValue] = React.useState(props.default);
 
     const handleSliderChange = (event, newValue) => {
-        setValue(newValue);
+        props.setInputState({ ...props.inputState, slider: newValue })
     };
 
 
@@ -26,8 +23,8 @@ export default function DiscreteSliderLabel(props) {
         <Box sx={{ width: '100%', pt: 3 }} >
             <Typography gutterBottom>Charging Power</Typography>
             <Slider
+                value={props.inputState.slider}
                 aria-label="Always visible"
-                defaultValue={props.default}
                 getAriaValueText={valuetext}
                 step={props.steps}
                 marks={props.marks}
@@ -36,7 +33,7 @@ export default function DiscreteSliderLabel(props) {
                 min={props.min}
                 max={props.max}
                 onChange={handleSliderChange}
-                onMouseUp={() => dispatch(filterPower(value))}
+                onMouseUp={() => dispatch(filterPower(props.inputState))}
             />
         </Box>
     );
